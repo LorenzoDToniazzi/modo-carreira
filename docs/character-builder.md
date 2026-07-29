@@ -1,4 +1,4 @@
-# Criador de atleta — especificação v0.1
+# Criador de atleta — especificação v0.2
 
 ## Objetivo
 
@@ -19,14 +19,26 @@ O criador deve ser o primeiro contato com o jogo e o principal gerador de varied
 
 ## Progressão
 
-Na versão piloto:
+Na versão piloto, o atleta de 16 anos começa com 70% da herança:
 
 ```text
 valor_atual = arredondar(nota_fonte × 0,70)
-potencial = mínimo(99, nota_fonte + 10)
 ```
 
-O percentual inicial é uma constante de balanceamento, não uma propriedade do jogador-fonte. Futuramente, modos de velocidade diferentes poderão alterar ritmo de treino e evolução sem necessariamente mudar o atleta criado.
+O teto cresce por faixas para impedir que uma fonte já excepcional receba o
+mesmo bônus de uma nota comum:
+
+| Nota-fonte | Bônus de teto |
+|---|---:|
+| até 69 | +12 |
+| 70–79 | +10 |
+| 80–87 | +8 |
+| 88–92 | +5 |
+| 93–95 | +3 |
+| 96–97 | +2 |
+
+Somente uma fonte 97 consegue gerar teto 99. O percentual inicial é uma
+constante de balanceamento, não uma propriedade do jogador-fonte.
 
 ## Raridade
 
@@ -38,7 +50,18 @@ O percentual inicial é uma constante de balanceamento, não uma propriedade do 
 
 A raridade mede relevância histórica e controla frequência de aparição. Ela não adiciona bônus à nota. Um jogador comum pode ter uma característica de elite; uma lenda não precisa ser excelente em tudo.
 
-Não existe proteção contra azar, lenda garantida ou baralho equilibrado.
+Probabilidades independentes por sorteio:
+
+| Raridade | Chance |
+|---|---:|
+| Lenda | 5% |
+| Épico | 10% |
+| Raro | 20% |
+| Incomum | 30% |
+| Comum | 35% |
+
+Não existe proteção contra azar, lenda garantida ou baralho equilibrado. O
+único bloqueio é não repetir na mesma criação um jogador já utilizado.
 
 ## Atributos piloto de ATA
 
@@ -99,6 +122,14 @@ de balanceamento e podem inflar características que não representam o auge rea
 - UEFA, tipos de gols internacionais de Cristiano Ronaldo: https://www.uefa.com/european-qualifiers/news/0257-0e001aafb4e9-7c6ad3889ce0-1000--cristiano-ronaldo-s-146-international-goals-opposition-w/
 - UEFA, marcos de gols na Champions League: https://www.uefa.com/uefachampionsleague/news/027d-170b3182d9ed-587169daf860-1000--champions-league-goalscoring-milestones-kylian-mbappe-youn/
 - UEFA, rankings históricos: https://www.uefa.com/uefachampionsleague/history/rankings/
+- EA SPORTS FC, Harry Kane: https://www.ea.com/games/ea-sports-fc/ratings/player-ratings/harry-kane/202126
+- EA SPORTS FC, Erling Haaland: https://www.ea.com/games/ea-sports-fc/ratings/player-ratings/erling-haaland/239085
+- EA SPORTS FC, Olivier Giroud: https://www.ea.com/games/ea-sports-fc/ratings/player-ratings/olivier-giroud/178509
+- EA SPORTS FC, Romelu Lukaku: https://www.ea.com/games/ea-sports-fc/ratings/player-ratings/romelu-lukaku/192505
+- EA SPORTS FC, Edin Džeko: https://www.ea.com/games/ea-sports-fc/ratings/player-ratings/edin-dzeko/180930
+- EA SPORTS FC, Wout Weghorst: https://www.ea.com/games/ea-sports-fc/ratings/player-ratings/wout-weghorst/223689
+- EA SPORTS FC, Luuk de Jong: https://www.ea.com/games/ea-sports-fc/ratings/player-ratings/luuk-de-jong/189805
+- EA SPORTS FC, Chris Wood: https://www.ea.com/games/ea-sports-fc/ratings/player-ratings/chris-wood/192123
 - FUTBIN, histórico e atributos de cartas: https://www.futbin.com/
 - FUT.GG, banco comparativo de cartas: https://www.fut.gg/
 
@@ -110,7 +141,7 @@ decisão de design comparativa e deve ser revisada por posição.
 ## Limites do piloto
 
 - Somente ATA está liberado.
-- O banco contém 38 atacantes.
+- O banco contém 100 atacantes.
 - Brasil, Argentina e Portugal possuem clubes formadores provisórios.
 - A carreira ainda não começa depois da criação.
 - Fotos e escudos não são utilizados nesta fase.
@@ -119,6 +150,5 @@ decisão de design comparativa e deve ser revisada por posição.
 
 1. Testar se 12 escolhas mantêm ritmo e clareza.
 2. Revisar pesos e possíveis redundâncias entre Chute, Finalização colocada e Força do chute.
-3. Ampliar o banco de ATA após a validação da régua.
-4. Criar conjuntos de atributos para PON, MEI, VOL, LAT, ZAG e GOL.
-5. Pesquisar e versionar clubes formadores por nacionalidade e temporada.
+3. Criar conjuntos de atributos para PON, MEI, VOL, LAT, ZAG e GOL.
+4. Pesquisar e versionar clubes formadores por nacionalidade e temporada.
