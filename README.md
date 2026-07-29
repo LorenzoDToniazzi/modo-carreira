@@ -4,7 +4,8 @@ Jogo de carreira de futebol focado em criar um atleta único a partir de jogador
 
 ## Estado do projeto
 
-O projeto está em pré-produção. A primeira etapa será o **Criador de Atleta**, núcleo da experiência.
+O **Criador de Atleta v0.3** já permite criar jogadores nas sete posições. Cada
+posição possui 12 atributos, pesos, arquétipos e um banco de fontes próprios.
 
 ## Fluxo inicial
 
@@ -26,7 +27,26 @@ O projeto está em pré-produção. A primeira etapa será o **Criador de Atleta
 - Jogadores comuns podem ser especialistas excepcionais.
 - Cada atributo deve afetar ações específicas da simulação.
 - A qualidade do atleta depende da posição, função e combinação de características, não apenas de um overall geral.
+- O banco prioriza nomes reconhecíveis para o público brasileiro sem transformar
+  popularidade em nota.
+- Jogadores do futebol brasileiro aparecem em todas as raridades e posições.
+- Para atletas cujo auge aconteceu no Brasil, cartas de FIFA/EA FC não servem
+  como régua principal. A avaliação prioriza registros do período, números,
+  partidas, características reconhecidas e fontes oficiais de clubes e da CBF.
+- A ausência de uma boa carta internacional não reduz a nota nem a raridade de
+  um ídolo brasileiro.
+
+## Banco v0.3
+
+- 418 perfis de posição
+- 411 jogadores únicos
+- 117 atacantes
+- 51 pontas
+- 50 opções em cada uma das outras cinco posições
+- 235 perfis brasileiros
+- auditoria automática de inflação e representação por posição
 
 ## Próximo marco
 
-Definir a régua de atributos, o esquema técnico do banco de dados e um conjunto piloto de atacantes antes de expandir para as demais posições.
+Testar o sorteio nas sete posições, revisar notas discutíveis e começar a ligar a
+ficha criada às ações da simulação de partidas.

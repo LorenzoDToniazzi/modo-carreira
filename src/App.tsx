@@ -1,8 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import {
-  ATTRIBUTE_LABELS,
-  ATTRIBUTE_SHORT_LABELS,
   NATIONALITIES,
+  POSITION_CONFIGS,
   RARITY_LABELS,
   REROLLS_PER_CREATION,
   STARTING_AGE,
@@ -15,12 +14,14 @@ import {
   drawPlayer,
   reroll,
 } from "./game/engine";
-import { ATTACKERS } from "./game/players";
+import { PLAYER_POOLS } from "./game/players";
 import {
-  ATTRIBUTES,
+  POSITIONS,
+  type AttributeKey,
   type DraftState,
   type Identity,
   type Nationality,
+  type Position,
 } from "./game/types";
 
 type Stage = "identity" | "draft" | "result";
@@ -39,7 +40,7 @@ function App() {
   const [draft, setDraft] = useState<DraftState | null>(null);
 
   useEffect(() => {
-    const saved = localStorage.getItem("modo-carreira-creator-v2");
+    const saved = localStorage.getItem("modo-carreira-creator-v3");
     if (!saved) return;
     try {
       const parsed = JSON.parse(saved) as { stage: Stage; draft: DraftState };
@@ -48,22 +49,32 @@ function App() {
         setStage(parsed.stage);
       }
     } catch {
-      localStorage.removeItem("modo-carreira-creator-v2");
+      localStorage.removeItem("modo-carreira-creator-v3");
     }
   }, []);
 
   useEffect(() => {
     if (!draft) return;
     localStorage.setItem(
-      "modo-carreira-creator-v2",
+      "modo-carreira-creator-v3",
       JSON.stringify({ stage, draft }),
     );
   }, [draft, stage]);
 
-  const currentPlayer = useMemo(
-    () => ATTACKERS.find((player) => player.id === draft?.currentPlayerId),
-    [draft?.currentPlayerId],
+  const activePosition = draft?.identity.position ?? identityForm.position;
+  const positionConfig = POSITION_CONFIGS[activePosition];
+  const attributes = positionConfig.attributes;
+  const totalPlayerProfiles = Object.values(PLAYER_POOLS).reduce(
+    (total, pool) => total + pool.length,
+    0,
   );
+
+  const currentPlayer = useMemo(() => {
+    if (!draft) return undefined;
+    return PLAYER_POOLS[draft.identity.position].find(
+      (player) => player.id === draft.currentPlayerId,
+    );
+  }, [draft]);
 
   function startCreation(event: React.FormEvent) {
     event.preventDefault();
@@ -73,7 +84,7 @@ function App() {
       name: identityForm.name.trim(),
       heartClub: identityForm.heartClub.trim(),
     });
-    const player = drawPlayer();
+    const player = drawPlayer(identity.position);
     setDraft({
       identity,
       acquired: {},
@@ -85,7 +96,7 @@ function App() {
     setStage("draft");
   }
 
-  function chooseAttribute(key: (typeof ATTRIBUTES)[number]) {
+  function chooseAttribute(key: AttributeKey) {
     if (!draft || !currentPlayer) return;
     const next = acquireAttribute(draft, key, currentPlayer);
     setDraft(next);
@@ -95,6 +106,7 @@ function App() {
   function resetCreation() {
     localStorage.removeItem("modo-carreira-creator-v1");
     localStorage.removeItem("modo-carreira-creator-v2");
+    localStorage.removeItem("modo-carreira-creator-v3");
     setDraft(null);
     setIdentityForm(EMPTY_IDENTITY);
     setStage("identity");
@@ -106,12 +118,12 @@ function App() {
         <header className="brand">
           <span className="brand-mark">MC</span>
           <span>Modo Carreira</span>
-          <span className="prototype-label">Criador v0.2</span>
+          <span className="prototype-label">Criador v0.3</span>
         </header>
         <section className="identity-layout">
           <div className="hero-copy">
             <p className="eyebrow">A história começa aos {STARTING_AGE}</p>
-            <h1>Crie um atacante que nunca existiu.</h1>
+            <h1>Crie um jogador que nunca existiu.</h1>
             <p>
               Cada atributo virá do auge de um jogador sorteado. Escolha bem:
               depois de confirmado, ele não poderá ser trocado.
@@ -119,7 +131,7 @@ function App() {
             <div className="rule-strip">
               <span>12 atributos</span>
               <span>3 novos sorteios</span>
-              <span>100 atacantes</span>
+              <span>{totalPlayerProfiles} perfis no banco</span>
             </div>
           </div>
           <form className="identity-card" onSubmit={startCreation}>
@@ -163,8 +175,20 @@ function App() {
               </label>
               <label>
                 Posição
-                <select value="ATA" disabled>
-                  <option value="ATA">Atacante</option>
+                <select
+                  value={identityForm.position}
+                  onChange={(event) =>
+                    setIdentityForm({
+                      ...identityForm,
+                      position: event.target.value as Position,
+                    })
+                  }
+                >
+                  {POSITIONS.map((position) => (
+                    <option key={position} value={position}>
+                      {POSITION_CONFIGS[position].label}
+                    </option>
+                  ))}
                 </select>
               </label>
             </div>
@@ -212,11 +236,19 @@ function App() {
     );
   }
 
-  if (!draft || !currentPlayer) return null;
+  if (!draft) return null;
 
   if (stage === "result") {
-    const currentOverall = calculateOverall(draft.acquired, "currentValue");
-    const potentialOverall = calculateOverall(draft.acquired, "potentialValue");
+    const currentOverall = calculateOverall(
+      draft.identity.position,
+      draft.acquired,
+      "currentValue",
+    );
+    const potentialOverall = calculateOverall(
+      draft.identity.position,
+      draft.acquired,
+      "potentialValue",
+    );
     return (
       <main className="shell result-shell">
         <header className="brand">
@@ -229,7 +261,8 @@ function App() {
             <p className="eyebrow">Pronto para estrear</p>
             <h1>{draft.identity.name}</h1>
             <p className="result-subtitle">
-              {STARTING_AGE} anos · ATA · {NATIONALITIES[draft.identity.nationality]} ·{" "}
+              {STARTING_AGE} anos · {draft.identity.position} ·{" "}
+              {NATIONALITIES[draft.identity.nationality]} ·{" "}
               {draft.identity.dominantFoot === "D" ? "Destro" : "Canhoto"}
             </p>
             <div className="origin-line">
@@ -247,17 +280,17 @@ function App() {
               <span>Projeção</span>
               <strong>{potentialOverall}</strong>
             </div>
-            <p>{determineArchetype(draft.acquired)}</p>
+            <p>{determineArchetype(draft.identity.position, draft.acquired)}</p>
           </div>
         </section>
         <section className="result-grid">
-          {ATTRIBUTES.map((key) => {
+          {attributes.map(({ key, label, shortLabel }) => {
             const value = draft.acquired[key]!;
             return (
               <article className="result-attribute" key={key}>
                 <div>
-                  <span>{ATTRIBUTE_SHORT_LABELS[key]}</span>
-                  <h3>{ATTRIBUTE_LABELS[key]}</h3>
+                  <span>{shortLabel}</span>
+                  <h3>{label}</h3>
                   <p>de {value.sourcePlayerName}</p>
                 </div>
                 <div className="value-pair">
@@ -280,6 +313,8 @@ function App() {
     );
   }
 
+  if (!currentPlayer) return null;
+
   const selectedCount = Object.keys(draft.acquired).length;
   return (
     <main className="shell draft-shell">
@@ -290,11 +325,11 @@ function App() {
         </div>
         <div className="draft-progress">
           <span>
-            Atributo {selectedCount + 1} de {ATTRIBUTES.length}
+            Atributo {selectedCount + 1} de {attributes.length}
           </span>
           <div>
             <i
-              style={{ width: `${(selectedCount / ATTRIBUTES.length) * 100}%` }}
+              style={{ width: `${(selectedCount / attributes.length) * 100}%` }}
             />
           </div>
         </div>
@@ -313,13 +348,13 @@ function App() {
             </div>
           </div>
           <div className="attribute-list">
-            {ATTRIBUTES.map((key) => {
+            {attributes.map(({ key, label, shortLabel }) => {
               const acquired = draft.acquired[key];
               return (
                 <div className={`attribute-row ${acquired ? "filled" : ""}`} key={key}>
-                  <span>{ATTRIBUTE_SHORT_LABELS[key]}</span>
+                  <span>{shortLabel}</span>
                   <div>
-                    <strong>{ATTRIBUTE_LABELS[key]}</strong>
+                    <strong>{label}</strong>
                     <small>
                       {acquired ? `de ${acquired.sourcePlayerName}` : "Disponível"}
                     </small>
@@ -367,7 +402,7 @@ function App() {
             quanto maior a fonte, menor o bônus.
           </p>
           <div className="choice-list">
-            {ATTRIBUTES.map((key) => {
+            {attributes.map(({ key, label, shortLabel }) => {
               const locked = Boolean(draft.acquired[key]);
               return (
                 <button
@@ -376,13 +411,13 @@ function App() {
                   onClick={() => chooseAttribute(key)}
                 >
                   <span>
-                    <small>{ATTRIBUTE_SHORT_LABELS[key]}</small>
-                    <strong>{ATTRIBUTE_LABELS[key]}</strong>
+                    <small>{shortLabel}</small>
+                    <strong>{label}</strong>
                   </span>
                   {locked ? (
                     <em>Bloqueado</em>
                   ) : (
-                    <b>{currentPlayer.attributes[key]}</b>
+                    <b>{currentPlayer.attributes[key] ?? "—"}</b>
                   )}
                 </button>
               );

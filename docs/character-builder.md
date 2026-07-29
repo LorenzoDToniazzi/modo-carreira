@@ -1,4 +1,4 @@
-# Criador de atleta — especificação v0.2
+# Criador de atleta — especificação v0.3
 
 ## Objetivo
 
@@ -63,25 +63,20 @@ Probabilidades independentes por sorteio:
 Não existe proteção contra azar, lenda garantida ou baralho equilibrado. O
 único bloqueio é não repetir na mesma criação um jogador já utilizado.
 
-## Atributos piloto de ATA
+## Atributos por posição
 
-### Universais
+Cada posição possui exatamente 12 escolhas. Atributos de mesmo nome continuam
+representando a mesma capacidade; os pesos do overall mudam conforme a função.
 
-- Velocidade
-- Físico
-- Força
-- Chute
-- Passe
-- Movimentação
-
-### Específicos
-
-- Finalização colocada
-- Força do chute
-- Jogo aéreo
-- Drible
-- Controle de bola
-- Posicionamento na área
+| Posição | Foco dos atributos específicos |
+|---|---|
+| GOL | reflexo, posicionamento, encaixe, área, reposição, um contra um e saídas |
+| ZAG | jogo aéreo, desarme, interceptação, tempo de bola, marcação e recuperação |
+| LAT | desarme, cruzamento, fôlego, recomposição, apoio e um contra um defensivo |
+| VOL | desarme, interceptação, fôlego, visão, passe longo e saída sob pressão |
+| MEI | visão, passe longo, controle, drible, chute colocado e bola parada |
+| PON | aceleração, drible, cruzamento, agilidade, chute colocado e um contra um |
+| ATA | chute colocado, potência, jogo aéreo, drible, controle e posicionamento |
 
 ## Avaliação por função
 
@@ -138,17 +133,18 @@ como segunda opinião de scouting e ajuda a encontrar diferenças internas como
 aceleração, força de chute, cabeceio e drible. A nota final continua sendo uma
 decisão de design comparativa e deve ser revisada por posição.
 
-## Limites do piloto
+## Limites da v0.3
 
-- Somente ATA está liberado.
-- O banco contém 100 atacantes.
+- As sete posições estão liberadas.
+- O banco contém 416 perfis de posição e 409 atletas únicos.
+- ATA possui 116 fontes; as outras posições possuem 50 cada.
 - Brasil, Argentina e Portugal possuem clubes formadores provisórios.
 - A carreira ainda não começa depois da criação.
 - Fotos e escudos não são utilizados nesta fase.
 
 ## Próximos passos
 
-1. Testar se 12 escolhas mantêm ritmo e clareza.
-2. Revisar pesos e possíveis redundâncias entre Chute, Finalização colocada e Força do chute.
-3. Criar conjuntos de atributos para PON, MEI, VOL, LAT, ZAG e GOL.
+1. Testar se 12 escolhas mantêm ritmo e clareza em todas as posições.
+2. Revisar pesos e atributos que produzam arquétipos muito parecidos.
+3. Revisar casos individuais do banco com partidas de teste.
 4. Pesquisar e versionar clubes formadores por nacionalidade e temporada.

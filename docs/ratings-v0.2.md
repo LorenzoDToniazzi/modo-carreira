@@ -1,6 +1,7 @@
 # Régua de atributos v0.2
 
-Régua aprovada e aplicada ao primeiro banco amplo de ATA.
+Régua aprovada inicialmente para ATA e mantida na expansão v0.3 para todas as
+posições.
 
 ## Escala das notas-fonte
 
@@ -18,8 +19,41 @@ Régua aprovada e aplicada ao primeiro banco amplo de ATA.
 | 98–99 | não usado como nota-fonte |
 
 Uma lenda não recebe 90+ em tudo. Ela pode ter vários atributos muito bons,
-alguns históricos e fraquezas reais. Jogadores comuns e incomuns podem possuir
-uma especialidade entre 85 e 93.
+alguns históricos e fraquezas reais. Um atleta comum ou incomum pode ter uma
+especialidade forte, mas não recebe um conjunto de notas de elite só por ser
+conhecido.
+
+## Controle por raridade
+
+A raridade continua representando relevância histórica, não um bônus aplicado
+às notas. Os limites abaixo são controles de inflação do banco: permitem
+especialistas fora das raridades altas, mas impedem perfis inteiros
+superestimados.
+
+| Raridade | Média do grupo | Média máxima individual | Limite individual de notas altas |
+|---|---:|---:|---|
+| Lenda | 82–89 | 90 | até 8 notas 90+, 5 notas 94+ e 2 notas 97 |
+| Épico | 78–85 | 89 | até 7 notas 90+ e 3 notas 94+ |
+| Raro | 72–79 | 82 | até 4 notas 90+ e 3 notas 94+ |
+| Incomum | 65–73 | 78 | até 2 notas 85+ e somente 1 nota 90+ |
+| Comum | 59–69 | 70 | somente 1 nota 85+ e nenhuma nota 90+ |
+
+Esses limites não obrigam um jogador de determinada raridade a alcançar a
+média máxima. A nota continua vindo do perfil observado no auge.
+
+## Fontes para jogadores do futebol brasileiro
+
+O FIFA/EA FC é somente uma referência comparativa e nunca uma autoridade final.
+Para jogadores cujo auge ocorreu no Brasil, a ordem de preferência é:
+
+1. registros e descrições do período de auge;
+2. estatísticas e partidas;
+3. fontes oficiais de clubes, CBF e competições;
+4. consenso sobre estilo e especialidades;
+5. cartas normais do FIFA/EA FC, apenas quando representarem aquele auge.
+
+Cartas promocionais podem sugerir um perfil, mas não definem notas. A falta de
+uma carta relevante também não penaliza ídolos nacionais.
 
 ## Valor inicial e teto
 
@@ -70,88 +104,62 @@ Probabilidade por sorteio:
 As chances são independentes e não existe proteção contra azar. Dentro da
 raridade sorteada, qualquer jogador disponível tem a mesma chance.
 
-## Exemplos recalibrados
+## Exemplos após a revisão integral
 
-### ATA
+| Posição | Jogador | Raridade | Destaques | Limitações |
+|---|---|---|---|---|
+| ATA | Ronaldo Nazário | Lenda | velocidade 96, drible 95, chute 93 | passe 74, jogo aéreo 73 |
+| ATA | Hulk | Raro | potência 93, força 88, velocidade 84 | passe 73, jogo aéreo 73 |
+| ATA | Deyverson | Comum | jogo aéreo 79, posicionamento 78, físico 76 | passe 55, drible 57 |
+| PON | Lionel Messi | Lenda | drible 97, agilidade 96, aceleração 93 | força 62, físico 71 |
+| PON | Everton Cebolinha | Incomum | aceleração 85, agilidade 84, drible 82 | força 55, passe 67 |
+| MEI | Zico | Lenda | bola parada 94, passe 90, visão 90 | força 62, físico 76 |
+| MEI | Paulo Henrique Ganso | Incomum | visão 86, controle 82, passe 80 | velocidade 42, físico 55 |
+| VOL | Casemiro | Épico | desarme 86, interceptação 86, força 81 | velocidade 61, controle 73 |
+| VOL | Márcio Araújo | Comum | fôlego 71, interceptação 69 | força 49, passe longo 50 |
+| LAT | Cafu | Lenda | fôlego 97, apoio 95, recomposição 93 | força 79 |
+| LAT | Rodinei | Incomum | apoio 81, fôlego 80, velocidade 78 | um contra um defensivo 60 |
+| ZAG | Thiago Silva | Lenda | concentração 96, tempo 95, interceptação 94 | força 80 |
+| ZAG | Fabrício Bruno | Comum | velocidade 84, recuperação 84 | passe e controle 55 |
+| GOL | Ederson | Raro | jogo com os pés 96, força da reposição 95, reposição 94 | encaixe 66 |
+| GOL | Cássio | Raro | pênaltis 91, concentração 90, um contra um 87 | jogo com os pés 65 |
 
-| Jogador | Raridade | Destaques | Limitações |
-|---|---|---|---|
-| Ronaldo Nazário | Lenda | velocidade 97, drible 96, chute 95, movimentação 95 | jogo aéreo 77, passe 78 |
-| Cristiano Ronaldo | Lenda | força de chute 97, jogo aéreo 97, posicionamento 97, chute 96 | passe 83, controle 89 |
-| Didier Drogba | Épico | força 96, jogo aéreo 96, força de chute 96 | drible 72, passe 75 |
-| Olivier Giroud | Incomum | jogo aéreo 94, força 92 | velocidade 55, drible 65 |
-| Choupo-Moting | Comum | jogo aéreo 83, força 82, controle 78 | chute 73, movimentação 77 |
+## Auditoria geral v0.3
 
-### PON
-
-| Jogador | Raridade | Destaques | Limitações |
-|---|---|---|---|
-| Lionel Messi | Lenda | drible 97, controle 97, um contra um 97, passe 96 | força 66, jogo aéreo 55 |
-| Arjen Robben | Épico | aceleração 96, chute colocado 96, velocidade 95 | força 70, jogo aéreo 62 |
-| Ricardo Quaresma | Incomum | cruzamento 96, drible 91, um contra um 91 | físico 72, movimentação 81 |
-| Adama Traoré | Comum | velocidade 97, aceleração 96, um contra um 88 | chute colocado 61, passe 67 |
-
-### MEI
-
-| Jogador | Raridade | Destaques | Limitações |
-|---|---|---|---|
-| Diego Maradona | Lenda | visão 97, drible 97, controle 97, passe 95 | força 67, jogo aéreo 55 |
-| Zinedine Zidane | Lenda | controle 97, visão 96, passe longo 96 | velocidade 82, fôlego 84 |
-| Kevin De Bruyne | Épico | visão 97, passe longo 97, passe 96 | drible 88, força 78 |
-| Juninho Pernambucano | Raro | bola parada 97, chute 93, passe longo 90 | velocidade 72, força 70 |
-| Paulo Henrique Ganso | Incomum | visão 90, controle 89, passe 88 | velocidade 55, físico 65 |
-
-### VOL
-
-| Jogador | Raridade | Destaques | Limitações |
-|---|---|---|---|
-| Sergio Busquets | Lenda | posicionamento 97, resistência à pressão 97, interceptação 96 | velocidade 56, força 82 |
-| N'Golo Kanté | Épico | interceptação 97, fôlego 97, desarme 96 | passe longo 78, força 78 |
-| Casemiro | Épico | desarme 95, posicionamento 95, força 93 | velocidade 72, drible 72 |
-| Marouane Fellaini | Incomum | jogo aéreo 96, força 93, físico 90 | velocidade 59, passe 74 |
-
-### LAT
-
-| Jogador | Raridade | Destaques | Limitações |
-|---|---|---|---|
-| Cafu | Lenda | fôlego 97, apoio 97, recomposição 96 | chute 75, força 82 |
-| Roberto Carlos | Lenda | velocidade 97, apoio 96, recomposição 95, cruzamento 93 | jogo aéreo 70, marcação 84 |
-| Trent Alexander-Arnold | Raro | cruzamento 97, passe 94, apoio 93 | um contra um defensivo 75, força 72 |
-| Marcos Alonso | Incomum | cruzamento 88, chute 84, jogo aéreo 87 | velocidade 68, recomposição 74 |
-
-### ZAG
-
-| Jogador | Raridade | Destaques | Limitações |
-|---|---|---|---|
-| Paolo Maldini | Lenda | tempo de bola 97, marcação 97, desarme 96 | chute 58, força 87 |
-| Franz Beckenbauer | Lenda | passe 96, interceptação 96, concentração 96 | força 82, jogo aéreo 91 |
-| Virgil van Dijk | Épico | força 96, jogo aéreo 96, tempo de bola 95 | chute 60, aceleração 78 |
-| Per Mertesacker | Incomum | jogo aéreo 91, força 89, marcação 88 | velocidade 42, recuperação 58 |
-| Harry Maguire | Comum | jogo aéreo 93, força 91, passe 82 | velocidade 57, recuperação 66 |
-
-### GOL
-
-Goleiros usam um esquema próprio; os atributos universais de linha não são
-forçados sobre eles.
-
-| Jogador | Raridade | Destaques | Limitações |
-|---|---|---|---|
-| Lev Yashin | Lenda | reflexo 97, posicionamento 97, concentração 97 | passe longo 78, jogo com os pés 72 |
-| Gianluigi Buffon | Lenda | posicionamento 97, um contra um 97, concentração 97 | passe longo 83, saída rasteira 88 |
-| Manuel Neuer | Lenda | um contra um 97, saída rasteira 97, jogo com os pés 97 | encaixe 93, reflexo 95 |
-| Ederson | Épico | passe longo 97, passe curto 97, jogo com os pés 96 | encaixe 86, jogo aéreo 86 |
-| Guillermo Ochoa | Incomum | reflexo 94, mergulho 91, um contra um 90 | jogo aéreo 72, encaixe 80 |
-
-## Resultado da auditoria ATA v0.2
-
-| Medida | Resultado | Limite |
+| Posição | Perfis | Brasileiros |
 |---|---:|---:|
-| Jogadores | 100 | mínimo 100 |
-| Notas auditadas | 1.200 | 12 por jogador |
-| Notas 90+ | 95 (7,92%) | abaixo de 8% |
-| Notas 94+ | 22 (1,83%) | abaixo de 2% |
-| Notas 97 | 4 (0,33%) | abaixo de 0,4% |
-| Fontes 98–99 | 0 | zero |
+| ATA | 117 | 31 |
+| PON | 51 | 36 |
+| MEI | 50 | 34 |
+| VOL | 50 | 37 |
+| LAT | 50 | 37 |
+| ZAG | 50 | 29 |
+| GOL | 50 | 31 |
 
-O comando `npm run audit:ratings` impede que uma alteração futura ultrapasse
-esses limites sem ser percebida.
+Resultado consolidado:
+
+- 418 perfis de posição;
+- 411 jogadores únicos;
+- 5.016 notas auditadas;
+- 5,00% em 90 ou mais;
+- 1,32% em 94 ou mais;
+- 0,10% em 97;
+- nenhuma nota-fonte 98 ou 99.
+
+| Raridade | Média após a revisão |
+|---|---:|
+| Lenda | 85,83 |
+| Épico | 82,03 |
+| Raro | 75,47 |
+| Incomum | 68,87 |
+| Comum | 62,61 |
+
+O comando `npm run audit:ratings` agora verifica tanto a inflação global quanto
+as médias e os limites individuais por raridade. Assim, uma nova nota 87 em um
+jogador comum precisa ser sua única especialidade de elite; um perfil inteiro
+nessa faixa reprova automaticamente.
+
+A quantidade de atletas por raridade não controla a chance de aparição. O jogo
+primeiro sorteia a raridade pelos pesos fixos e depois sorteia um atleta daquela
+raridade. Assim, ampliar comuns e incomuns aumenta a variedade sem alterar a
+probabilidade aprovada.

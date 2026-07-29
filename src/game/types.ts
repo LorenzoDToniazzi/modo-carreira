@@ -1,24 +1,69 @@
-export const ATTRIBUTES = [
-  "speed",
-  "physical",
-  "strength",
-  "shooting",
-  "passing",
-  "movement",
-  "placedFinish",
-  "shotPower",
-  "aerial",
-  "dribbling",
-  "ballControl",
-  "boxPositioning",
-] as const;
+export const POSITIONS = ["GOL", "ZAG", "LAT", "VOL", "MEI", "PON", "ATA"] as const;
 
-export type AttributeKey = (typeof ATTRIBUTES)[number];
+export type Position = (typeof POSITIONS)[number];
 export type Rarity = "legend" | "epic" | "rare" | "uncommon" | "common";
 export type Nationality = "BR" | "AR" | "PT";
-export type Position = "ATA";
 
-export type AttributeMap = Record<AttributeKey, number>;
+export type AttributeKey =
+  | "speed"
+  | "physical"
+  | "strength"
+  | "shooting"
+  | "passing"
+  | "movement"
+  | "placedFinish"
+  | "shotPower"
+  | "aerial"
+  | "dribbling"
+  | "ballControl"
+  | "boxPositioning"
+  | "acceleration"
+  | "crossing"
+  | "agility"
+  | "oneOnOne"
+  | "vision"
+  | "longPassing"
+  | "setPieces"
+  | "tackling"
+  | "interceptions"
+  | "stamina"
+  | "pressResistance"
+  | "recovery"
+  | "support"
+  | "defensiveOneOnOne"
+  | "timing"
+  | "marking"
+  | "concentration"
+  | "reflexes"
+  | "goalkeepingPositioning"
+  | "handling"
+  | "aerialControl"
+  | "distribution"
+  | "footwork"
+  | "kickingPower"
+  | "penaltySaving"
+  | "lowExit";
+
+export type AttributeMap = Partial<Record<AttributeKey, number>>;
+
+export interface PositionAttribute {
+  key: AttributeKey;
+  label: string;
+  shortLabel: string;
+  weight: number;
+}
+
+export interface ArchetypeDefinition {
+  label: string;
+  keys: AttributeKey[];
+}
+
+export interface PositionConfig {
+  label: string;
+  description: string;
+  attributes: PositionAttribute[];
+  archetypes: ArchetypeDefinition[];
+}
 
 export interface SourcePlayer {
   id: string;

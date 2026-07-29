@@ -1,19 +1,19 @@
 import {
   ACADEMY_CLUBS,
-  ATTRIBUTE_WEIGHTS,
+  POSITION_CONFIGS,
   RARITY_WEIGHTS,
   STARTING_PERCENT,
 } from "./constants";
-import { ATTACKERS } from "./players";
-import {
-  ATTRIBUTES,
-  type AcquiredAttribute,
-  type AttributeKey,
-  type DraftState,
-  type Identity,
-  type Nationality,
-  type Rarity,
-  type SourcePlayer,
+import { PLAYER_POOLS } from "./players";
+import type {
+  AcquiredAttribute,
+  AttributeKey,
+  DraftState,
+  Identity,
+  Nationality,
+  Position,
+  Rarity,
+  SourcePlayer,
 } from "./types";
 
 const RARITIES: Rarity[] = [
@@ -44,9 +44,13 @@ function randomRarity(): Rarity {
   return "common";
 }
 
-export function drawPlayer(excludedIds: string[] = []): SourcePlayer {
-  const available = ATTACKERS.filter((player) => !excludedIds.includes(player.id));
-  const pool = available.length ? available : ATTACKERS;
+export function drawPlayer(
+  position: Position,
+  excludedIds: string[] = [],
+): SourcePlayer {
+  const players = PLAYER_POOLS[position];
+  const available = players.filter((player) => !excludedIds.includes(player.id));
+  const pool = available.length ? available : players;
   const rarity = randomRarity();
   const rarityPool = pool.filter((player) => player.rarity === rarity);
   return randomItem(rarityPool.length ? rarityPool : pool);
@@ -73,6 +77,10 @@ export function acquireAttribute(
   if (state.acquired[key]) return state;
 
   const sourceValue = player.attributes[key];
+  if (sourceValue === undefined) {
+    throw new Error(`${player.name} não possui o atributo ${key}.`);
+  }
+
   const acquired: AcquiredAttribute = {
     key,
     sourcePlayerId: player.id,
@@ -84,14 +92,19 @@ export function acquireAttribute(
 
   const nextAcquired = { ...state.acquired, [key]: acquired };
   const usedPlayerIds = [...state.usedPlayerIds, player.id];
-  const completed = ATTRIBUTES.every((attribute) => nextAcquired[attribute]);
+  const keys = POSITION_CONFIGS[state.identity.position].attributes.map(
+    ({ key: attributeKey }) => attributeKey,
+  );
+  const completed = keys.every((attributeKey) => nextAcquired[attributeKey]);
 
   return {
     ...state,
     acquired: nextAcquired,
     usedPlayerIds,
     completed,
-    currentPlayerId: completed ? "" : drawPlayer(usedPlayerIds).id,
+    currentPlayerId: completed
+      ? ""
+      : drawPlayer(state.identity.position, usedPlayerIds).id,
   };
 }
 
@@ -102,40 +115,32 @@ export function reroll(state: DraftState): DraftState {
   return {
     ...state,
     rerollsLeft: state.rerollsLeft - 1,
-    currentPlayerId: drawPlayer(excluded).id,
+    currentPlayerId: drawPlayer(state.identity.position, excluded).id,
   };
 }
 
 export function calculateOverall(
+  position: Position,
   acquired: DraftState["acquired"],
   field: "currentValue" | "potentialValue",
 ): number {
-  const total = ATTRIBUTES.reduce((sum, key) => {
-    return sum + (acquired[key]?.[field] ?? 0) * ATTRIBUTE_WEIGHTS[key];
-  }, 0);
+  const total = POSITION_CONFIGS[position].attributes.reduce(
+    (sum, attribute) =>
+      sum + (acquired[attribute.key]?.[field] ?? 0) * attribute.weight,
+    0,
+  );
   return Math.round(total);
 }
 
-export function determineArchetype(acquired: DraftState["acquired"]): string {
+export function determineArchetype(
+  position: Position,
+  acquired: DraftState["acquired"],
+): string {
   const value = (key: AttributeKey) => acquired[key]?.currentValue ?? 0;
-  const profiles = [
-    {
-      label: "Finalizador de área",
-      score: value("boxPositioning") + value("placedFinish") + value("movement"),
-    },
-    {
-      label: "Atacante de potência",
-      score: value("strength") + value("shotPower") + value("aerial"),
-    },
-    {
-      label: "Atacante móvel",
-      score: value("speed") + value("dribbling") + value("movement"),
-    },
-    {
-      label: "Atacante associativo",
-      score: value("passing") + value("ballControl") + value("movement"),
-    },
-  ];
+  const profiles = POSITION_CONFIGS[position].archetypes.map((profile) => ({
+    label: profile.label,
+    score: profile.keys.reduce((total, key) => total + value(key), 0),
+  }));
 
   return profiles.sort((a, b) => b.score - a.score)[0].label;
 }
