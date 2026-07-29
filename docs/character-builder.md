@@ -1,4 +1,4 @@
-# Criador de atleta — especificação v0.5
+# Criador de atleta — especificação v0.6
 
 ## Objetivo
 
@@ -67,6 +67,30 @@ Probabilidades independentes por sorteio:
 
 Não existe proteção contra azar, lenda garantida ou baralho equilibrado. O
 único bloqueio é não repetir na mesma criação um jogador já utilizado.
+
+## Blocos e improvisações
+
+As sete posições continuam sendo escolhidas normalmente. Os blocos servem para
+definir fontes vizinhas que podem aparecer com frequência reduzida:
+
+| Posição criada | Fonte natural | Improvisação principal | Alternativa |
+|---|---|---|---|
+| ATA | centroavantes | pontas | meias-atacantes |
+| PON | pontas | laterais/alas | atacantes móveis |
+| MEI | meias-atacantes | volantes construtores | pontas criadores |
+| VOL | volantes | meias centrais | zagueiros técnicos |
+| LAT | laterais | pontas de recomposição | zagueiros de lado |
+| ZAG | zagueiros | volantes defensivos | laterais defensivos |
+| GOL | goleiros | — | — |
+
+O sorteio mantém a raridade global e, dentro daquele tier, tenta usar 85% de
+fontes naturais, 10% da improvisação principal e 5% da alternativa. Quando não
+existe jogador realmente compatível naquele tier, o peso volta para os grupos
+válidos; ninguém é improvisado somente para fechar uma porcentagem.
+
+Cada elegibilidade é individual. A variante recebe os 12 atributos exigidos
+pela nova função e mostra a posição de origem na carta. Neymar, Ronaldinho e
+Jairzinho podem aparecer em ATA; Garrincha permanece exclusivamente em PON.
 
 ## Atributos por posição
 
@@ -144,11 +168,12 @@ como segunda opinião de scouting e ajuda a encontrar diferenças internas como
 aceleração, força de chute, cabeceio e drible. A nota final continua sendo uma
 decisão de design comparativa e deve ser revisada por posição.
 
-## Limites da v0.5
+## Limites da v0.6
 
 - As sete posições estão liberadas.
-- O banco contém 674 perfis de posição e 657 atletas únicos.
-- ATA possui 134 fontes; as demais posições possuem 90 cada.
+- O banco contém 671 perfis naturais, 249 variantes funcionais e 657 atletas
+  únicos.
+- As opções jogáveis variam de 90 em GOL a 178 em ATA.
 - Épicos e Lendas aparecem menos, mas a progressão de potencial continua
   permitindo que uma criação sem cartas históricas alcance nível de craque.
 - Brasil, Argentina e Portugal possuem clubes formadores provisórios.

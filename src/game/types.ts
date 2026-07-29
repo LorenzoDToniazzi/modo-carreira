@@ -2,6 +2,7 @@ export const POSITIONS = ["GOL", "ZAG", "LAT", "VOL", "MEI", "PON", "ATA"] as co
 
 export type Position = (typeof POSITIONS)[number];
 export type Rarity = "legend" | "epic" | "rare" | "uncommon" | "common";
+export type SourceRole = "natural" | "primary" | "alternative";
 export type Nationality = "BR" | "AR" | "PT";
 
 export type AttributeKey =
@@ -71,6 +72,8 @@ export interface SourcePlayer {
   country: string;
   peak: string;
   positions: Position[];
+  sourcePosition?: Position;
+  sourceRole?: SourceRole;
   rarity: Rarity;
   attributes: AttributeMap;
   note: string;
@@ -90,6 +93,8 @@ export interface AcquiredAttribute {
   key: AttributeKey;
   sourcePlayerId: string;
   sourcePlayerName: string;
+  sourcePosition?: Position;
+  sourceRole?: SourceRole;
   sourceValue: number;
   naturalCeiling: number;
   startingPercent: number;

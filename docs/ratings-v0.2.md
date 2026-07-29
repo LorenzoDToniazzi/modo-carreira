@@ -1,6 +1,6 @@
 # Régua de atributos v0.2
 
-Régua aprovada inicialmente para ATA e mantida na revisão v0.5 para todas as
+Régua aprovada inicialmente para ATA e mantida na revisão v0.6 para todas as
 posições.
 
 ## Escala das notas-fonte
@@ -156,35 +156,40 @@ Pesos individuais são exceções explícitas, como Pelé.
 | GOL | Rogério Ceni | Lenda | jogo com os pés 97, reposição 95, concentração 95 | agilidade 78 |
 | GOL | Marcos | Lenda | pênaltis 96, um contra um 95, reflexo 93 | jogo com os pés 67 |
 
-## Auditoria geral v0.5
+## Auditoria geral v0.6
 
-| Posição | Perfis | Brasileiros |
-|---|---:|---:|
-| ATA | 134 | 49 |
-| PON | 90 | 55 |
-| MEI | 90 | 51 |
-| VOL | 90 | 53 |
-| LAT | 90 | 53 |
-| ZAG | 90 | 52 |
-| GOL | 90 | 51 |
+| Posição | Naturais | Jogáveis | Brasileiros jogáveis |
+|---|---:|---:|---:|
+| ATA | 131 | 178 | 77 |
+| PON | 90 | 140 | 82 |
+| MEI | 90 | 141 | 76 |
+| VOL | 90 | 134 | 81 |
+| LAT | 90 | 115 | 70 |
+| ZAG | 90 | 122 | 71 |
+| GOL | 90 | 90 | 51 |
 
-Resultado consolidado:
+Banco natural:
 
-- 674 perfis de posição;
+- 671 perfis de posição;
 - 657 jogadores únicos;
-- 8.088 notas auditadas;
-- 8,00% em 90 ou mais (647 de 8.088; valor exato abaixo de 8%);
-- 1,97% em 94 ou mais;
-- 0,17% em 97;
+- 8.052 notas auditadas;
+- 7,96% em 90 ou mais;
+- 1,90% em 94 ou mais;
+- 0,16% em 97;
 - nenhuma nota-fonte 98 ou 99.
 
 | Raridade | Média após a revisão |
 |---|---:|
-| Lenda | 86,19 |
+| Lenda | 86,29 |
 | Épico | 83,68 |
 | Raro | 78,95 |
 | Incomum | 72,54 |
 | Comum | 62,33 |
+
+As 249 variantes improvisadas adicionam 2.988 notas funcionais. Delas, 6,06%
+estão em 90 ou mais, 1,61% em 94 ou mais e cinco recebem 97. As médias das
+variantes continuam separadas por raridade: 84,15 para Lenda, 81,75 para Épico,
+77,50 para Raro, 71,23 para Incomum e 60,88 para Comum.
 
 O comando `npm run audit:ratings` verifica inflação global, médias, limites
 individuais, profundidade mínima de Épicos, Raros e Incomuns em cada posição e
@@ -197,7 +202,7 @@ A quantidade de atletas por raridade não controla a chance de aparição. O jog
 primeiro sorteia a raridade pelos pesos fixos e depois sorteia um atleta daquela
 raridade. Não se rebaixa um ídolo para cumprir uma proporção artificial.
 
-## Simulação de criação v0.5
+## Simulação de criação v0.6
 
 Foram simuladas 5.000 criações por posição, totalizando 35.000 carreiras. Em
 cada rodada, o teste escolheu o melhor atributo ainda vazio da carta recebida,
@@ -205,11 +210,11 @@ sem utilizar os três rerolls.
 
 | Posição | Inicial mediano | Herança natural mediana | Teto base mediano | Teto absoluto p10–med–p90 |
 |---|---:|---:|---:|---:|
-| ATA | 49 | 73 | 80 | 80–83–86 |
-| PON | 52 | 78 | 85 | 85–88–92 |
-| MEI | 52 | 77 | 84 | 84–87–91 |
-| VOL | 52 | 77 | 84 | 83–87–91 |
-| LAT | 53 | 78 | 85 | 85–89–92 |
+| ATA | 50 | 74 | 82 | 81–85–90 |
+| PON | 52 | 77 | 85 | 85–88–92 |
+| MEI | 52 | 77 | 85 | 84–88–91 |
+| VOL | 52 | 77 | 85 | 84–88–92 |
+| LAT | 53 | 78 | 86 | 85–89–92 |
 | ZAG | 52 | 77 | 84 | 84–88–91 |
 | GOL | 53 | 78 | 86 | 85–89–92 |
 
@@ -221,12 +226,26 @@ Com 12 sorteios, a chance de receber ao menos uma Lenda é aproximadamente
 30,6%. Épico ou Lenda aparece em aproximadamente 63,2% das criações. Em média,
 cada ficha recebe 3 cartas Raras, 4,8 Incomuns e 3,2 Comuns.
 
-Na simulação, a frequência observada de ao menos uma Lenda ficou entre 29,58%
-e 30,84% conforme a posição. Num lote separado com três rerolls estratégicos,
-2 de 10 atacantes receberam Lenda; nas 40 carreiras das sete posições, 12
-tiveram ao menos uma Lenda, somando 17 aparições.
+Na simulação, a frequência observada de ao menos uma Lenda ficou entre 29,38%
+e 31,24% conforme a posição.
+
+| Posição | Natural | Improvisação principal | Alternativa | Save com alguma improvisação |
+|---|---:|---:|---:|---:|
+| ATA | 84,92% | 10,07% | 5,01% | 86,10% |
+| PON | 85,09% | 9,87% | 5,05% | 85,62% |
+| MEI | 84,89% | 10,07% | 5,03% | 85,70% |
+| VOL | 84,87% | 9,99% | 5,14% | 85,44% |
+| LAT | 85,34% | 9,84% | 4,82% | 85,72% |
+| ZAG | 86,53% | 9,88% | 3,60% | 82,52% |
+| GOL | 100% | 0% | 0% | 0% |
+
+ZAG não força os 5% alternativos porque o banco ainda não possui laterais
+compatíveis em todos os tiers. Num lote separado com três rerolls estratégicos,
+5 de 10 atacantes receberam Lenda. Nas 40 carreiras das sete posições, 16
+tiveram ao menos uma Lenda, somando 20 aparições; 64 das 480 escolhas vieram
+de variantes improvisadas.
 
 Para medir repetição, também foram feitos 1.000 grupos de quatro saves por
 posição. Entre as 48 cartas vistas nesses quatro saves, apareceram em média de
-36 a 41 jogadores diferentes. Assim, quatro carreiras ainda revelam menos da
-metade dos pools de 90 e cerca de um terço do pool de ATA.
+36,5 a 42,3 jogadores diferentes. As variantes reduziram a repetição nas seis
+posições de linha sem alterar GOL.

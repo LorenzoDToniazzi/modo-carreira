@@ -40,7 +40,7 @@ function App() {
   const [draft, setDraft] = useState<DraftState | null>(null);
 
   useEffect(() => {
-    const saved = localStorage.getItem("modo-carreira-creator-v3");
+    const saved = localStorage.getItem("modo-carreira-creator-v4");
     if (!saved) return;
     try {
       const parsed = JSON.parse(saved) as { stage: Stage; draft: DraftState };
@@ -49,14 +49,14 @@ function App() {
         setStage(parsed.stage);
       }
     } catch {
-      localStorage.removeItem("modo-carreira-creator-v3");
+      localStorage.removeItem("modo-carreira-creator-v4");
     }
   }, []);
 
   useEffect(() => {
     if (!draft) return;
     localStorage.setItem(
-      "modo-carreira-creator-v3",
+      "modo-carreira-creator-v4",
       JSON.stringify({ stage, draft }),
     );
   }, [draft, stage]);
@@ -107,6 +107,7 @@ function App() {
     localStorage.removeItem("modo-carreira-creator-v1");
     localStorage.removeItem("modo-carreira-creator-v2");
     localStorage.removeItem("modo-carreira-creator-v3");
+    localStorage.removeItem("modo-carreira-creator-v4");
     setDraft(null);
     setIdentityForm(EMPTY_IDENTITY);
     setStage("identity");
@@ -118,7 +119,7 @@ function App() {
         <header className="brand">
           <span className="brand-mark">MC</span>
           <span>Modo Carreira</span>
-          <span className="prototype-label">Criador v0.5</span>
+          <span className="prototype-label">Criador v0.6</span>
         </header>
         <section className="identity-layout">
           <div className="hero-copy">
@@ -304,12 +305,19 @@ function App() {
         <section className="result-grid">
           {attributes.map(({ key, label, shortLabel }) => {
             const value = draft.acquired[key]!;
+            const sourceLabel =
+              value.sourceRole && value.sourceRole !== "natural"
+                ? ` · ${value.sourcePosition} → ${draft.identity.position}`
+                : "";
             return (
               <article className="result-attribute" key={key}>
                 <div>
                   <span>{shortLabel}</span>
                   <h3>{label}</h3>
-                  <p>de {value.sourcePlayerName}</p>
+                  <p>
+                    de {value.sourcePlayerName}
+                    {sourceLabel}
+                  </p>
                 </div>
                 <div className="value-pair">
                   <strong>{value.currentValue}</strong>
@@ -401,6 +409,13 @@ function App() {
           </div>
           <p className="eyebrow">Jogador sorteado</p>
           <h1>{currentPlayer.name}</h1>
+          {currentPlayer.sourceRole &&
+            currentPlayer.sourceRole !== "natural" && (
+              <p className="source-position-label">
+                Improvisado · {currentPlayer.sourcePosition} →{" "}
+                {draft.identity.position}
+              </p>
+            )}
           <p className="peak-label">Auge considerado: {currentPlayer.peak}</p>
           <p className="player-note">{currentPlayer.note}</p>
           <div className="reroll-block">

@@ -7,7 +7,8 @@ import {
   POSITION_CONFIGS,
   RARITY_WEIGHTS,
 } from "./constants";
-import { PLAYER_POOLS } from "./players";
+import { SOURCE_ROLE_WEIGHTS } from "./improvised";
+import { PLAYER_DRAW_GROUPS } from "./players";
 import type {
   AcquiredAttribute,
   AttributeKey,
@@ -17,6 +18,7 @@ import type {
   Position,
   Rarity,
   SourcePlayer,
+  SourceRole,
 } from "./types";
 
 const RARITIES: Rarity[] = [
@@ -46,6 +48,26 @@ function weightedPlayer(items: SourcePlayer[]): SourcePlayer {
   return items[items.length - 1];
 }
 
+function weightedRole(
+  roles: {
+    role: SourceRole;
+    players: SourcePlayer[];
+  }[],
+): SourceRole {
+  const totalWeight = roles.reduce(
+    (total, { role }) => total + SOURCE_ROLE_WEIGHTS[role],
+    0,
+  );
+  let roll = Math.random() * totalWeight;
+
+  for (const { role } of roles) {
+    roll -= SOURCE_ROLE_WEIGHTS[role];
+    if (roll < 0) return role;
+  }
+
+  return roles[roles.length - 1].role;
+}
+
 export function randomAcademy(nationality: Nationality): string {
   return randomItem(ACADEMY_CLUBS[nationality]);
 }
@@ -66,12 +88,27 @@ export function drawPlayer(
   position: Position,
   excludedIds: string[] = [],
 ): SourcePlayer {
-  const players = PLAYER_POOLS[position];
-  const available = players.filter((player) => !excludedIds.includes(player.id));
-  const pool = available.length ? available : players;
   const rarity = randomRarity();
-  const rarityPool = pool.filter((player) => player.rarity === rarity);
-  return weightedPlayer(rarityPool.length ? rarityPool : pool);
+  const groups = PLAYER_DRAW_GROUPS[position];
+  const roles: SourceRole[] = ["natural", "primary", "alternative"];
+  const eligibleRoles = roles.flatMap((role) => {
+    const available = groups[role].filter(
+      (player) =>
+        player.rarity === rarity && !excludedIds.includes(player.id),
+    );
+    return available.length ? [{ role, players: available }] : [];
+  });
+
+  if (!eligibleRoles.length) {
+    const fallback = roles.flatMap((role) =>
+      groups[role].filter((player) => !excludedIds.includes(player.id)),
+    );
+    return weightedPlayer(fallback);
+  }
+
+  const role = weightedRole(eligibleRoles);
+  const rolePool = eligibleRoles.find((group) => group.role === role)!.players;
+  return weightedPlayer(rolePool);
 }
 
 function randomPercent(minimum: number, maximum: number): number {
@@ -115,6 +152,8 @@ export function acquireAttribute(
     key,
     sourcePlayerId: player.id,
     sourcePlayerName: player.name,
+    sourcePosition: player.sourcePosition,
+    sourceRole: player.sourceRole,
     sourceValue,
     naturalCeiling: sourceValue,
     startingPercent,

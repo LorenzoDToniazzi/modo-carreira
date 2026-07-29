@@ -28,6 +28,8 @@ export function createPool(position: Position, rows: RawPlayer[]): SourcePlayer[
       country,
       peak,
       positions: [position],
+      sourcePosition: position,
+      sourceRole: "natural",
       rarity,
       attributes: Object.fromEntries(
         keys.map((key, index) => [key, values[index]]),
