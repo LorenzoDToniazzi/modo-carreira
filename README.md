@@ -47,14 +47,14 @@ treino e decisões excepcionais podem abrir até 15%, com limite técnico em 99.
 
 ## Banco v0.5
 
-- 671 perfis de posição
+- 674 perfis de posição
 - 657 jogadores únicos
-- 131 atacantes
+- 134 atacantes
 - 90 pontas, 90 meias e 90 volantes
 - 90 laterais, 90 zagueiros e 90 goleiros
-- 361 perfis brasileiros
+- 364 perfis brasileiros
 - pools reforçados de Épicos, Raros e Incomuns em todas as posições
-- sorteio por raridade: 2% Lenda, 5% Épico, 25% Raro, 40% Incomum e 28% Comum
+- sorteio por raridade: 3% Lenda, 5% Épico, 25% Raro, 40% Incomum e 27% Comum
 - auditoria automática de inflação, profundidade por tier, representação por
   posição e raridades históricas obrigatórias
 

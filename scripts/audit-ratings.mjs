@@ -51,11 +51,11 @@ const rowPattern =
 const failures = [];
 const allRows = [];
 const expectedRarityWeights = {
-  legend: 0.02,
+  legend: 0.03,
   epic: 0.05,
   rare: 0.25,
   uncommon: 0.4,
-  common: 0.28,
+  common: 0.27,
 };
 const expectedDevelopmentConstants = {
   MIN_STARTING_PERCENT: 0.65,

@@ -123,11 +123,11 @@ camada revisada mantém variedade mínima por posição:
 
 Probabilidade por sorteio:
 
-- 2% Lendas
+- 3% Lendas
 - 5% Épicos
 - 25% Raros
 - 40% Incomuns
-- 28% Comuns
+- 27% Comuns
 
 As chances são independentes e não existe proteção contra azar. O sistema
 primeiro sorteia a raridade e depois um jogador daquele grupo. Por isso, ter
@@ -160,7 +160,7 @@ Pesos individuais são exceções explícitas, como Pelé.
 
 | Posição | Perfis | Brasileiros |
 |---|---:|---:|
-| ATA | 131 | 46 |
+| ATA | 134 | 49 |
 | PON | 90 | 55 |
 | MEI | 90 | 51 |
 | VOL | 90 | 53 |
@@ -170,17 +170,17 @@ Pesos individuais são exceções explícitas, como Pelé.
 
 Resultado consolidado:
 
-- 671 perfis de posição;
+- 674 perfis de posição;
 - 657 jogadores únicos;
-- 8.052 notas auditadas;
-- 7,61% em 90 ou mais;
-- 1,79% em 94 ou mais;
-- 0,14% em 97;
+- 8.088 notas auditadas;
+- 8,00% em 90 ou mais (647 de 8.088; valor exato abaixo de 8%);
+- 1,97% em 94 ou mais;
+- 0,17% em 97;
 - nenhuma nota-fonte 98 ou 99.
 
 | Raridade | Média após a revisão |
 |---|---:|
-| Lenda | 86,29 |
+| Lenda | 86,19 |
 | Épico | 83,68 |
 | Raro | 78,95 |
 | Incomum | 72,54 |
@@ -206,20 +206,25 @@ sem utilizar os três rerolls.
 | Posição | Inicial mediano | Herança natural mediana | Teto base mediano | Teto absoluto p10–med–p90 |
 |---|---:|---:|---:|---:|
 | ATA | 49 | 73 | 80 | 80–83–86 |
-| PON | 52 | 77 | 85 | 85–88–91 |
+| PON | 52 | 78 | 85 | 85–88–92 |
 | MEI | 52 | 77 | 84 | 84–87–91 |
-| VOL | 52 | 76 | 84 | 83–87–91 |
-| LAT | 52 | 78 | 85 | 84–88–92 |
-| ZAG | 52 | 76 | 84 | 84–87–91 |
-| GOL | 52 | 78 | 85 | 84–88–92 |
+| VOL | 52 | 77 | 84 | 83–87–91 |
+| LAT | 53 | 78 | 85 | 85–89–92 |
+| ZAG | 52 | 77 | 84 | 84–88–91 |
+| GOL | 53 | 78 | 86 | 85–89–92 |
 
 O teto base representa um desenvolvimento bom e acessível. O teto absoluto
 depende de liberar os cinco pontos percentuais adicionais por decisões e
 desempenho na carreira; ele não é uma previsão do overall final.
 
 Com 12 sorteios, a chance de receber ao menos uma Lenda é aproximadamente
-21,5%. Épico ou Lenda aparece em aproximadamente 58,1% das criações. Em média,
-cada ficha recebe 3 cartas Raras, 4,8 Incomuns e 3,4 Comuns.
+30,6%. Épico ou Lenda aparece em aproximadamente 63,2% das criações. Em média,
+cada ficha recebe 3 cartas Raras, 4,8 Incomuns e 3,2 Comuns.
+
+Na simulação, a frequência observada de ao menos uma Lenda ficou entre 29,58%
+e 30,84% conforme a posição. Num lote separado com três rerolls estratégicos,
+2 de 10 atacantes receberam Lenda; nas 40 carreiras das sete posições, 12
+tiveram ao menos uma Lenda, somando 17 aparições.
 
 Para medir repetição, também foram feitos 1.000 grupos de quatro saves por
 posição. Entre as 48 cartas vistas nesses quatro saves, apareceram em média de

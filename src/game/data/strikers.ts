@@ -23,6 +23,9 @@ const rawPlayers: RawPlayer[] = [
   ["eusebio", "Eusébio", "Portugal", "1962–1968", "legend", [90, 88, 84, 91, 77, 86, 86, 95, 82, 85, 83, 86], "Arranque vertical e potência bilateral de referência histórica."],
   ["gerd-muller", "Gerd Müller", "Alemanha", "1969–1974", "legend", [73, 74, 79, 92, 66, 92, 88, 85, 88, 64, 78, 96], "Especialista máximo em antecipar e concluir na pequena área."],
   ["van-basten", "Marco van Basten", "Países Baixos", "1986–1992", "legend", [78, 76, 79, 90, 78, 86, 93, 86, 93, 83, 86, 86], "Técnica de finalização e jogo aéreo com grande elegância."],
+  ["neymar-central", "Neymar", "Brasil", "2015–2018", "legend", [84, 89, 59, 86, 88, 87, 94, 82, 55, 94, 95, 84], "Também atuou por dentro e como segundo atacante, criando, conduzindo e concluindo com elite técnica."],
+  ["ronaldinho-central", "Ronaldinho Gaúcho", "Brasil", "2004–2006", "legend", [83, 96, 71, 84, 89, 86, 89, 87, 67, 96, 97, 80], "Atacante livre entre linhas, capaz de organizar, desequilibrar no drible e decidir perto da área."],
+  ["jairzinho-central", "Jairzinho", "Brasil", "1970–1974", "legend", [89, 73, 82, 86, 78, 89, 86, 88, 81, 89, 87, 89], "A mobilidade e a força permitiam partir do lado ou ocupar o centro como atacante de chegada."],
 
   // Épicos
   ["henry", "Thierry Henry", "França", "2002–2006", "epic", [88, 71, 71, 83, 77, 86, 88, 81, 67, 83, 81, 83], "Aceleração e conclusão colocada atacando o espaço."],

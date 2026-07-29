@@ -59,11 +59,11 @@ Probabilidades independentes por sorteio:
 
 | Raridade | Chance |
 |---|---:|
-| Lenda | 2% |
+| Lenda | 3% |
 | Épico | 5% |
 | Raro | 25% |
 | Incomum | 40% |
-| Comum | 28% |
+| Comum | 27% |
 
 Não existe proteção contra azar, lenda garantida ou baralho equilibrado. O
 único bloqueio é não repetir na mesma criação um jogador já utilizado.
@@ -147,8 +147,8 @@ decisão de design comparativa e deve ser revisada por posição.
 ## Limites da v0.5
 
 - As sete posições estão liberadas.
-- O banco contém 671 perfis de posição e 657 atletas únicos.
-- ATA possui 131 fontes; as demais posições possuem 90 cada.
+- O banco contém 674 perfis de posição e 657 atletas únicos.
+- ATA possui 134 fontes; as demais posições possuem 90 cada.
 - Épicos e Lendas aparecem menos, mas a progressão de potencial continua
   permitindo que uma criação sem cartas históricas alcance nível de craque.
 - Brasil, Argentina e Portugal possuem clubes formadores provisórios.
