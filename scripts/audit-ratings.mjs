@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 
 const pools = [
-  { position: "ATA", file: "../src/game/players.ts", minimum: 100 },
+  { position: "ATA", file: "../src/game/data/strikers.ts", minimum: 100 },
   { position: "PON", file: "../src/game/data/wingers.ts", minimum: 60 },
   { position: "MEI", file: "../src/game/data/midfielders.ts", minimum: 60 },
   {
@@ -190,7 +190,7 @@ if (!pele) {
 }
 
 const attackerSource = readFileSync(
-  new URL("../src/game/players.ts", import.meta.url),
+  new URL("../src/game/data/strikers.ts", import.meta.url),
   "utf8",
 );
 if (!/^\s*\["pele".*,\s*0\.15\],?$/m.test(attackerSource)) {
