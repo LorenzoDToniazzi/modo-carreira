@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "audit:ratings": "node scripts/audit-ratings.mjs",
+    "check": "npm run audit:ratings && npm run build",
     "preview": "vite preview",
     "lint": "eslint ."
   },
