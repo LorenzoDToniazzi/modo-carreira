@@ -27,6 +27,15 @@ const rawMidfielders: RawPlayer[] = [
   ["dirceu-lopes", "Dirceu Lopes", "Brasil", "1966–1976", "epic", [76, 80, 67, 86, 88, 85, 90, 86, 88, 88, 88, 91], "Drible, passe e chegada à área comandaram um dos maiores times do Cruzeiro."],
   ["tostao", "Tostão", "Brasil", "1968–1972", "epic", [78, 76, 62, 86, 88, 92, 93, 84, 89, 87, 90, 82], "Inteligência e técnica permitiam criar, movimentar e finalizar como poucos."],
 
+  ["xavi", "Xavi Hernández", "Espanha", "2008–2012", "epic", [66, 77, 61, 76, 97, 90, 96, 93, 96, 88, 78, 86], "Passe, controle e leitura transformavam posse em domínio territorial."],
+  ["gullit", "Ruud Gullit", "Países Baixos", "1987–1990", "epic", [82, 90, 86, 85, 85, 89, 86, 84, 87, 86, 83, 77], "Potência e técnica permitiam atuar e decidir em praticamente qualquer faixa ofensiva."],
+  ["laudrup", "Michael Laudrup", "Dinamarca", "1989–1994", "epic", [79, 73, 63, 82, 92, 88, 95, 90, 94, 93, 87, 82], "Visão e condução elegante abriam espaços que poucos jogadores enxergavam."],
+  ["beckham", "David Beckham", "Inglaterra", "1998–2003", "epic", [70, 82, 71, 85, 92, 85, 91, 95, 87, 78, 88, 96], "Passe longo e bola parada tinham precisão histórica, com enorme volume sem bola."],
+  ["gerrard", "Steven Gerrard", "Inglaterra", "2004–2009", "epic", [79, 85, 81, 91, 85, 92, 84, 89, 82, 81, 86, 85], "Potência, liderança e chegada permitiam decidir partidas de diferentes formas."],
+  ["lampard", "Frank Lampard", "Inglaterra", "2004–2010", "epic", [71, 85, 78, 92, 87, 94, 88, 86, 85, 78, 90, 86], "Movimentação e finalização fizeram um meia de produção goleadora histórica."],
+  ["scholes", "Paul Scholes", "Inglaterra", "1998–2008", "epic", [67, 78, 70, 88, 94, 84, 92, 95, 91, 82, 87, 88], "Passe longo, visão e chute de média distância definiam seu controle do jogo."],
+  ["sneijder", "Wesley Sneijder", "Países Baixos", "2009–2011", "epic", [74, 78, 65, 88, 90, 87, 92, 89, 88, 86, 91, 92], "Último passe, chute e bola parada sustentaram um auge de protagonista mundial."],
+
   // Raros
   ["ozil", "Mesut Özil", "Alemanha", "2010–2016", "rare", [66, 60, 43, 65, 79, 78, 79, 78, 79, 76, 69, 69], "Último passe e ocupação inteligente entre as linhas."],
   ["alex", "Alex de Souza", "Brasil", "2001–2009", "rare", [55, 70, 61, 81, 83, 79, 83, 81, 83, 80, 83, 83], "Canhota refinada para passe, controle e conclusão colocada."],
@@ -42,6 +51,15 @@ const rawMidfielders: RawPlayer[] = [
   ["juninho-paulista", "Juninho Paulista", "Brasil", "1995–2002", "rare", [84, 72, 52, 78, 84, 84, 86, 80, 88, 88, 82, 80], "Agilidade, condução e passe fizeram um meia dinâmico e campeão mundial."],
   ["valdo", "Valdo", "Brasil", "1988–1995", "rare", [72, 76, 59, 77, 86, 82, 88, 86, 87, 83, 81, 83], "Controle de ritmo e passe refinado deram longa presença na Seleção e na Europa."],
   ["pedro-rocha", "Pedro Rocha", "Uruguai", "1966–1974", "rare", [76, 76, 68, 81, 80, 81, 84, 80, 82, 82, 83, 81], "Meia-atacante completo e decisivo, virou ídolo histórico do São Paulo."],
+
+  ["david-silva", "David Silva", "Espanha", "2011–2019", "rare", [71, 74, 57, 79, 90, 87, 93, 83, 93, 90, 83, 78], "Controle em espaço curto e último passe organizaram anos de domínio na Inglaterra."],
+  ["fabregas", "Cesc Fàbregas", "Espanha", "2009–2015", "rare", [66, 75, 64, 79, 92, 86, 94, 90, 89, 83, 81, 79], "Visão e passe vertical permitiam criar de zonas profundas ou atrás do atacante."],
+  ["deco", "Deco", "Portugal", "2003–2008", "rare", [71, 79, 66, 80, 89, 82, 90, 86, 86, 85, 82, 82], "Intensidade técnica e passe final fizeram dele o elo de equipes campeãs."],
+  ["hagi", "Gheorghe Hagi", "Romênia", "1989–1994", "rare", [73, 72, 64, 87, 81, 81, 91, 86, 81, 81, 92, 89], "Canhota, visão e chute de longe sustentaram o Maradona dos Cárpatos."],
+  ["rui-costa", "Rui Costa", "Portugal", "1996–2002", "rare", [73, 71, 60, 78, 89, 83, 93, 88, 91, 88, 83, 81], "Condução elegante e passe entre linhas definiam um camisa 10 clássico."],
+  ["valderrama", "Carlos Valderrama", "Colômbia", "1987–1995", "rare", [60, 78, 65, 70, 92, 84, 95, 90, 94, 85, 76, 78], "Visão, controle e passe compensavam completamente sua baixa velocidade."],
+  ["rakitic", "Ivan Rakitić", "Croácia", "2014–2019", "rare", [68, 80, 70, 82, 88, 82, 85, 90, 85, 78, 83, 87], "Equilíbrio, passe longo e chegada deram consistência a diferentes funções."],
+  ["juan-mata", "Juan Mata", "Espanha", "2011–2014", "rare", [68, 70, 55, 81, 88, 84, 90, 86, 89, 84, 84, 88], "Último passe e bola parada marcaram seu auge como criador móvel."],
 
   // Incomuns
   ["ganso", "Paulo Henrique Ganso", "Brasil", "2010–2016", "uncommon", [42, 55, 58, 68, 80, 60, 86, 80, 82, 75, 74, 79], "Visão e controle acima da mobilidade e intensidade."],
@@ -62,6 +80,15 @@ const rawMidfielders: RawPlayer[] = [
   ["giovanni", "Giovanni", "Brasil", "1995–2001", "uncommon", [64, 70, 54, 77, 81, 77, 85, 78, 83, 81, 82, 80], "Controle elegante, passe e chegada à área marcaram o ídolo santista."],
   ["ramon-menezes", "Ramon Menezes", "Brasil", "1997–2004", "uncommon", [59, 69, 57, 76, 77, 73, 80, 78, 78, 73, 79, 86], "Canhota, bola parada e chegada à área o tornaram reconhecível em grandes clubes."],
   ["roger-flores", "Roger Flores", "Brasil", "2001–2010", "uncommon", [62, 65, 47, 70, 76, 70, 79, 74, 80, 78, 76, 79], "Talento de passe e controle entre linhas, apesar de uma carreira oscilante."],
+
+  ["isco", "Isco", "Espanha", "2016–2018", "uncommon", [67, 74, 65, 73, 81, 77, 82, 79, 89, 88, 77, 74], "Controle e drible protegiam a bola em espaços mínimos, com menor constância produtiva."],
+  ["eriksen", "Christian Eriksen", "Dinamarca", "2015–2019", "uncommon", [66, 74, 57, 76, 80, 80, 87, 81, 81, 75, 81, 88], "Passe, chute e bola parada deram grande produção criativa na Premier League."],
+  ["calhanoglu", "Hakan Çalhanoğlu", "Turquia", "2017–2024", "uncommon", [61, 73, 63, 80, 80, 76, 80, 87, 80, 73, 80, 93], "Bola parada e passe vertical são suas especialidades mais claras."],
+  ["maddison", "James Maddison", "Inglaterra", "2021–2024", "uncommon", [70, 71, 58, 76, 84, 80, 82, 80, 80, 78, 80, 87], "Criação e bola parada dão impacto entre linhas quando mantém sequência."],
+  ["paqueta", "Lucas Paquetá", "Brasil", "2021–2024", "uncommon", [71, 80, 71, 72, 78, 80, 79, 75, 86, 87, 74, 73], "Controle, improviso e intensidade permitem criar e competir fisicamente."],
+  ["de-la-cruz", "Nicolás de la Cruz", "Uruguai", "2020–2024", "uncommon", [74, 84, 63, 74, 78, 88, 78, 77, 78, 78, 76, 78], "Mobilidade e pressão somadas ao passe deram enorme influência no futebol sul-americano."],
+  ["claudinho", "Claudinho", "Brasil", "2020–2023", "uncommon", [71, 70, 56, 79, 80, 80, 84, 77, 82, 85, 82, 80], "Condução, chute colocado e criatividade marcaram seu auge entre Brasil e Rússia."],
+  ["talisca", "Anderson Talisca", "Brasil", "2017–2024", "uncommon", [66, 77, 78, 80, 73, 76, 75, 73, 77, 74, 88, 89], "Altura, chute e bola parada formam um meia de produção ofensiva incomum."],
 
   // Comuns
   ["douglas", "Douglas", "Brasil", "2015–2017", "common", [35, 49, 45, 60, 69, 56, 69, 68, 69, 60, 68, 69], "Passe e controle privilegiados em contraste com mobilidade muito baixa."],

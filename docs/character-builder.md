@@ -1,4 +1,4 @@
-# Criador de atleta — especificação v0.4
+# Criador de atleta — especificação v0.5
 
 ## Objetivo
 
@@ -58,11 +58,11 @@ Probabilidades independentes por sorteio:
 
 | Raridade | Chance |
 |---|---:|
-| Lenda | 5% |
-| Épico | 10% |
-| Raro | 20% |
-| Incomum | 30% |
-| Comum | 35% |
+| Lenda | 2% |
+| Épico | 5% |
+| Raro | 25% |
+| Incomum | 40% |
+| Comum | 28% |
 
 Não existe proteção contra azar, lenda garantida ou baralho equilibrado. O
 único bloqueio é não repetir na mesma criação um jogador já utilizado.
@@ -141,11 +141,13 @@ como segunda opinião de scouting e ajuda a encontrar diferenças internas como
 aceleração, força de chute, cabeceio e drible. A nota final continua sendo uma
 decisão de design comparativa e deve ser revisada por posição.
 
-## Limites da v0.4
+## Limites da v0.5
 
 - As sete posições estão liberadas.
-- O banco contém 506 perfis de posição e 498 atletas únicos.
-- ATA possui 117 fontes; as demais posições possuem entre 60 e 70.
+- O banco contém 671 perfis de posição e 657 atletas únicos.
+- ATA possui 131 fontes; as demais posições possuem 90 cada.
+- Épicos e Lendas aparecem menos, mas a progressão de potencial continua
+  permitindo que uma criação sem cartas históricas alcance nível de craque.
 - Brasil, Argentina e Portugal possuem clubes formadores provisórios.
 - A carreira ainda não começa depois da criação.
 - Fotos e escudos não são utilizados nesta fase.

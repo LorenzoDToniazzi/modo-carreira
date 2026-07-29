@@ -4,7 +4,7 @@ Jogo de carreira de futebol focado em criar um atleta único a partir de jogador
 
 ## Estado do projeto
 
-O **Criador de Atleta v0.4** já permite criar jogadores nas sete posições. Cada
+O **Criador de Atleta v0.5** já permite criar jogadores nas sete posições. Cada
 posição possui 12 atributos, pesos, arquétipos e um banco de fontes próprios.
 
 ## Fluxo inicial
@@ -40,21 +40,20 @@ posição possui 12 atributos, pesos, arquétipos e um banco de fontes próprios
 - A ausência de uma boa carta internacional não reduz a nota nem a raridade de
   um ídolo brasileiro.
 
-## Banco v0.4
+## Banco v0.5
 
-- 506 perfis de posição
-- 498 jogadores únicos
-- 117 atacantes
-- 60 pontas
-- 66 meias e 61 volantes
-- 60 laterais
-- 72 zagueiros
-- 70 goleiros
-- 321 perfis brasileiros
-- auditoria automática de inflação, representação por posição e raridades
-  históricas obrigatórias
+- 671 perfis de posição
+- 657 jogadores únicos
+- 131 atacantes
+- 90 pontas, 90 meias e 90 volantes
+- 90 laterais, 90 zagueiros e 90 goleiros
+- 361 perfis brasileiros
+- pools reforçados de Épicos, Raros e Incomuns em todas as posições
+- sorteio por raridade: 2% Lenda, 5% Épico, 25% Raro, 40% Incomum e 28% Comum
+- auditoria automática de inflação, profundidade por tier, representação por
+  posição e raridades históricas obrigatórias
 
 ## Próximo marco
 
-Testar o sorteio nas sete posições, revisar notas discutíveis e começar a ligar a
-ficha criada às ações da simulação de partidas.
+Testar a variedade do sorteio nas sete posições e começar a ligar a ficha criada
+às ações da simulação de partidas.

@@ -29,6 +29,10 @@ const rawGoalkeepers: RawPlayer[] = [
   ["fabio", "Fábio", "Brasil", "2010–2023", "epic", [88, 91, 89, 84, 76, 87, 76, 94, 82, 80, 91, 84], "Longevidade excepcional, posicionamento e protagonismo em campanhas continentais."],
   ["courtois", "Thibaut Courtois", "Bélgica", "2017–2024", "epic", [92, 91, 87, 94, 72, 95, 66, 92, 81, 88, 83, 87], "Alcance e fechamento de ângulo potencializados por enorme estatura."],
 
+  ["sepp-maier", "Sepp Maier", "Alemanha", "1972–1976", "epic", [90, 90, 87, 86, 76, 89, 65, 91, 87, 78, 84, 87], "Regularidade, elasticidade e comando marcaram o goleiro campeão mundial e europeu pela Alemanha."],
+  ["rinat-dasaev", "Rinat Dasaev", "União Soviética", "1982–1988", "epic", [91, 88, 85, 87, 76, 90, 68, 90, 90, 79, 87, 89], "Reflexos, agilidade e saídas firmes fizeram dele a grande referência soviética no gol."],
+  ["walter-zenga", "Walter Zenga", "Itália", "1987–1991", "epic", [89, 90, 88, 86, 73, 88, 66, 91, 87, 76, 90, 86], "Posicionamento e longas sequências sem sofrer gols definiram seu auge na Inter e na seleção italiana."],
+
   // Raros
   ["oblak", "Jan Oblak", "Eslovênia", "2016–2021", "rare", [84, 90, 89, 86, 68, 88, 64, 91, 79, 78, 82, 82], "Posicionamento e encaixe com baixíssima taxa de erro."],
   ["ederson", "Ederson", "Brasil", "2018–2024", "rare", [76, 80, 68, 78, 94, 80, 96, 82, 74, 95, 69, 92], "Passe e reposição transformam o goleiro em primeiro construtor."],
@@ -51,6 +55,14 @@ const rawGoalkeepers: RawPlayer[] = [
   ["raul-plassmann", "Raul Plassmann", "Brasil", "1976–1983", "rare", [80, 83, 81, 79, 66, 81, 62, 86, 76, 74, 83, 80], "Segurança e liderança estiveram presentes em ciclos históricos de Cruzeiro e Flamengo."],
   ["carlos", "Carlos Gallo", "Brasil", "1982–1986", "rare", [83, 82, 80, 84, 64, 83, 59, 85, 79, 78, 81, 82], "Envergadura e regularidade marcaram o gol brasileiro nos anos 1980."],
 
+  ["ter-stegen", "Marc-André ter Stegen", "Alemanha", "2017–2023", "rare", [85, 81, 75, 74, 86, 80, 93, 82, 82, 89, 72, 79], "Jogo com os pés e construção curta são diferenciais claros, acompanhados de ótimos reflexos."],
+  ["yann-sommer", "Yann Sommer", "Suíça", "2016–2025", "rare", [87, 81, 80, 70, 76, 84, 78, 84, 89, 76, 86, 77], "Agilidade e reflexos compensam a menor presença física nas bolas altas."],
+  ["claudio-bravo", "Claudio Bravo", "Chile", "2014–2017", "rare", [83, 80, 77, 72, 84, 79, 89, 81, 80, 86, 77, 77], "Qualidade técnica na saída e reposição sustentaram seu auge por Chile e Barcelona."],
+  ["handanovic", "Samir Handanović", "Eslovênia", "2011–2019", "rare", [88, 84, 81, 80, 73, 86, 66, 87, 82, 76, 91, 84], "Especialista em pênaltis, combinava alcance, leitura e enorme constância na Inter."],
+  ["szczesny", "Wojciech Szczęsny", "Polônia", "2017–2024", "rare", [85, 82, 79, 80, 72, 83, 70, 83, 80, 80, 84, 81], "Goleiro alto e seguro, forte no posicionamento e no duelo frontal."],
+  ["bounou", "Yassine Bounou", "Marrocos", "2020–2024", "rare", [85, 81, 77, 77, 76, 84, 75, 83, 83, 77, 88, 82], "Frieza em mata-matas e pênaltis marcou seu auge por Sevilla e Marrocos."],
+  ["edouard-mendy", "Édouard Mendy", "Senegal", "2020–2022", "rare", [88, 82, 83, 87, 69, 87, 65, 86, 84, 79, 82, 86], "Envergadura e controle da área foram centrais na campanha continental do Chelsea."],
+
   // Incomuns
   ["ochoa", "Guillermo Ochoa", "México", "2014–2022", "uncommon", [82, 75, 68, 62, 68, 80, 62, 79, 82, 73, 80, 75], "Reflexo em torneios grandes acima do domínio aéreo e encaixe."],
   ["bento", "Bento", "Brasil", "2023–2025", "uncommon", [78, 75, 74, 76, 73, 80, 70, 77, 78, 75, 83, 80], "Reflexo e segurança em ascensão no auge recente."],
@@ -69,6 +81,17 @@ const rawGoalkeepers: RawPlayer[] = [
   ["gatito", "Gatito Fernández", "Paraguai", "2017–2023", "uncommon", [80, 75, 72, 75, 65, 80, 61, 78, 78, 75, 87, 79], "Reflexo e pênaltis deram protagonismo em decisões pelo Botafogo."],
   ["renan-inter", "Renan", "Brasil", "2006–2010", "uncommon", [77, 76, 74, 75, 68, 78, 65, 79, 76, 74, 82, 77], "Segurança e bom auge no Internacional campeão mundial."],
   ["marcelo-lomba", "Marcelo Lomba", "Brasil", "2014–2021", "uncommon", [76, 77, 75, 75, 66, 77, 62, 80, 74, 73, 83, 76], "Regularidade e pênaltis em uma carreira sólida no futebol brasileiro."],
+
+  ["pickford", "Jordan Pickford", "Inglaterra", "2018–2024", "uncommon", [80, 73, 71, 73, 80, 76, 78, 75, 80, 88, 74, 77], "Reposição longa e potência são suas marcas, com rendimento elevado pela seleção inglesa."],
+  ["onana", "André Onana", "Camarões", "2018–2023", "uncommon", [80, 73, 68, 71, 84, 76, 91, 73, 77, 87, 68, 75], "Participação na construção e coragem fora do gol superam sua irregularidade no encaixe."],
+  ["neto-gol", "Neto", "Brasil", "2018–2022", "uncommon", [81, 76, 74, 71, 74, 79, 76, 78, 83, 77, 79, 78], "Reflexo e agilidade renderam boas temporadas na Espanha e passagem pela Seleção."],
+  ["cillessen", "Jasper Cillessen", "Países Baixos", "2014–2019", "uncommon", [81, 76, 74, 70, 76, 78, 80, 77, 80, 77, 76, 75], "Goleiro técnico e móvel, especialmente confortável na circulação curta."],
+  ["muslera", "Fernando Muslera", "Uruguai", "2010–2018", "uncommon", [83, 77, 76, 73, 69, 81, 67, 79, 82, 72, 84, 78], "Reflexos rápidos e longa trajetória como titular uruguaio definem seu perfil."],
+  ["marchesin", "Agustín Marchesín", "Argentina", "2016–2021", "uncommon", [81, 77, 75, 74, 72, 79, 72, 79, 80, 76, 82, 78], "Agilidade, intensidade e boa resposta em pênaltis no México e em Portugal."],
+  ["ramsdale", "Aaron Ramsdale", "Inglaterra", "2021–2023", "uncommon", [82, 73, 71, 73, 79, 78, 82, 73, 80, 84, 74, 77], "Explosão e reposição rápida destacaram seu melhor período no Arsenal."],
+  ["bernd-leno", "Bernd Leno", "Alemanha", "2016–2024", "uncommon", [83, 77, 76, 71, 72, 80, 74, 78, 82, 76, 79, 78], "Reflexo e consistência em alto volume de finalizações foram suas principais virtudes."],
+  ["diego-lopez", "Diego López", "Espanha", "2012–2018", "uncommon", [80, 79, 77, 80, 69, 79, 68, 80, 76, 75, 76, 79], "Altura, posicionamento e segurança fizeram dele titular em clubes de grande pressão."],
+  ["marchetti", "Federico Marchetti", "Itália", "2009–2016", "uncommon", [81, 77, 76, 75, 68, 80, 65, 78, 80, 72, 80, 78], "Boa reação e defesa de curta distância marcaram seu auge por Lazio e Itália."],
 
   // Comuns
   ["muralha", "Alex Muralha", "Brasil", "2015–2017", "common", [66, 59, 53, 54, 51, 64, 46, 54, 64, 59, 65, 61], "Bom reflexo no auge, mas concentração e domínio aéreo vulneráveis."],

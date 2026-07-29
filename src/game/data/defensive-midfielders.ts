@@ -26,6 +26,10 @@ const rawDefensiveMidfielders: RawPlayer[] = [
   ["piazza", "Wilson Piazza", "Brasil", "1969–1974", "epic", [68, 86, 79, 83, 82, 88, 91, 87, 82, 80, 87, 84], "Leitura e versatilidade permitiam atuar como volante ou zagueiro no mais alto nível."],
   ["rincon", "Freddy Rincón", "Colômbia", "1990–2000", "epic", [79, 89, 86, 83, 89, 83, 82, 91, 85, 80, 87, 84], "Potência de área a área, liderança e chegada o tornaram ídolo continental."],
 
+  ["rijkaard", "Frank Rijkaard", "Países Baixos", "1988–1992", "epic", [78, 86, 84, 83, 83, 87, 88, 86, 82, 84, 85, 84], "Força, leitura e técnica permitiam proteger a defesa ou avançar como meio-campista completo."],
+  ["roy-keane", "Roy Keane", "Irlanda", "1998–2002", "epic", [75, 89, 84, 79, 85, 89, 87, 94, 76, 74, 82, 80], "Intensidade, liderança e desarme sustentavam o controle competitivo do meio."],
+  ["seedorf", "Clarence Seedorf", "Países Baixos", "1998–2007", "epic", [78, 84, 82, 86, 85, 78, 77, 88, 83, 87, 88, 89], "Força técnica, passe e resistência deram impacto em diferentes funções e ligas."],
+
   // Raros
   ["essien", "Michael Essien", "Gana", "2005–2010", "rare", [82, 86, 84, 74, 84, 82, 80, 89, 72, 76, 78, 74], "Explosão física, cobertura e chute para jogar em todo o meio."],
   ["gattuso", "Gennaro Gattuso", "Itália", "2003–2008", "rare", [57, 78, 74, 66, 77, 78, 78, 78, 64, 59, 66, 66], "Pressão, entrega e desarme acima da qualidade construtiva."],
@@ -39,6 +43,20 @@ const rawDefensiveMidfielders: RawPlayer[] = [
   ["cesar-sampaio", "César Sampaio", "Brasil", "1993–1999", "rare", [66, 84, 78, 80, 82, 85, 87, 85, 80, 79, 84, 81], "Posicionamento, liderança e chegada fizeram um volante completo nos anos 1990."],
   ["andrade", "Andrade", "Brasil", "1979–1987", "rare", [66, 80, 70, 82, 81, 80, 83, 84, 84, 80, 85, 81], "Passe, inteligência e equilíbrio sustentaram o Flamengo de sua era mais vitoriosa."],
   ["dinho", "Dinho", "Brasil", "1993–1997", "rare", [65, 86, 82, 75, 80, 86, 85, 88, 73, 74, 79, 76], "Combate, liderança e personalidade foram centrais no Grêmio multicampeão."],
+
+  ["de-rossi", "Daniele De Rossi", "Itália", "2006–2014", "rare", [68, 84, 82, 80, 79, 85, 84, 87, 80, 84, 80, 78], "Desarme, passe longo e leitura fizeram um volante completo e leal à estrutura."],
+  ["cambiasso", "Esteban Cambiasso", "Argentina", "2006–2011", "rare", [65, 81, 74, 82, 83, 83, 88, 86, 86, 84, 84, 82], "Inteligência posicional e passe sustentavam o equilíbrio de equipes muito ofensivas."],
+  ["arturo-vidal", "Arturo Vidal", "Chile", "2012–2018", "rare", [76, 90, 82, 76, 86, 85, 83, 93, 74, 75, 81, 77], "Pressão, chegada e agressividade produtiva deram um perfil de área a área."],
+  ["schweinsteiger", "Bastian Schweinsteiger", "Alemanha", "2010–2014", "rare", [69, 80, 76, 85, 82, 78, 80, 88, 84, 89, 82, 85], "Controle de ritmo e passe longo cresceram quando recuou para organizar o meio."],
+  ["jorginho", "Jorginho", "Itália", "2019–2021", "rare", [58, 72, 61, 88, 80, 78, 84, 83, 90, 87, 91, 88], "Leitura, circulação e saída sob pressão compensam limitações físicas claras."],
+  ["kimmich", "Joshua Kimmich", "Alemanha", "2019–2024", "rare", [69, 77, 68, 86, 80, 80, 80, 94, 84, 93, 87, 80], "Passe longo, resistência e inteligência fazem um organizador de enorme volume."],
+  ["thiago-alcantara", "Thiago Alcântara", "Espanha", "2017–2021", "rare", [68, 72, 60, 90, 83, 74, 80, 82, 91, 89, 94, 95], "Controle e saída sob pressão eram extraordinários, com menor imposição física."],
+  ["valverde", "Federico Valverde", "Uruguai", "2021–2026", "rare", [83, 84, 76, 78, 89, 77, 77, 96, 75, 80, 83, 80], "Corrida, potência e cobertura permitem influenciar todo o campo."],
+  ["declan-rice", "Declan Rice", "Inglaterra", "2022–2026", "rare", [74, 83, 80, 78, 82, 80, 88, 91, 78, 79, 84, 81], "Condução, interceptação e força deram evolução para além da contenção."],
+  ["xhaka", "Granit Xhaka", "Suíça", "2022–2025", "rare", [59, 82, 78, 87, 82, 77, 79, 87, 86, 91, 84, 85], "Passe longo e controle do ritmo compensam velocidade limitada."],
+  ["mazinho", "Mazinho", "Brasil", "1991–1994", "rare", [74, 81, 71, 83, 82, 81, 83, 88, 82, 82, 86, 85], "Versatilidade, resistência e segurança técnica deram equilíbrio ao meio do tetra."],
+  ["edmilson", "Edmílson", "Brasil", "2002–2006", "rare", [70, 84, 82, 82, 77, 84, 86, 83, 79, 83, 84, 80], "Leitura e capacidade de atuar entre volante e zagueiro ampliavam sua utilidade."],
+  ["toni-kroos", "Toni Kroos", "Alemanha", "2014–2022", "rare", [57, 74, 69, 95, 81, 70, 76, 84, 94, 96, 93, 89], "Passe e controle do ritmo atingiram nível histórico, apesar da baixa velocidade e menor alcance defensivo."],
 
   // Incomuns
   ["fabinho", "Fabinho", "Brasil", "2018–2022", "uncommon", [57, 77, 71, 73, 75, 77, 78, 75, 71, 73, 75, 73], "Cobertura, envergadura e passe vertical como primeiro volante."],
@@ -58,6 +76,20 @@ const rawDefensiveMidfielders: RawPlayer[] = [
   ["guinazu", "Pablo Guiñazú", "Argentina", "2006–2012", "uncommon", [61, 80, 67, 70, 78, 80, 79, 86, 65, 64, 73, 69], "Intensidade, carrinho e identificação fizeram dele um volante cultuado no Internacional."],
   ["leandro-donizete", "Leandro Donizete", "Brasil", "2012–2016", "uncommon", [58, 77, 71, 66, 74, 78, 77, 80, 62, 60, 70, 67], "Combate e cobertura deram sustentação ao Atlético campeão continental."],
   ["moises", "Moisés", "Brasil", "2016–2018", "uncommon", [65, 78, 68, 77, 79, 75, 76, 81, 77, 76, 81, 78], "Força, passe e chegada à área marcaram o auge no Palmeiras."],
+
+  ["matuidi", "Blaise Matuidi", "França", "2013–2018", "uncommon", [78, 85, 73, 70, 84, 79, 80, 91, 69, 66, 74, 68], "Cobertura, pressão e fôlego deram enorme valor sem depender de refinamento técnico."],
+  ["matic", "Nemanja Matić", "Sérvia", "2014–2018", "uncommon", [56, 81, 86, 77, 70, 83, 82, 76, 75, 78, 81, 77], "Tamanho, proteção e passe seguro fizeram um volante de contenção confiável."],
+  ["nainggolan", "Radja Nainggolan", "Bélgica", "2015–2018", "uncommon", [74, 87, 78, 74, 83, 80, 76, 89, 68, 70, 75, 72], "Intensidade, chegada e chute pesado formaram um meio-campista agressivo."],
+  ["guarin", "Fredy Guarín", "Colômbia", "2011–2015", "uncommon", [75, 85, 84, 74, 79, 72, 68, 84, 70, 78, 73, 75], "Potência física e chute de média distância foram muito superiores à leitura defensiva."],
+  ["wanyama", "Victor Wanyama", "Quênia", "2015–2018", "uncommon", [60, 82, 88, 68, 67, 81, 78, 77, 63, 68, 72, 69], "Força e proteção central formavam um volante de contato direto."],
+  ["hojbjerg", "Pierre-Emile Højbjerg", "Dinamarca", "2020–2024", "uncommon", [65, 80, 77, 76, 76, 78, 80, 85, 75, 77, 78, 76], "Volume, disciplina e passe seguro sustentam um perfil equilibrado."],
+  ["fred-vol", "Fred", "Brasil", "2018–2023", "uncommon", [76, 80, 63, 74, 81, 77, 77, 90, 71, 70, 81, 73], "Pressão e mobilidade geram intensidade, ainda que o passe oscile."],
+  ["andre-vol", "André", "Brasil", "2022–2025", "uncommon", [66, 73, 66, 81, 74, 76, 80, 80, 80, 79, 87, 84], "Controle e saída sob pressão marcaram seu auge no Fluminense."],
+  ["walace", "Walace", "Brasil", "2016–2024", "uncommon", [62, 82, 84, 70, 70, 80, 79, 80, 67, 72, 73, 69], "Força e cobertura à frente da zaga são suas virtudes mais claras."],
+  ["pulgar", "Erick Pulgar", "Chile", "2019–2025", "uncommon", [61, 81, 80, 76, 72, 80, 81, 82, 72, 81, 77, 74], "Desarme e passe longo deram equilíbrio ao meio em seu melhor período."],
+  ["ralf", "Ralf", "Brasil", "2011–2015", "uncommon", [65, 84, 79, 64, 76, 86, 84, 88, 61, 60, 68, 66], "Cobertura, desarme e disciplina tática sustentaram grandes times do Corinthians."],
+  ["fellaini", "Marouane Fellaini", "Bélgica", "2012–2018", "uncommon", [55, 86, 90, 68, 80, 72, 70, 79, 66, 62, 71, 78], "Força e presença aérea eram armas incomuns para um jogador de meio."],
+  ["renato-vol", "Renato", "Brasil", "2005–2011", "uncommon", [66, 77, 69, 81, 75, 74, 77, 83, 79, 84, 81, 80], "Passe, equilíbrio e experiência deram controle ao meio de Flamengo e Sevilla."],
 
   // Comuns
   ["ramiro", "Ramiro", "Brasil", "2016–2020", "common", [59, 71, 50, 60, 72, 69, 71, 75, 55, 53, 60, 60], "Fôlego e disciplina tática muito acima do brilho técnico."],

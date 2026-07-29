@@ -12,11 +12,11 @@ export const STARTING_PERCENT = 0.7;
 export const REROLLS_PER_CREATION = 3;
 
 export const RARITY_WEIGHTS: Record<Rarity, number> = {
-  legend: 0.05,
-  epic: 0.1,
-  rare: 0.2,
-  uncommon: 0.3,
-  common: 0.35,
+  legend: 0.02,
+  epic: 0.05,
+  rare: 0.25,
+  uncommon: 0.4,
+  common: 0.28,
 };
 
 const attribute = (

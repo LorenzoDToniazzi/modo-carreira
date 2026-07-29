@@ -31,6 +31,10 @@ const rawDefenders: RawPlayer[] = [
   ["mauro-galvao", "Mauro Galvão", "Brasil", "1985–1998", "epic", [70, 82, 76, 83, 84, 88, 90, 92, 91, 92, 83, 86], "Elegância, liderança e antecipação sustentaram uma carreira longa e vencedora."],
   ["zozimo", "Zózimo", "Brasil", "1958–1962", "epic", [68, 81, 78, 78, 85, 87, 89, 90, 88, 89, 81, 82], "Leitura e serenidade deram equilíbrio à defesa brasileira bicampeã mundial."],
 
+  ["koeman", "Ronald Koeman", "Países Baixos", "1988–1994", "epic", [74, 81, 82, 91, 82, 85, 86, 88, 86, 88, 80, 89], "Passe, controle e lançamento fizeram um zagueiro construtor com ameaça ofensiva única."],
+  ["desailly", "Marcel Desailly", "França", "1994–2000", "epic", [79, 87, 89, 73, 86, 87, 86, 85, 87, 87, 84, 76], "Potência e versatilidade permitiram dominar tanto a zaga quanto a proteção do meio."],
+  ["jaap-stam", "Jaap Stam", "Países Baixos", "1998–2003", "epic", [80, 88, 92, 72, 88, 89, 85, 87, 89, 88, 85, 74], "Velocidade para o porte físico e imposição no duelo definiram seu auge."],
+
   // Raros
   ["juan", "Juan", "Brasil", "2005–2011", "rare", [65, 79, 74, 76, 79, 79, 79, 79, 79, 79, 78, 76], "Regularidade e leitura defensiva com boa técnica de saída."],
   ["miranda", "Miranda", "Brasil", "2013–2018", "rare", [65, 78, 73, 74, 76, 78, 78, 78, 78, 78, 76, 75], "Marcação limpa e concentração em bloco compacto."],
@@ -52,6 +56,14 @@ const rawDefenders: RawPlayer[] = [
   ["roque-junior", "Roque Júnior", "Brasil", "1999–2004", "rare", [75, 82, 82, 72, 86, 85, 83, 86, 87, 88, 84, 74], "Força no duelo e atuações decisivas marcaram títulos continentais, europeu e mundial."],
   ["lugano", "Diego Lugano", "Uruguai", "2004–2011", "rare", [57, 83, 82, 64, 86, 82, 81, 84, 87, 89, 76, 66], "Liderança, jogo aéreo e identificação fizeram um ídolo no São Paulo e no Uruguai."],
 
+  ["rudiger", "Antonio Rüdiger", "Alemanha", "2021–2025", "rare", [85, 84, 85, 72, 83, 82, 80, 80, 82, 82, 88, 73], "Recuperação e agressividade controlada permitem defender grandes espaços."],
+  ["ruben-dias", "Rúben Dias", "Portugal", "2020–2024", "rare", [72, 83, 84, 76, 85, 83, 83, 84, 87, 87, 78, 76], "Organização, marcação e liderança deram impacto imediato em defesas dominantes."],
+  ["saliba", "William Saliba", "França", "2022–2026", "rare", [81, 80, 84, 78, 81, 82, 81, 82, 81, 82, 86, 80], "Velocidade, controle e serenidade sustentam um perfil moderno e completo."],
+  ["gabriel-magalhaes", "Gabriel Magalhães", "Brasil", "2023–2026", "rare", [75, 85, 88, 67, 89, 85, 82, 84, 87, 84, 81, 71], "Força, agressividade aérea e produção em bolas paradas marcaram seu auge recente."],
+  ["bremer", "Bremer", "Brasil", "2021–2025", "rare", [78, 85, 89, 65, 87, 86, 83, 84, 87, 84, 82, 68], "Duelo físico, antecipação e velocidade curta fizeram dele referência defensiva na Itália."],
+  ["ayala", "Roberto Ayala", "Argentina", "1998–2006", "rare", [73, 80, 77, 71, 87, 83, 86, 89, 87, 89, 81, 75], "Tempo de bola e impulsão compensavam a menor estatura entre zagueiros."],
+  ["walter-samuel", "Walter Samuel", "Argentina", "2003–2010", "rare", [70, 87, 91, 65, 84, 88, 84, 84, 90, 88, 76, 67], "Marcação dura e força no contato sustentaram o apelido de Muralha."],
+
   // Incomuns
   ["dede", "Dedé", "Brasil", "2011–2018", "uncommon", [56, 73, 73, 61, 73, 71, 69, 73, 71, 69, 69, 62], "Potência física e aérea, com auge afetado por lesões."],
   ["rever", "Réver", "Brasil", "2010–2021", "uncommon", [41, 71, 70, 59, 71, 67, 68, 71, 71, 71, 63, 62], "Jogo aéreo e liderança em uma carreira nacional muito vencedora."],
@@ -67,6 +79,15 @@ const rawDefenders: RawPlayer[] = [
   ["chicao", "Chicão", "Brasil", "2008–2012", "uncommon", [55, 74, 70, 70, 76, 75, 74, 76, 78, 79, 67, 68], "Posicionamento, liderança e bola parada no ciclo mais vitorioso do Corinthians."],
   ["durval", "Durval", "Brasil", "2008–2013", "uncommon", [48, 75, 74, 60, 78, 74, 73, 76, 78, 80, 67, 60], "Força aérea e regularidade sustentaram campanhas históricas no Sport e no Santos."],
   ["leandro-castan", "Leandro Castán", "Brasil", "2011–2015", "uncommon", [64, 75, 72, 67, 73, 75, 75, 77, 76, 76, 72, 67], "Antecipação e agressividade controlada marcaram seu auge no Corinthians e na Roma."],
+
+  ["koscielny", "Laurent Koscielny", "França", "2012–2017", "uncommon", [78, 74, 71, 70, 76, 78, 78, 80, 77, 76, 81, 70], "Antecipação e recuperação rápida eram superiores à imposição física."],
+  ["gary-cahill", "Gary Cahill", "Inglaterra", "2012–2017", "uncommon", [67, 78, 82, 64, 82, 77, 74, 77, 79, 80, 72, 66], "Jogo aéreo e força deram segurança em uma carreira vencedora na Inglaterra."],
+  ["skrtel", "Martin Škrtel", "Eslováquia", "2009–2015", "uncommon", [69, 80, 84, 60, 80, 78, 73, 76, 79, 77, 74, 62], "Contato físico e agressividade no duelo eram suas características centrais."],
+  ["dante", "Dante", "Brasil", "2012–2015", "uncommon", [66, 77, 75, 78, 79, 75, 77, 79, 77, 79, 69, 79], "Passe e leitura deram equilíbrio ao zagueiro no auge pelo Bayern."],
+  ["naldo", "Naldo", "Brasil", "2008–2017", "uncommon", [70, 82, 87, 72, 84, 77, 72, 76, 79, 78, 72, 68], "Altura, força e chute pesado fizeram um perfil incomum entre defensores."],
+  ["lisandro-martinez", "Lisandro Martínez", "Argentina", "2021–2024", "uncommon", [73, 76, 72, 82, 69, 78, 78, 80, 78, 80, 76, 84], "Intensidade, passe e antecipação compensam a menor estatura."],
+  ["cristian-romero", "Cristian Romero", "Argentina", "2021–2025", "uncommon", [76, 82, 82, 68, 76, 80, 79, 78, 81, 74, 80, 70], "Agressividade e antecipação geram muitos duelos ganhos, com algum risco disciplinar."],
+  ["de-ligt", "Matthijs de Ligt", "Países Baixos", "2018–2023", "uncommon", [71, 79, 84, 71, 84, 79, 76, 77, 80, 78, 74, 73], "Força, jogo aéreo e maturidade precoce marcaram seu melhor período."],
 
   // Comuns
   ["fabricio-bruno", "Fabrício Bruno", "Brasil", "2022–2025", "common", [84, 70, 72, 55, 65, 65, 63, 65, 65, 64, 84, 55], "Velocidade e força para perseguir atacantes em campo aberto."],

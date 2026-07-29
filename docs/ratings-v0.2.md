@@ -1,6 +1,6 @@
 # Régua de atributos v0.2
 
-Régua aprovada inicialmente para ATA e mantida na revisão v0.4 para todas as
+Régua aprovada inicialmente para ATA e mantida na revisão v0.5 para todas as
 posições.
 
 ## Escala das notas-fonte
@@ -109,11 +109,11 @@ camada revisada mantém variedade mínima por posição:
 
 Probabilidade por sorteio:
 
-- 5% Lendas
-- 10% Épicos
-- 20% Raros
-- 30% Incomuns
-- 35% Comuns
+- 2% Lendas
+- 5% Épicos
+- 25% Raros
+- 40% Incomuns
+- 28% Comuns
 
 As chances são independentes e não existe proteção contra azar. O sistema
 primeiro sorteia a raridade e depois um jogador daquele grupo. Por isso, ter
@@ -142,42 +142,68 @@ Pesos individuais são exceções explícitas, como Pelé.
 | GOL | Rogério Ceni | Lenda | jogo com os pés 97, reposição 95, concentração 95 | agilidade 78 |
 | GOL | Marcos | Lenda | pênaltis 96, um contra um 95, reflexo 93 | jogo com os pés 67 |
 
-## Auditoria geral v0.4
+## Auditoria geral v0.5
 
 | Posição | Perfis | Brasileiros |
 |---|---:|---:|
-| ATA | 117 | 39 |
-| PON | 60 | 45 |
-| MEI | 66 | 48 |
-| VOL | 61 | 46 |
-| LAT | 60 | 45 |
-| ZAG | 72 | 48 |
-| GOL | 70 | 50 |
+| ATA | 131 | 46 |
+| PON | 90 | 55 |
+| MEI | 90 | 51 |
+| VOL | 90 | 53 |
+| LAT | 90 | 53 |
+| ZAG | 90 | 52 |
+| GOL | 90 | 51 |
 
 Resultado consolidado:
 
-- 506 perfis de posição;
-- 498 jogadores únicos;
-- 6.072 notas auditadas;
-- 7,74% em 90 ou mais;
-- 1,89% em 94 ou mais;
-- 0,16% em 97;
+- 671 perfis de posição;
+- 657 jogadores únicos;
+- 8.052 notas auditadas;
+- 7,61% em 90 ou mais;
+- 1,79% em 94 ou mais;
+- 0,14% em 97;
 - nenhuma nota-fonte 98 ou 99.
 
 | Raridade | Média após a revisão |
 |---|---:|
 | Lenda | 86,08 |
-| Épico | 83,24 |
-| Raro | 77,58 |
-| Incomum | 70,49 |
+| Épico | 83,50 |
+| Raro | 78,85 |
+| Incomum | 72,67 |
 | Comum | 62,76 |
 
 O comando `npm run audit:ratings` verifica inflação global, médias, limites
-individuais e um conjunto de classificações históricas obrigatórias. Entre as
-travas estão Rogério Ceni e Marcos como Lendas; Cássio e Leão como Épicos;
-Jairzinho, Rivellino, Sócrates, Zito, Djalma Santos e Bellini em suas
-prateleiras históricas corretas.
+individuais, profundidade mínima de Épicos, Raros e Incomuns em cada posição e
+um conjunto de classificações históricas obrigatórias. Entre as travas estão
+Rogério Ceni e Marcos como Lendas; Cássio e Leão como Épicos; Jairzinho,
+Rivellino, Sócrates, Zito, Djalma Santos e Bellini em suas prateleiras
+históricas corretas.
 
 A quantidade de atletas por raridade não controla a chance de aparição. O jogo
 primeiro sorteia a raridade pelos pesos fixos e depois sorteia um atleta daquela
 raridade. Não se rebaixa um ídolo para cumprir uma proporção artificial.
+
+## Simulação de criação v0.5
+
+Foram simuladas 5.000 criações por posição, totalizando 35.000 carreiras. Em
+cada rodada, o teste escolheu o melhor atributo ainda vazio da carta recebida,
+sem utilizar os três rerolls.
+
+| Posição | Potencial p10 | Potencial mediano | Potencial p90 |
+|---|---:|---:|---:|
+| ATA | 84 | 87 | 89 |
+| PON | 84 | 86 | 89 |
+| MEI | 83 | 86 | 88 |
+| VOL | 83 | 86 | 88 |
+| LAT | 83 | 86 | 89 |
+| ZAG | 83 | 86 | 88 |
+| GOL | 84 | 87 | 89 |
+
+Com 12 sorteios, a chance de receber ao menos uma Lenda é aproximadamente
+21,5%. Épico ou Lenda aparece em aproximadamente 58,1% das criações. Em média,
+cada ficha recebe 3 cartas Raras, 4,8 Incomuns e 3,4 Comuns.
+
+Para medir repetição, também foram feitos 1.000 grupos de quatro saves por
+posição. Entre as 48 cartas vistas nesses quatro saves, apareceram em média de
+36 a 41 jogadores diferentes. Assim, quatro carreiras ainda revelam menos da
+metade dos pools de 90 e cerca de um terço do pool de ATA.

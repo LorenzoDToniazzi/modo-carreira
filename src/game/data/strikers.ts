@@ -40,6 +40,11 @@ const rawPlayers: RawPlayer[] = [
   ["bebeto", "Bebeto", "Brasil", "1989–1994", "epic", [79, 69, 57, 84, 74, 87, 88, 74, 63, 81, 83, 89], "Movimentação, precisão e leitura sem bola do atacante decisivo no tetracampeonato."],
   ["roberto-dinamite", "Roberto Dinamite", "Brasil", "1978–1984", "epic", [66, 79, 76, 86, 70, 83, 85, 86, 81, 69, 80, 88], "Finalização potente e presença de área do maior artilheiro da história do Vasco e do Brasileirão."],
 
+  ["george-weah", "George Weah", "Libéria", "1994–1996", "epic", [91, 84, 86, 87, 73, 87, 83, 92, 83, 86, 82, 86], "Potência, velocidade e condução fizeram um atacante dominante em campo aberto."],
+  ["raul", "Raúl", "Espanha", "1999–2003", "epic", [78, 79, 70, 89, 82, 92, 92, 82, 80, 82, 88, 94], "Movimentação e frieza deram enorme produção em noites europeias."],
+  ["bergkamp", "Dennis Bergkamp", "Países Baixos", "1997–2002", "epic", [73, 78, 74, 86, 91, 88, 92, 84, 72, 90, 96, 89], "Controle e criatividade transformavam recepções difíceis em chances claras."],
+  ["cantona", "Eric Cantona", "França", "1993–1997", "epic", [72, 86, 84, 85, 86, 84, 86, 89, 81, 83, 88, 87], "Personalidade, técnica e força fizeram um atacante capaz de criar e concluir."],
+
   // Raros
   ["kane", "Harry Kane", "Inglaterra", "2017–2026", "rare", [58, 76, 75, 88, 85, 79, 83, 83, 76, 70, 79, 88], "Finalização e passe de um nove que também constrói."],
   ["rooney", "Wayne Rooney", "Inglaterra", "2009–2012", "rare", [76, 82, 76, 81, 79, 82, 79, 86, 70, 76, 79, 79], "Intensidade, chute forte e participação longe da área."],
@@ -65,6 +70,12 @@ const rawPlayers: RawPlayer[] = [
   ["edmundo", "Edmundo", "Brasil", "1995–1998", "rare", [80, 81, 71, 83, 76, 84, 83, 84, 68, 85, 83, 84], "Drible agressivo, força e repertório para criar ou concluir."],
   ["jardel", "Mário Jardel", "Brasil", "1995–2002", "rare", [45, 78, 81, 85, 55, 84, 82, 80, 96, 48, 72, 94], "Cabeceio e posicionamento históricos: artilheiro da Libertadores e duas vezes Chuteira de Ouro europeia."],
   ["paulo-nunes", "Paulo Nunes", "Brasil", "1995–1999", "rare", [82, 75, 68, 80, 67, 84, 80, 78, 76, 78, 77, 84], "Atacante móvel, provocador e decisivo nas conquistas continentais de Grêmio e Palmeiras."],
+
+  ["van-persie", "Robin van Persie", "Países Baixos", "2011–2014", "rare", [76, 75, 68, 87, 79, 83, 91, 88, 75, 84, 88, 84], "Canhota técnica e finalização de primeira deram um repertório muito amplo."],
+  ["vieri", "Christian Vieri", "Itália", "1997–2003", "rare", [70, 84, 88, 86, 64, 84, 82, 89, 88, 68, 79, 87], "Força, ataque à área e finalização direta definiram um centroavante de imposição."],
+  ["firmino", "Roberto Firmino", "Brasil", "2017–2021", "rare", [75, 83, 74, 81, 86, 91, 82, 78, 77, 84, 88, 79], "Movimentação, pressão e associação criavam espaço para todo o ataque."],
+  ["reinaldo-atletico", "Reinaldo", "Brasil", "1977–1983", "rare", [81, 76, 68, 86, 72, 88, 89, 82, 75, 86, 84, 89], "Técnica, mobilidade e finalização fizeram o Rei do Atlético em seu auge."],
+  ["serginho-chulapa", "Serginho Chulapa", "Brasil", "1977–1983", "rare", [59, 84, 87, 84, 62, 82, 79, 87, 88, 62, 76, 88], "Força, jogo aéreo e presença de área sustentaram enorme produção nacional."],
 
   // Incomuns
   ["giroud", "Olivier Giroud", "França", "2015–2022", "uncommon", [37, 80, 85, 75, 67, 72, 72, 77, 88, 50, 72, 81], "Jogo de apoio, força e cabeceio de referência."],
@@ -102,6 +113,12 @@ const rawPlayers: RawPlayer[] = [
   ["bruno-henrique", "Bruno Henrique", "Brasil", "2019–2021", "uncommon", [88, 76, 70, 75, 62, 82, 73, 78, 82, 73, 70, 80], "Velocidade, impulsão e ataque à profundidade em jogos grandes."],
   ["tulio", "Túlio Maravilha", "Brasil", "1994–1996", "uncommon", [60, 69, 61, 78, 51, 79, 79, 68, 68, 59, 68, 85], "Oportunismo e leitura de área sustentaram enorme produção nacional."],
   ["amoroso", "Amoroso", "Brasil", "1998–2002", "uncommon", [78, 69, 58, 77, 63, 80, 80, 73, 58, 78, 76, 80], "Mobilidade, técnica e conclusão deram um auge forte no Brasil e na Europa."],
+
+  ["alexandre-pato", "Alexandre Pato", "Brasil", "2008–2011", "uncommon", [86, 67, 59, 77, 62, 79, 78, 75, 60, 82, 78, 78], "Arranque e técnica mostraram enorme pico, limitado pela falta de continuidade."],
+  ["gabriel-jesus", "Gabriel Jesus", "Brasil", "2019–2022", "uncommon", [81, 77, 69, 73, 72, 86, 72, 71, 68, 81, 78, 74], "Pressão, mobilidade e associação superam a finalização como nove."],
+  ["richarlison", "Richarlison", "Brasil", "2019–2022", "uncommon", [78, 82, 76, 75, 62, 81, 73, 77, 83, 72, 73, 80], "Intensidade, jogo aéreo e ataque ao espaço são suas virtudes mais fortes."],
+  ["calleri", "Jonathan Calleri", "Argentina", "2021–2024", "uncommon", [58, 79, 82, 76, 59, 79, 74, 78, 84, 57, 73, 83], "Entrega, pivô e cabeceio construíram grande identificação no futebol brasileiro."],
+  ["yuri-alberto", "Yuri Alberto", "Brasil", "2024–2026", "uncommon", [80, 77, 71, 76, 60, 83, 74, 75, 71, 75, 73, 80], "Profundidade e volume ofensivo cresceram com maior confiança na finalização."],
 
   // Comuns
   ["crouch", "Peter Crouch", "Inglaterra", "2005–2010", "common", [35, 62, 63, 63, 51, 61, 55, 59, 84, 36, 63, 72], "Especialidade aérea muito acima do restante do perfil."],

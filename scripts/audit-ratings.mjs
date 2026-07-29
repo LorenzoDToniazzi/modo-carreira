@@ -1,17 +1,48 @@
 import { readFileSync } from "node:fs";
 
 const pools = [
-  { position: "ATA", file: "../src/game/data/strikers.ts", minimum: 100 },
-  { position: "PON", file: "../src/game/data/wingers.ts", minimum: 60 },
-  { position: "MEI", file: "../src/game/data/midfielders.ts", minimum: 60 },
+  {
+    position: "ATA",
+    file: "../src/game/data/strikers.ts",
+    minimum: 130,
+    minimumByRarity: { epic: 18, rare: 30, uncommon: 35 },
+  },
+  {
+    position: "PON",
+    file: "../src/game/data/wingers.ts",
+    minimum: 90,
+    minimumByRarity: { epic: 18, rare: 25, uncommon: 25 },
+  },
+  {
+    position: "MEI",
+    file: "../src/game/data/midfielders.ts",
+    minimum: 90,
+    minimumByRarity: { epic: 18, rare: 22, uncommon: 25 },
+  },
   {
     position: "VOL",
     file: "../src/game/data/defensive-midfielders.ts",
-    minimum: 60,
+    minimum: 90,
+    minimumByRarity: { epic: 17, rare: 25, uncommon: 28 },
   },
-  { position: "LAT", file: "../src/game/data/fullbacks.ts", minimum: 60 },
-  { position: "ZAG", file: "../src/game/data/defenders.ts", minimum: 60 },
-  { position: "GOL", file: "../src/game/data/goalkeepers.ts", minimum: 70 },
+  {
+    position: "LAT",
+    file: "../src/game/data/fullbacks.ts",
+    minimum: 90,
+    minimumByRarity: { epic: 15, rare: 28, uncommon: 25 },
+  },
+  {
+    position: "ZAG",
+    file: "../src/game/data/defenders.ts",
+    minimum: 90,
+    minimumByRarity: { epic: 20, rare: 26, uncommon: 22 },
+  },
+  {
+    position: "GOL",
+    file: "../src/game/data/goalkeepers.ts",
+    minimum: 90,
+    minimumByRarity: { epic: 17, rare: 27, uncommon: 27 },
+  },
 ];
 
 const rowPattern =
@@ -19,6 +50,13 @@ const rowPattern =
 
 const failures = [];
 const allRows = [];
+const expectedRarityWeights = {
+  legend: 0.02,
+  epic: 0.05,
+  rare: 0.25,
+  uncommon: 0.4,
+  common: 0.28,
+};
 
 const rarityRules = {
   legend: {
@@ -63,6 +101,22 @@ const rarityRules = {
   },
 };
 
+const constantsSource = readFileSync(
+  new URL("../src/game/constants.ts", import.meta.url),
+  "utf8",
+);
+for (const [rarity, expected] of Object.entries(expectedRarityWeights)) {
+  const match = constantsSource.match(
+    new RegExp(`^\\s*${rarity}:\\s*([\\d.]+),?$`, "m"),
+  );
+  const actual = match ? Number(match[1]) : Number.NaN;
+  if (actual !== expected) {
+    failures.push(
+      `peso de ${rarity}: esperado ${expected}; atual ${String(actual)}`,
+    );
+  }
+}
+
 for (const pool of pools) {
   const source = readFileSync(new URL(pool.file, import.meta.url), "utf8");
   const rows = [...source.matchAll(rowPattern)].map((match) => ({
@@ -84,6 +138,14 @@ for (const pool of pools) {
   }
   if (brazilianCount / rows.length < 0.2) {
     failures.push(`${pool.position} tem menos de 20% de jogadores brasileiros`);
+  }
+  for (const [rarity, minimum] of Object.entries(pool.minimumByRarity)) {
+    const count = rows.filter((row) => row.rarity === rarity).length;
+    if (count < minimum) {
+      failures.push(
+        `${pool.position} tem ${count} jogadores ${rarity}; mínimo: ${minimum}`,
+      );
+    }
   }
   allRows.push(...rows);
   console.log(

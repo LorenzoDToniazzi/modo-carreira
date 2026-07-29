@@ -21,8 +21,13 @@ const rawFullbacks: RawPlayer[] = [
   ["filipe-luis", "Filipe Luís", "Brasil", "2013–2019", "epic", [76, 82, 68, 84, 86, 87, 83, 86, 90, 82, 90, 88], "Leitura tática e construção por dentro com muita segurança."],
   ["branco", "Branco", "Brasil", "1986–1994", "epic", [75, 82, 80, 82, 84, 80, 91, 84, 82, 87, 78, 82], "Canhota potente, cruzamento e bola parada decisivos na Seleção."],
   ["leandro", "Leandro", "Brasil", "1981–1986", "epic", [84, 84, 70, 88, 88, 88, 86, 88, 89, 88, 90, 90], "Técnica e equilíbrio fizeram um lateral completo em seu auge."],
-  ["jorginho", "Jorginho", "Brasil", "1989–1994", "epic", [82, 84, 68, 87, 88, 88, 91, 89, 90, 87, 90, 89], "Cruzamento, leitura e equilíbrio nas duas fases marcaram o lateral do tetra."],
+  ["jorginho", "Jorginho", "Brasil", "1989–1994", "epic", [80, 82, 66, 86, 87, 87, 91, 88, 90, 86, 89, 88], "Cruzamento, leitura e equilíbrio nas duas fases marcaram o lateral do tetra."],
   ["marinho-chagas", "Marinho Chagas", "Brasil", "1973–1977", "epic", [87, 83, 72, 85, 88, 78, 91, 86, 82, 92, 74, 84], "Personalidade e apoio revolucionário renderam ao lateral um papel de protagonista."],
+
+  ["brehme", "Andreas Brehme", "Alemanha", "1988–1992", "epic", [81, 82, 75, 83, 84, 81, 90, 87, 85, 88, 84, 83], "Ambidestria, cruzamento e decisão ofensiva fizeram um lateral completo em grandes torneios."],
+  ["thuram", "Lilian Thuram", "França", "1998–2004", "epic", [84, 86, 87, 73, 79, 89, 76, 88, 91, 80, 92, 76], "Força, velocidade e defesa individual permitiam fechar completamente o corredor."],
+  ["ruud-krol", "Ruud Krol", "Países Baixos", "1974–1978", "epic", [79, 82, 76, 84, 83, 86, 84, 87, 88, 84, 88, 85], "Leitura e qualidade técnica permitiam atuar por fora ou organizar a saída como líbero."],
+  ["paul-breitner", "Paul Breitner", "Alemanha", "1974–1981", "epic", [80, 84, 79, 86, 84, 84, 86, 89, 86, 87, 85, 85], "Intensidade, passe e presença ofensiva fizeram um lateral capaz de dominar também o meio."],
 
   // Raros
   ["jordi-alba", "Jordi Alba", "Espanha", "2012–2019", "rare", [75, 73, 46, 74, 75, 70, 74, 75, 75, 75, 69, 73], "Ataque ao espaço e combinação curta pelo lado esquerdo."],
@@ -43,6 +48,19 @@ const rawFullbacks: RawPlayer[] = [
   ["sorin", "Juan Pablo Sorín", "Argentina", "1996–2006", "rare", [80, 82, 66, 76, 84, 75, 79, 92, 83, 88, 73, 80], "Fôlego, liderança e presença ofensiva constante marcaram o ídolo do Cruzeiro."],
   ["josimar", "Josimar", "Brasil", "1986–1988", "rare", [87, 80, 68, 76, 84, 79, 86, 83, 83, 89, 76, 82], "Explosão e gols memoráveis deram brilho a um auge curto na Seleção."],
 
+  ["lizarazu", "Bixente Lizarazu", "França", "1998–2002", "rare", [83, 78, 66, 78, 82, 84, 83, 88, 88, 84, 86, 78], "Velocidade, equilíbrio e leitura sustentaram o lado esquerdo de equipes campeãs."],
+  ["azpilicueta", "César Azpilicueta", "Espanha", "2015–2021", "rare", [74, 82, 75, 78, 79, 84, 78, 90, 89, 80, 88, 81], "Confiabilidade defensiva e versatilidade permitiram atuar em qualquer lado e na linha de três."],
+  ["ivanovic", "Branislav Ivanović", "Sérvia", "2009–2015", "rare", [72, 86, 89, 72, 78, 85, 80, 86, 84, 82, 88, 74], "Força, bola aérea e chegada à área deram um perfil diferente ao corredor direito."],
+  ["abidal", "Éric Abidal", "França", "2007–2011", "rare", [79, 82, 81, 78, 79, 85, 74, 85, 89, 76, 90, 80], "Cobertura, velocidade e segurança defensiva equilibravam laterais muito ofensivas."],
+  ["nuno-mendes", "Nuno Mendes", "Portugal", "2024–2026", "rare", [90, 79, 69, 76, 82, 80, 80, 86, 91, 85, 80, 80], "Explosão e potência para atacar e recuperar o corredor marcaram seu auge recente."],
+  ["alphonso-davies", "Alphonso Davies", "Canadá", "2019–2023", "rare", [95, 79, 69, 74, 82, 77, 77, 88, 93, 88, 76, 80], "Velocidade excepcional transforma recuperação defensiva e profundidade ofensiva."],
+  ["reece-james", "Reece James", "Inglaterra", "2021–2023", "rare", [78, 79, 80, 79, 80, 81, 89, 79, 81, 88, 84, 80], "Força, cruzamento e técnica formam um perfil completo quando disponível."],
+  ["luke-shaw", "Luke Shaw", "Inglaterra", "2020–2023", "rare", [81, 80, 74, 79, 83, 80, 83, 86, 84, 86, 80, 82], "Condução e apoio por dentro ou por fora marcaram seu melhor período."],
+  ["trippier", "Kieran Trippier", "Inglaterra", "2018–2023", "rare", [73, 78, 66, 84, 80, 78, 91, 84, 82, 84, 80, 82], "Cruzamento e bola parada compensam menor explosão no corredor."],
+  ["grimaldo", "Alejandro Grimaldo", "Espanha", "2022–2024", "rare", [81, 77, 63, 84, 87, 74, 91, 88, 82, 90, 74, 87], "Técnica, cruzamento e chegada interior fizeram um ala de grande produção."],
+  ["frimpong", "Jeremie Frimpong", "Países Baixos", "2022–2025", "rare", [93, 76, 64, 76, 91, 68, 81, 88, 84, 93, 70, 84], "Arranque e presença ofensiva são muito superiores à defesa posicional."],
+  ["kolarov", "Aleksandar Kolarov", "Sérvia", "2010–2018", "rare", [73, 83, 82, 82, 80, 79, 92, 84, 80, 84, 78, 81], "Canhota fortíssima e cruzamento deram ameaça constante longe da área."],
+
   // Incomuns
   ["rodinei", "Rodinei", "Brasil", "2022–2025", "uncommon", [78, 72, 65, 67, 75, 62, 76, 80, 67, 81, 60, 69], "Apoio agressivo, potência e carisma, com defesa individual mais vulnerável."],
   ["rafinha", "Rafinha", "Brasil", "2012–2019", "uncommon", [61, 73, 60, 73, 72, 72, 70, 74, 73, 72, 73, 72], "Técnica e leitura para jogar por fora ou fechar como terceiro defensor."],
@@ -56,6 +74,21 @@ const rawFullbacks: RawPlayer[] = [
   ["maxwell", "Maxwell", "Brasil", "2007–2015", "uncommon", [74, 76, 58, 79, 80, 77, 78, 80, 80, 79, 78, 81], "Técnica e leitura deram regularidade silenciosa em grandes equipes europeias."],
   ["cicinho", "Cicinho", "Brasil", "2004–2006", "uncommon", [82, 72, 56, 72, 78, 65, 82, 76, 70, 85, 62, 74], "Arranque e apoio agressivo marcaram um pico curto e muito reconhecível."],
   ["mayke", "Mayke", "Brasil", "2018–2024", "uncommon", [72, 76, 58, 69, 76, 72, 74, 79, 76, 78, 70, 73], "Equilíbrio e apoio eficiente em um ciclo multicampeão."],
+
+  ["lichtsteiner", "Stephan Lichtsteiner", "Suíça", "2012–2017", "uncommon", [76, 80, 74, 68, 78, 77, 74, 87, 83, 81, 79, 69], "Intensidade e resistência sustentavam seu corredor durante toda a partida."],
+  ["digne", "Lucas Digne", "França", "2018–2024", "uncommon", [77, 74, 63, 76, 77, 72, 85, 81, 76, 82, 73, 78], "Cruzamento consistente e apoio são os pontos fortes de um lateral equilibrado."],
+  ["cucurella", "Marc Cucurella", "Espanha", "2023–2026", "uncommon", [75, 77, 63, 75, 79, 76, 73, 87, 86, 79, 80, 76], "Intensidade, pressão e versatilidade deram crescimento em jogos grandes."],
+  ["estupinan", "Pervis Estupiñán", "Equador", "2021–2024", "uncommon", [84, 78, 70, 70, 80, 73, 78, 82, 80, 85, 74, 72], "Potência e profundidade pelo lado esquerdo definem seu jogo."],
+  ["darmian", "Matteo Darmian", "Itália", "2021–2025", "uncommon", [70, 77, 71, 74, 77, 80, 75, 84, 82, 76, 84, 76], "Leitura e versatilidade entregam segurança em diferentes estruturas defensivas."],
+  ["emerson-royal", "Emerson Royal", "Brasil", "2021–2024", "uncommon", [79, 82, 76, 67, 77, 77, 70, 84, 82, 79, 81, 72], "Força e corrida sustentam o corredor, apesar da produção técnica irregular."],
+  ["caio-henrique", "Caio Henrique", "Brasil", "2021–2024", "uncommon", [76, 72, 61, 80, 79, 72, 86, 78, 75, 83, 72, 81], "Passe e cruzamento fizeram dele importante criador a partir da lateral."],
+  ["abner", "Abner Vinícius", "Brasil", "2022–2025", "uncommon", [79, 75, 67, 72, 77, 75, 78, 82, 79, 80, 77, 74], "Velocidade e equilíbrio entre apoio e recomposição formam seu melhor perfil."],
+  ["dodo-lateral", "Dodô", "Brasil", "2020–2025", "uncommon", [82, 72, 59, 76, 80, 71, 81, 81, 78, 84, 72, 80], "Aceleração e associação curta dão maior valor ofensivo que defensivo."],
+  ["matheuzinho", "Matheuzinho", "Brasil", "2021–2025", "uncommon", [81, 76, 66, 72, 79, 72, 79, 83, 78, 83, 73, 76], "Corrida e apoio ofensivo são seus pontos mais reconhecíveis."],
+  ["advincula", "Luis Advíncula", "Peru", "2018–2024", "uncommon", [89, 80, 73, 65, 80, 73, 72, 85, 82, 82, 75, 70], "Velocidade e potência deram profundidade constante à direita."],
+  ["rene", "Renê", "Brasil", "2018–2023", "uncommon", [70, 76, 68, 69, 73, 78, 73, 80, 80, 72, 81, 74], "Regularidade defensiva e simplicidade técnica formam um lateral funcional."],
+  ["marlon-lateral", "Marlon", "Brasil", "2022–2025", "uncommon", [76, 76, 69, 73, 78, 76, 80, 83, 79, 82, 78, 76], "Equilíbrio e bom cruzamento deram destaque no futebol brasileiro."],
+  ["alex-telles", "Alex Telles", "Brasil", "2017–2021", "uncommon", [73, 75, 68, 78, 78, 73, 87, 82, 75, 84, 73, 80], "Cruzamento e bola parada foram suas grandes armas no auge em Portugal."],
 
   // Comuns
   ["para", "Pará", "Brasil", "2015–2020", "common", [50, 66, 44, 55, 63, 59, 55, 66, 63, 62, 59, 55], "Regularidade e disciplina para cumprir os dois lados do corredor."],

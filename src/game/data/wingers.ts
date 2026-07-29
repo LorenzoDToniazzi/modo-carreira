@@ -27,6 +27,10 @@ const rawWingers: RawPlayer[] = [
   ["pepe-canhao", "Pepe", "Brasil", "1958–1965", "epic", [81, 82, 73, 89, 84, 88, 83, 85, 91, 82, 91, 84], "Canhota potente, gols e regularidade no Santos de Pelé renderam o apelido de Canhão da Vila."],
   ["zagallo", "Zagallo", "Brasil", "1958–1962", "epic", [78, 85, 69, 76, 86, 91, 80, 82, 88, 80, 77, 82], "Inteligência, recomposição e chegada completavam o ataque bicampeão mundial."],
 
+  ["stoichkov", "Hristo Stoichkov", "Bulgária", "1992–1996", "epic", [84, 81, 76, 91, 81, 87, 88, 86, 83, 84, 92, 87], "Explosão, agressividade e canhota decisiva fizeram um ponta de produção histórica."],
+  ["ousmane-dembele", "Ousmane Dembélé", "França", "2024–2026", "epic", [88, 75, 59, 87, 84, 89, 94, 90, 84, 90, 86, 94], "Ambidestria, drible e transformação em finalizador sustentaram seu auge mundial."],
+  ["lamine-yamal", "Lamine Yamal", "Espanha", "2024–2026", "epic", [86, 70, 54, 83, 86, 89, 94, 93, 89, 92, 89, 95], "Precocidade, condução e criação pelo lado direito já produziram impacto histórico."],
+
   // Raros
   ["denilson", "Denílson", "Brasil", "1997–2002", "rare", [78, 64, 48, 56, 68, 71, 78, 83, 70, 83, 60, 84], "Drible e provocação no corredor muito acima da produção de chute."],
   ["alexis", "Alexis Sánchez", "Chile", "2013–2017", "rare", [80, 78, 65, 78, 75, 82, 82, 80, 72, 82, 79, 82], "Agressividade na condução e participação intensa por dentro e por fora."],
@@ -42,6 +46,19 @@ const rawWingers: RawPlayer[] = [
   ["zinho", "Zinho", "Brasil", "1989–1998", "rare", [76, 82, 66, 74, 83, 87, 77, 82, 85, 78, 76, 80], "Regularidade, inteligência e apoio equilibraram times campeões no clube e na Seleção."],
   ["edu-santos", "Edu", "Brasil", "1966–1974", "rare", [86, 75, 58, 79, 81, 84, 89, 87, 84, 88, 81, 90], "Ponta habilidoso e precoce, importante no grande Santos e no elenco do tri."],
 
+  ["mahrez", "Riyad Mahrez", "Argélia", "2015–2021", "rare", [80, 70, 55, 81, 82, 82, 84, 88, 83, 88, 86, 90], "Primeiro toque e corte para dentro deram desequilíbrio com baixo desperdício."],
+  ["saka", "Bukayo Saka", "Inglaterra", "2022–2026", "rare", [81, 79, 67, 81, 80, 88, 88, 83, 83, 81, 81, 86], "Regularidade, força e tomada de decisão transformaram um ponta em referência ofensiva."],
+  ["son", "Son Heung-min", "Coreia do Sul", "2018–2022", "rare", [87, 76, 64, 86, 74, 86, 91, 81, 76, 83, 91, 83], "Velocidade e finalização ambidestra castigavam qualquer espaço em transição."],
+  ["rodrygo", "Rodrygo", "Brasil", "2022–2025", "rare", [84, 72, 58, 82, 80, 86, 88, 85, 78, 87, 84, 87], "Mobilidade e frieza em jogos grandes permitem atuar pelos dois lados ou por dentro."],
+  ["gnabry", "Serge Gnabry", "Alemanha", "2018–2021", "rare", [87, 77, 72, 84, 76, 84, 89, 82, 75, 84, 84, 84], "Aceleração e chegada para finalizar deram enorme produção em seu auge."],
+  ["sterling", "Raheem Sterling", "Inglaterra", "2017–2021", "rare", [91, 77, 59, 78, 75, 90, 94, 84, 70, 91, 77, 89], "Movimentação e aceleração criavam volume constante, apesar da conclusão irregular."],
+  ["rashford", "Marcus Rashford", "Inglaterra", "2019–2023", "rare", [91, 77, 72, 82, 71, 83, 93, 82, 75, 86, 82, 84], "Arranque e chute em velocidade são muito superiores à criação paciente."],
+  ["kvaratskhelia", "Khvicha Kvaratskhelia", "Geórgia", "2022–2026", "rare", [81, 74, 64, 80, 79, 84, 86, 91, 79, 87, 81, 92], "Drible em mudança de direção e criação fizeram dele protagonista em diferentes contextos."],
+  ["joaquin", "Joaquín", "Espanha", "2002–2006", "rare", [84, 76, 62, 74, 81, 82, 87, 88, 89, 88, 76, 90], "Velocidade, drible aberto e cruzamento marcaram um dos grandes pontas espanhóis."],
+  ["edilson", "Edílson Capetinha", "Brasil", "1998–2001", "rare", [84, 75, 65, 80, 74, 82, 87, 91, 77, 87, 83, 93], "Drible provocador e capacidade de decidir fizeram um ponta marcante no futebol brasileiro."],
+  ["amarildo", "Amarildo", "Brasil", "1962–1965", "rare", [83, 78, 72, 84, 74, 87, 87, 83, 75, 84, 86, 85], "Mobilidade e gols sob pressão deram protagonismo no bicampeonato mundial."],
+  ["jair-da-costa", "Jair da Costa", "Brasil", "1962–1968", "rare", [87, 75, 65, 79, 74, 83, 91, 86, 83, 87, 78, 90], "Velocidade e profundidade fizeram um ponta campeão e reconhecido no futebol italiano."],
+
   // Incomuns
   ["cebolinha", "Everton Cebolinha", "Brasil", "2018–2020", "uncommon", [82, 66, 55, 68, 67, 73, 85, 82, 70, 84, 74, 82], "Aceleração e corte curto para dentro marcaram seu auge no Grêmio."],
   ["savio", "Sávio", "Brasil", "2024–2026", "uncommon", [77, 64, 49, 63, 68, 73, 79, 76, 72, 79, 66, 77], "Ponta de aceleração leve, drible aberto e criação pelo corredor."],
@@ -56,6 +73,22 @@ const rawWingers: RawPlayer[] = [
   ["tayson", "Taison", "Brasil", "2017–2020", "uncommon", [75, 65, 52, 64, 66, 71, 78, 74, 65, 75, 66, 75], "Velocidade e condução por dentro ou por fora."],
   ["soteldo", "Yeferson Soteldo", "Venezuela", "2019–2023", "uncommon", [71, 57, 35, 57, 64, 67, 73, 74, 64, 80, 61, 75], "Baixo centro de gravidade e drible curto muito reconhecíveis no Brasil."],
   ["dagoberto", "Dagoberto", "Brasil", "2007–2011", "uncommon", [78, 69, 54, 70, 67, 74, 81, 78, 65, 79, 75, 79], "Arranque, drible e chute colocado em transições curtas."],
+
+  ["luis-diaz", "Luis Díaz", "Colômbia", "2021–2025", "uncommon", [86, 75, 64, 74, 69, 79, 89, 81, 69, 82, 76, 82], "Explosão e drible vertical dão perigo constante, com criação menos refinada."],
+  ["coman", "Kingsley Coman", "França", "2019–2023", "uncommon", [89, 70, 56, 71, 71, 78, 92, 83, 77, 83, 73, 83], "Aceleração e um contra um são suas armas mais claras no corredor."],
+  ["chiesa", "Federico Chiesa", "Itália", "2020–2022", "uncommon", [87, 74, 61, 75, 68, 79, 90, 80, 73, 81, 77, 81], "Ataque direto e chute após condução marcaram seu melhor período."],
+  ["nani", "Nani", "Portugal", "2008–2012", "uncommon", [81, 70, 59, 73, 74, 75, 81, 81, 81, 87, 76, 88], "Drible e cruzamento produziam lances espetaculares com alguma irregularidade."],
+  ["leroy-sane", "Leroy Sané", "Alemanha", "2017–2021", "uncommon", [89, 70, 59, 74, 72, 76, 93, 80, 75, 80, 77, 81], "Velocidade e canhota criam enorme ameaça em campo aberto."],
+  ["pedro-neto", "Pedro Neto", "Portugal", "2020–2025", "uncommon", [87, 73, 57, 71, 73, 77, 90, 80, 77, 83, 75, 83], "Arranque e condução direta permitem atacar qualquer lateral."],
+  ["martinelli", "Gabriel Martinelli", "Brasil", "2022–2025", "uncommon", [89, 75, 64, 73, 67, 81, 92, 79, 69, 81, 75, 81], "Profundidade, pressão e chegada à área superam sua criação com bola parada."],
+  ["luiz-araujo", "Luiz Araújo", "Brasil", "2023–2025", "uncommon", [84, 74, 60, 74, 74, 79, 87, 79, 77, 81, 77, 80], "Arranque, chute e intensidade deram impacto no futebol brasileiro."],
+  ["paulinho-atletico", "Paulinho", "Brasil", "2022–2024", "uncommon", [81, 72, 62, 78, 67, 88, 89, 79, 66, 82, 81, 81], "Movimentação e ataque à área transformaram velocidade em produção goleadora."],
+  ["wanderson", "Wanderson", "Brasil", "2022–2025", "uncommon", [82, 73, 59, 70, 72, 78, 85, 80, 75, 83, 72, 82], "Condução e velocidade pelo lado foram suas melhores armas no Internacional."],
+  ["kenedy", "Kenedy", "Brasil", "2017–2023", "uncommon", [80, 76, 72, 73, 70, 74, 83, 79, 78, 80, 76, 80], "Potência e canhota oferecem desequilíbrio, embora sem grande regularidade."],
+  ["biel", "Biel", "Brasil", "2022–2025", "uncommon", [82, 69, 55, 69, 70, 77, 85, 81, 72, 84, 72, 83], "Drible e aceleração dão ameaça clara em transições."],
+  ["nico-williams", "Nico Williams", "Espanha", "2023–2026", "uncommon", [89, 71, 58, 71, 73, 80, 93, 80, 78, 80, 73, 80], "Explosão e duelo individual abriram espaço em alto nível desde muito jovem."],
+  ["grealish", "Jack Grealish", "Inglaterra", "2020–2023", "uncommon", [75, 77, 67, 70, 79, 75, 77, 81, 77, 86, 76, 86], "Proteção da bola e condução atraem pressão e criam faltas pelo lado."],
+  ["ferran-torres", "Ferran Torres", "Espanha", "2020–2025", "uncommon", [82, 72, 61, 77, 72, 84, 86, 78, 72, 82, 80, 80], "Movimentação para finalizar é superior ao drible em isolamento."],
 
   // Comuns
   ["rony", "Rony", "Brasil", "2020–2022", "common", [82, 76, 60, 64, 52, 83, 76, 63, 53, 67, 61, 66], "Profundidade e pressão incessantes, mesmo sem refinamento no último gesto."],
