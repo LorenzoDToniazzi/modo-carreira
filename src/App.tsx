@@ -118,7 +118,7 @@ function App() {
         <header className="brand">
           <span className="brand-mark">MC</span>
           <span>Modo Carreira</span>
-          <span className="prototype-label">Criador v0.3</span>
+          <span className="prototype-label">Criador v0.4</span>
         </header>
         <section className="identity-layout">
           <div className="hero-copy">

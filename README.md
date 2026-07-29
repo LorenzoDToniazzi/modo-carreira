@@ -4,7 +4,7 @@ Jogo de carreira de futebol focado em criar um atleta único a partir de jogador
 
 ## Estado do projeto
 
-O **Criador de Atleta v0.3** já permite criar jogadores nas sete posições. Cada
+O **Criador de Atleta v0.4** já permite criar jogadores nas sete posições. Cada
 posição possui 12 atributos, pesos, arquétipos e um banco de fontes próprios.
 
 ## Fluxo inicial
@@ -24,7 +24,11 @@ posição possui 12 atributos, pesos, arquétipos e um banco de fontes próprios
 - Todo atleta é avaliado no auge.
 - Raridades: Lenda, Épico, Raro, Incomum e Comum.
 - A raridade representa relevância histórica, não excelência em todos os atributos.
+- Não existe cota de raridade por posição: a quantidade de nomes em cada grupo
+  não altera os pesos do sorteio.
 - Jogadores comuns podem ser especialistas excepcionais.
+- Pelé é uma exceção deliberada: possui o melhor conjunto do banco e peso
+  individual menor no sorteio, aparecendo menos que as demais Lendas.
 - Cada atributo deve afetar ações específicas da simulação.
 - A qualidade do atleta depende da posição, função e combinação de características, não apenas de um overall geral.
 - O banco prioriza nomes reconhecíveis para o público brasileiro sem transformar
@@ -36,15 +40,19 @@ posição possui 12 atributos, pesos, arquétipos e um banco de fontes próprios
 - A ausência de uma boa carta internacional não reduz a nota nem a raridade de
   um ídolo brasileiro.
 
-## Banco v0.3
+## Banco v0.4
 
-- 418 perfis de posição
-- 411 jogadores únicos
+- 506 perfis de posição
+- 498 jogadores únicos
 - 117 atacantes
-- 51 pontas
-- 50 opções em cada uma das outras cinco posições
-- 235 perfis brasileiros
-- auditoria automática de inflação e representação por posição
+- 60 pontas
+- 66 meias e 61 volantes
+- 60 laterais
+- 72 zagueiros
+- 70 goleiros
+- 321 perfis brasileiros
+- auditoria automática de inflação, representação por posição e raridades
+  históricas obrigatórias
 
 ## Próximo marco
 

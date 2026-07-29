@@ -9,12 +9,13 @@ export type RawPlayer = [
   rarity: Rarity,
   values: number[],
   note: string,
+  drawWeight?: number,
 ];
 
 export function createPool(position: Position, rows: RawPlayer[]): SourcePlayer[] {
   const keys = POSITION_CONFIGS[position].attributes.map(({ key }) => key);
 
-  return rows.map(([id, name, country, peak, rarity, values, note]) => {
+  return rows.map(([id, name, country, peak, rarity, values, note, drawWeight]) => {
     if (values.length !== keys.length) {
       throw new Error(
         `${name} (${position}) possui ${values.length} notas; esperado: ${keys.length}.`,
@@ -32,6 +33,7 @@ export function createPool(position: Position, rows: RawPlayer[]): SourcePlayer[
         keys.map((key, index) => [key, values[index]]),
       ),
       note,
+      drawWeight,
     };
   });
 }

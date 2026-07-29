@@ -14,13 +14,14 @@ type RawPlayer = [
   rarity: Rarity,
   values: number[],
   note: string,
+  drawWeight?: number,
 ];
 
 // Ordem: VEL, FÍS, FOR, CHU, PAS, MOV, COL, POT, AÉR, DRI, CON, POS.
 // As notas representam o auge real do atleta, não uma carta promocional.
 const rawPlayers: RawPlayer[] = [
   // Lendas
-  ["pele", "Pelé", "Brasil", "1958–1970", "legend", [87, 83, 79, 92, 87, 92, 92, 87, 86, 87, 94, 92], "Finalizador, criador e leitor de espaços em nível histórico."],
+  ["pele", "Pelé", "Brasil", "1958–1970", "legend", [90, 88, 85, 96, 94, 96, 96, 92, 92, 95, 97, 96], "O jogador mais completo do banco: criação, finalização, domínio e leitura em nível histórico.", 0.15],
   ["messi", "Lionel Messi", "Argentina", "2009–2019", "legend", [88, 68, 62, 88, 88, 91, 96, 83, 51, 96, 96, 88], "Controle curto, drible e precisão colocada definem o perfil."],
   ["cristiano", "Cristiano Ronaldo", "Portugal", "2007–2018", "legend", [86, 86, 86, 94, 80, 90, 86, 96, 96, 85, 86, 96], "Potência de chute, impulsão e presença na área quase singulares."],
   ["ronaldo", "Ronaldo Nazário", "Brasil", "1996–2002", "legend", [96, 84, 87, 93, 74, 93, 90, 87, 73, 95, 87, 87], "Explosão, condução e finalização em velocidade."],
@@ -84,12 +85,12 @@ const rawPlayers: RawPlayer[] = [
   ["makaay", "Roy Makaay", "Países Baixos", "2002–2006", "uncommon", [64, 66, 59, 77, 56, 75, 76, 71, 62, 62, 68, 79], "Conclusão rápida e pouca necessidade de preparação."],
   ["hasselbaink", "Jimmy Floyd Hasselbaink", "Países Baixos", "1999–2002", "uncommon", [64, 77, 77, 78, 56, 72, 72, 81, 71, 59, 67, 74], "Potência de chute e imposição física."],
   ["anelka", "Nicolas Anelka", "França", "1998–2009", "uncommon", [79, 62, 55, 72, 59, 74, 70, 68, 52, 69, 68, 72], "Velocidade e mobilidade para jogar na última linha."],
-  ["demba-ba", "Demba Ba", "Senegal", "2011–2015", "uncommon", [59, 75, 76, 72, 53, 70, 67, 74, 76, 55, 66, 74], "Força, jogo aéreo e conclusão direta."],
-  ["papiss-cisse", "Papiss Cissé", "Senegal", "2011–2014", "uncommon", [64, 66, 56, 72, 47, 71, 71, 75, 62, 56, 62, 72], "Finalizações rápidas e agressivas de média distância."],
+  ["guerrero", "Paolo Guerrero", "Peru", "2015–2019", "uncommon", [61, 78, 80, 78, 65, 74, 76, 78, 82, 66, 73, 81], "Proteção de bola, presença de área e decisões importantes no futebol brasileiro."],
+  ["fernandao", "Fernandão", "Brasil", "2005–2008", "uncommon", [58, 76, 78, 77, 72, 75, 75, 79, 82, 67, 76, 80], "Referência técnica e física do ataque campeão da América e do mundo."],
   ["benteke", "Christian Benteke", "Bélgica", "2012–2017", "uncommon", [52, 76, 79, 67, 48, 65, 59, 70, 83, 49, 65, 71], "Força e domínio aéreo como referência central."],
   ["bacca", "Carlos Bacca", "Colômbia", "2013–2016", "uncommon", [67, 64, 55, 74, 49, 74, 74, 67, 55, 61, 64, 76], "Desmarque curto e finalização eficiente."],
   ["negredo", "Álvaro Negredo", "Espanha", "2010–2014", "uncommon", [47, 74, 78, 74, 60, 69, 69, 79, 77, 56, 69, 74], "Canhota potente e presença física na área."],
-  ["soldado", "Roberto Soldado", "Espanha", "2010–2013", "uncommon", [56, 61, 53, 74, 54, 72, 74, 66, 62, 57, 63, 76], "Ataque ao espaço curto e conclusão de primeira."],
+  ["rafael-sobis", "Rafael Sóbis", "Brasil", "2006–2011", "uncommon", [72, 71, 64, 77, 72, 75, 78, 78, 67, 76, 77, 75], "Mobilidade, técnica e gols decisivos em campanhas continentais."],
   ["jonas", "Jonas", "Brasil", "2015–2018", "uncommon", [53, 61, 54, 78, 70, 74, 80, 73, 57, 67, 74, 79], "Inteligência, chute colocado e associação curta."],
   ["luis-fabiano", "Luís Fabiano", "Brasil", "2007–2010", "uncommon", [59, 76, 77, 77, 54, 74, 73, 77, 77, 55, 67, 80], "Força, presença de área e finalização firme."],
   ["grafite", "Grafite", "Brasil", "2008–2010", "uncommon", [63, 75, 75, 77, 56, 73, 73, 75, 72, 64, 71, 77], "Condução longa, contato físico e ótima temporada de auge."],
@@ -100,7 +101,7 @@ const rawPlayers: RawPlayer[] = [
   ["arnautovic", "Marko Arnautović", "Áustria", "2016–2022", "uncommon", [64, 77, 79, 74, 68, 66, 69, 81, 72, 70, 74, 69], "Força, técnica e chute pesado em um atacante híbrido."],
   ["morata", "Álvaro Morata", "Espanha", "2016–2024", "uncommon", [71, 71, 67, 71, 58, 75, 69, 70, 77, 62, 69, 74], "Mobilidade e jogo aéreo, com produção por sequências."],
   ["mitrovic", "Aleksandar Mitrović", "Sérvia", "2018–2024", "uncommon", [51, 81, 81, 75, 52, 70, 71, 79, 83, 48, 65, 77], "Força, cabeceio e grande volume de finalizações."],
-  ["chris-wood", "Chris Wood", "Nova Zelândia", "2020–2026", "uncommon", [38, 72, 77, 71, 48, 70, 68, 72, 77, 44, 64, 75], "Referência aérea eficiente e disciplinada."],
+  ["diego-souza", "Diego Souza", "Brasil", "2011–2020", "uncommon", [68, 78, 80, 79, 73, 80, 78, 83, 82, 74, 78, 81], "Força, chegada à área e produção ofensiva por vários clubes brasileiros."],
   ["hulk", "Hulk", "Brasil", "2011–2022", "rare", [84, 84, 88, 83, 73, 76, 75, 93, 73, 82, 83, 76], "Arranque com contato e chute de potência excepcional."],
   ["gabigol", "Gabigol", "Brasil", "2019–2022", "uncommon", [72, 68, 60, 78, 70, 80, 79, 76, 58, 72, 76, 82], "Movimentação e presença em decisões superam força e jogo aéreo."],
   ["pedro", "Pedro", "Brasil", "2022–2025", "uncommon", [58, 72, 70, 80, 68, 74, 81, 76, 78, 68, 79, 81], "Controle, giro e finalização limpa dentro da área."],
@@ -113,7 +114,7 @@ const rawPlayers: RawPlayer[] = [
   ["obafemi-martins", "Obafemi Martins", "Nigéria", "2004–2010", "common", [84, 65, 56, 64, 42, 69, 56, 75, 46, 65, 61, 61], "Velocidade e chute forte para atacar campo aberto."],
   ["podolski", "Lukas Podolski", "Alemanha", "2006–2014", "common", [68, 69, 68, 73, 61, 61, 65, 86, 49, 59, 65, 63], "Canhota extremamente potente e jogo direto."],
   ["llorente", "Fernando Llorente", "Espanha", "2010–2015", "common", [35, 72, 79, 67, 51, 64, 57, 68, 79, 39, 64, 75], "Referência de força e disputa aérea."],
-  ["choupo-moting", "Eric Maxim Choupo-Moting", "Camarões", "2018–2023", "common", [57, 68, 69, 57, 53, 62, 54, 62, 70, 61, 64, 64], "Atacante funcional, técnico e útil no jogo de apoio."],
+  ["balotelli", "Mario Balotelli", "Itália", "2011–2014", "common", [73, 71, 73, 71, 54, 66, 69, 82, 68, 71, 72, 66], "Potência, chute forte e lampejos técnicos em um atacante imprevisível."],
   ["bas-dost", "Bas Dost", "Países Baixos", "2014–2018", "common", [35, 67, 72, 70, 43, 68, 67, 65, 79, 35, 56, 76], "Grande presença de área, com pouca mobilidade."],
   ["luuk-de-jong", "Luuk de Jong", "Países Baixos", "2018–2025", "common", [35, 71, 78, 68, 56, 68, 64, 71, 86, 39, 68, 76], "Cabeceio de elite e bom apoio de costas."],
   ["weghorst", "Wout Weghorst", "Países Baixos", "2018–2024", "common", [35, 76, 82, 63, 42, 65, 58, 72, 74, 41, 61, 70], "Força e jogo aéreo compensam a baixa velocidade."],
@@ -128,15 +129,15 @@ const rawPlayers: RawPlayer[] = [
   ["washington", "Washington", "Brasil", "2004–2010", "common", [39, 70, 74, 70, 47, 67, 65, 73, 77, 40, 61, 74], "Força e presença na área em jogo direto."],
   ["aloisio", "Aloísio Chulapa", "Brasil", "2005–2009", "common", [35, 73, 78, 63, 43, 58, 53, 70, 76, 35, 57, 66], "Pivô físico e disputa constante com zagueiros."],
   ["akinfenwa", "Adebayo Akinfenwa", "Inglaterra", "2012–2018", "common", [35, 80, 88, 61, 43, 51, 49, 76, 73, 35, 58, 65], "Força singular, mas mobilidade e técnica limitadas."],
-  ["bobby-zamora", "Bobby Zamora", "Inglaterra", "2008–2012", "common", [40, 69, 72, 63, 50, 61, 57, 65, 72, 42, 60, 65], "Jogo de apoio e presença física."],
-  ["kevin-davies", "Kevin Davies", "Inglaterra", "2004–2010", "common", [35, 77, 79, 58, 48, 60, 50, 63, 79, 35, 57, 65], "Disputas físicas e bolas aéreas acima da finalização."],
-  ["rickie-lambert", "Rickie Lambert", "Inglaterra", "2011–2014", "common", [35, 64, 67, 68, 60, 61, 67, 72, 69, 42, 63, 68], "Chute, bola parada e apoio técnico."],
-  ["odemwingie", "Peter Odemwingie", "Nigéria", "2010–2014", "common", [73, 60, 49, 65, 48, 69, 64, 64, 42, 63, 60, 67], "Velocidade e movimentação pelos canais."],
-  ["yakubu", "Yakubu", "Nigéria", "2003–2008", "common", [55, 73, 76, 70, 45, 66, 68, 74, 68, 49, 61, 72], "Força e conclusão firme."],
-  ["mido", "Mido", "Egito", "2003–2007", "common", [50, 70, 73, 65, 54, 61, 60, 69, 76, 53, 65, 65], "Técnica e porte físico, com produção irregular."],
+  ["jo", "Jô", "Brasil", "2013–2017", "common", [52, 72, 77, 68, 51, 67, 65, 72, 81, 47, 64, 75], "Força, jogo aéreo e temporada de artilharia no futebol brasileiro."],
+  ["loco-abreu", "Loco Abreu", "Uruguai", "2008–2012", "common", [37, 69, 72, 70, 55, 67, 69, 68, 79, 44, 63, 76], "Centroavante folclórico, aéreo e frio em decisões de pênalti."],
+  ["barcos", "Hernán Barcos", "Argentina", "2012–2015", "common", [45, 72, 74, 71, 59, 68, 69, 72, 73, 55, 67, 75], "Pivô técnico e presença de área do Pirata conhecido no Brasil."],
+  ["kleber", "Kléber Gladiador", "Brasil", "2008–2012", "common", [63, 77, 78, 69, 56, 72, 65, 75, 71, 65, 69, 74], "Contato físico, agressividade ofensiva e proteção de bola."],
+  ["borges", "Borges", "Brasil", "2008–2011", "common", [55, 69, 65, 72, 51, 72, 71, 66, 68, 54, 64, 76], "Finalizador de área e artilheiro em seu auge no futebol brasileiro."],
+  ["walter", "Walter", "Brasil", "2013–2016", "common", [54, 72, 76, 68, 58, 68, 66, 75, 68, 63, 72, 71], "Força, controle e chute pesado em um atacante de enorme identificação popular."],
   ["rondon", "Salomón Rondón", "Venezuela", "2015–2021", "common", [48, 74, 78, 66, 45, 64, 59, 71, 75, 43, 60, 68], "Referência física e aérea de jogo direto."],
   ["raul-jimenez", "Raúl Jiménez", "México", "2018–2021", "common", [59, 70, 67, 70, 59, 70, 67, 68, 72, 56, 66, 71], "Associação, movimentação e jogo aéreo equilibrados."],
-  ["borja-iglesias", "Borja Iglesias", "Espanha", "2018–2023", "common", [37, 66, 69, 64, 47, 64, 61, 66, 69, 42, 58, 68], "Centroavante funcional de apoio e área."],
+  ["deivid", "Deivid", "Brasil", "2005–2012", "common", [54, 67, 64, 70, 56, 71, 69, 67, 70, 56, 65, 76], "Boa movimentação e produção de área, além de lances eternizados pela torcida."],
   ["lucas-pratto", "Lucas Pratto", "Argentina", "2014–2018", "common", [38, 72, 75, 68, 57, 65, 63, 72, 69, 50, 65, 69], "Pivô, força e conexão com quem vem de trás."],
   ["german-cano", "Germán Cano", "Argentina", "2021–2023", "common", [35, 58, 51, 72, 43, 72, 70, 66, 64, 45, 57, 77], "Leitura de área e finalização de poucos contatos."],
   ["deyverson", "Deyverson", "Brasil", "2017–2024", "common", [58, 76, 73, 66, 55, 73, 65, 69, 79, 57, 64, 78], "Entrega, jogo aéreo e aparição em momentos grandes acima do refinamento."],
@@ -179,7 +180,7 @@ function attributes(values: number[]): AttributeMap {
 }
 
 export const ATTACKERS: SourcePlayer[] = rawPlayers.map(
-  ([id, name, country, peak, rarity, values, note]) => ({
+  ([id, name, country, peak, rarity, values, note, drawWeight]) => ({
     id,
     name,
     country,
@@ -188,6 +189,7 @@ export const ATTACKERS: SourcePlayer[] = rawPlayers.map(
     rarity,
     attributes: attributes(values),
     note,
+    drawWeight,
   }),
 );
 

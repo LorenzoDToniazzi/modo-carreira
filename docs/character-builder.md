@@ -1,4 +1,4 @@
-# Criador de atleta — especificação v0.3
+# Criador de atleta — especificação v0.4
 
 ## Objetivo
 
@@ -49,6 +49,10 @@ constante de balanceamento, não uma propriedade do jogador-fonte.
 - Comum
 
 A raridade mede relevância histórica e controla frequência de aparição. Ela não adiciona bônus à nota. Um jogador comum pode ter uma característica de elite; uma lenda não precisa ser excelente em tudo.
+
+Não há cota de raridade por posição. O sorteio escolhe primeiro a raridade pelos
+pesos abaixo e só depois um nome, então a composição numérica do banco não
+justifica rebaixar um ídolo.
 
 Probabilidades independentes por sorteio:
 
@@ -113,6 +117,10 @@ de balanceamento e podem inflar características que não representam o auge rea
 ## Fontes de calibração inicial
 
 - FIFA, retrospectiva dos vencedores brasileiros: https://www.fifa.com/en/the-best-fifa-football-awards/2024/articles/brazil-awards-list
+- São Paulo FC, trajetória e recordes de Rogério Ceni: https://www.saopaulofc.net/sao-paulo-e-rogerio-ceni-a-historia-do-m1to/
+- Palmeiras, perfil histórico de Marcos: https://www.palmeiras.com.br/craques/marcos/
+- Corinthians, despedida e dimensão histórica de Cássio: https://www.corinthians.com.br/noticias/obrigadogigante-despede-se-do-corinthians-um-dos-maiores-idolos-alvinegros
+- CBF, acervo de jogadores imortais: https://www.cbf.com.br/selecao-brasileira/torcedor/jogadores-imortais
 - UEFA, recordes de Cristiano Ronaldo: https://www.uefa.com/uefachampionsleague/news/0253-0d820b46805f-b78ccae2c451-1000--what-uefa-records-does-cristiano-ronaldo-hold/
 - UEFA, tipos de gols internacionais de Cristiano Ronaldo: https://www.uefa.com/european-qualifiers/news/0257-0e001aafb4e9-7c6ad3889ce0-1000--cristiano-ronaldo-s-146-international-goals-opposition-w/
 - UEFA, marcos de gols na Champions League: https://www.uefa.com/uefachampionsleague/news/027d-170b3182d9ed-587169daf860-1000--champions-league-goalscoring-milestones-kylian-mbappe-youn/
@@ -133,11 +141,11 @@ como segunda opinião de scouting e ajuda a encontrar diferenças internas como
 aceleração, força de chute, cabeceio e drible. A nota final continua sendo uma
 decisão de design comparativa e deve ser revisada por posição.
 
-## Limites da v0.3
+## Limites da v0.4
 
 - As sete posições estão liberadas.
-- O banco contém 416 perfis de posição e 409 atletas únicos.
-- ATA possui 116 fontes; as outras posições possuem 50 cada.
+- O banco contém 506 perfis de posição e 498 atletas únicos.
+- ATA possui 117 fontes; as demais posições possuem entre 60 e 70.
 - Brasil, Argentina e Portugal possuem clubes formadores provisórios.
 - A carreira ainda não começa depois da criação.
 - Fotos e escudos não são utilizados nesta fase.

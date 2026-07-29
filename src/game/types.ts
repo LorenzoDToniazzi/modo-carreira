@@ -74,6 +74,7 @@ export interface SourcePlayer {
   rarity: Rarity;
   attributes: AttributeMap;
   note: string;
+  drawWeight?: number;
 }
 
 export interface Identity {

@@ -28,6 +28,21 @@ export function randomItem<T>(items: T[]): T {
   return items[Math.floor(Math.random() * items.length)];
 }
 
+function weightedPlayer(items: SourcePlayer[]): SourcePlayer {
+  const totalWeight = items.reduce(
+    (total, player) => total + (player.drawWeight ?? 1),
+    0,
+  );
+  let roll = Math.random() * totalWeight;
+
+  for (const player of items) {
+    roll -= player.drawWeight ?? 1;
+    if (roll < 0) return player;
+  }
+
+  return items[items.length - 1];
+}
+
 export function randomAcademy(nationality: Nationality): string {
   return randomItem(ACADEMY_CLUBS[nationality]);
 }
@@ -53,7 +68,7 @@ export function drawPlayer(
   const pool = available.length ? available : players;
   const rarity = randomRarity();
   const rarityPool = pool.filter((player) => player.rarity === rarity);
-  return randomItem(rarityPool.length ? rarityPool : pool);
+  return weightedPlayer(rarityPool.length ? rarityPool : pool);
 }
 
 export function calculatePotential(sourceValue: number): number {

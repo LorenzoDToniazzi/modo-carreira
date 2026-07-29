@@ -1,6 +1,6 @@
 # Régua de atributos v0.2
 
-Régua aprovada inicialmente para ATA e mantida na expansão v0.3 para todas as
+Régua aprovada inicialmente para ATA e mantida na revisão v0.4 para todas as
 posições.
 
 ## Escala das notas-fonte
@@ -33,13 +33,27 @@ superestimados.
 | Raridade | Média do grupo | Média máxima individual | Limite individual de notas altas |
 |---|---:|---:|---|
 | Lenda | 82–89 | 90 | até 8 notas 90+, 5 notas 94+ e 2 notas 97 |
-| Épico | 78–85 | 89 | até 7 notas 90+ e 3 notas 94+ |
-| Raro | 72–79 | 82 | até 4 notas 90+ e 3 notas 94+ |
-| Incomum | 65–73 | 78 | até 2 notas 85+ e somente 1 nota 90+ |
-| Comum | 59–69 | 70 | somente 1 nota 85+ e nenhuma nota 90+ |
+| Épico | 78–85 | 89 | até 7 notas 90+, 3 notas 94+ e 1 nota 97 |
+| Raro | 72–79 | 82 | até 4 notas 90+, 3 notas 94+ e 1 nota 97 |
+| Incomum | 65–73 | 78 | até 2 notas 85+ e 1 nota 97 |
+| Comum | 59–69 | 70 | somente 1 especialidade de elite, que pode chegar a 97 |
 
 Esses limites não obrigam um jogador de determinada raridade a alcançar a
 média máxima. A nota continua vindo do perfil observado no auge.
+
+Uma nota 97 isolada pode pertencer a qualquer raridade quando representa uma
+especialidade realmente singular. A raridade mede tamanho histórico e cultural;
+não é um atalho para ordenar jogadores por média.
+
+### Exceção Pelé
+
+Pelé é deliberadamente o melhor e mais raro perfil do banco. Ele continua
+dentro do teto de nota-fonte 97, mas pode ultrapassar os limites individuais
+normais de uma Lenda por representar o jogador máximo da experiência.
+
+Dentro do sorteio de Lendas de ATA, cada nome possui peso 1 e Pelé possui peso
+0,15. Isso o torna aproximadamente 6,7 vezes mais difícil de aparecer que cada
+outra Lenda, sem criar proteção, garantia ou sistema de compensação.
 
 ## Fontes para jogadores do futebol brasileiro
 
@@ -78,19 +92,19 @@ O bônus de potencial deixa de ser +10 fixo e passa a diminuir no topo:
 Somente uma nota-fonte 97 permite potencial 99. Os pontos 96–99 também exigirão
 treino, estrutura, fase e marcos de carreira excepcionais.
 
-## Composição pretendida
+## Composição mínima
 
-Meta da primeira base ampla: aproximadamente 350 jogadores únicos, com
-atletas multiposição alimentando mais de um conjunto.
+O banco não usa uma proporção obrigatória de nomes por raridade. A primeira
+camada revisada mantém variedade mínima por posição:
 
 | Pool | Opções mínimas |
 |---|---:|
 | ATA | 100 |
-| PON | 90 |
-| MEI | 110 |
-| VOL | 90 |
-| LAT | 80 |
-| ZAG | 100 |
+| PON | 60 |
+| MEI | 60 |
+| VOL | 60 |
+| LAT | 60 |
+| ZAG | 60 |
 | GOL | 70 |
 
 Probabilidade por sorteio:
@@ -101,8 +115,10 @@ Probabilidade por sorteio:
 - 30% Incomuns
 - 35% Comuns
 
-As chances são independentes e não existe proteção contra azar. Dentro da
-raridade sorteada, qualquer jogador disponível tem a mesma chance.
+As chances são independentes e não existe proteção contra azar. O sistema
+primeiro sorteia a raridade e depois um jogador daquele grupo. Por isso, ter
+mais Lendas cadastradas em GOL não aumenta a chance de uma Lenda aparecer.
+Pesos individuais são exceções explícitas, como Pelé.
 
 ## Exemplos após a revisão integral
 
@@ -122,44 +138,46 @@ raridade sorteada, qualquer jogador disponível tem a mesma chance.
 | ZAG | Thiago Silva | Lenda | concentração 96, tempo 95, interceptação 94 | força 80 |
 | ZAG | Fabrício Bruno | Comum | velocidade 84, recuperação 84 | passe e controle 55 |
 | GOL | Ederson | Raro | jogo com os pés 96, força da reposição 95, reposição 94 | encaixe 66 |
-| GOL | Cássio | Raro | pênaltis 91, concentração 90, um contra um 87 | jogo com os pés 65 |
+| GOL | Cássio | Épico | pênaltis 96, concentração 94, um contra um 92 | jogo com os pés 70 |
+| GOL | Rogério Ceni | Lenda | jogo com os pés 97, reposição 95, concentração 95 | agilidade 78 |
+| GOL | Marcos | Lenda | pênaltis 96, um contra um 95, reflexo 93 | jogo com os pés 67 |
 
-## Auditoria geral v0.3
+## Auditoria geral v0.4
 
 | Posição | Perfis | Brasileiros |
 |---|---:|---:|
-| ATA | 117 | 31 |
-| PON | 51 | 36 |
-| MEI | 50 | 34 |
-| VOL | 50 | 37 |
-| LAT | 50 | 37 |
-| ZAG | 50 | 29 |
-| GOL | 50 | 31 |
+| ATA | 117 | 39 |
+| PON | 60 | 45 |
+| MEI | 66 | 48 |
+| VOL | 61 | 46 |
+| LAT | 60 | 45 |
+| ZAG | 72 | 48 |
+| GOL | 70 | 50 |
 
 Resultado consolidado:
 
-- 418 perfis de posição;
-- 411 jogadores únicos;
-- 5.016 notas auditadas;
-- 5,00% em 90 ou mais;
-- 1,32% em 94 ou mais;
-- 0,10% em 97;
+- 506 perfis de posição;
+- 498 jogadores únicos;
+- 6.072 notas auditadas;
+- 7,74% em 90 ou mais;
+- 1,89% em 94 ou mais;
+- 0,16% em 97;
 - nenhuma nota-fonte 98 ou 99.
 
 | Raridade | Média após a revisão |
 |---|---:|
-| Lenda | 85,83 |
-| Épico | 82,03 |
-| Raro | 75,47 |
-| Incomum | 68,87 |
-| Comum | 62,61 |
+| Lenda | 86,08 |
+| Épico | 83,24 |
+| Raro | 77,58 |
+| Incomum | 70,49 |
+| Comum | 62,76 |
 
-O comando `npm run audit:ratings` agora verifica tanto a inflação global quanto
-as médias e os limites individuais por raridade. Assim, uma nova nota 87 em um
-jogador comum precisa ser sua única especialidade de elite; um perfil inteiro
-nessa faixa reprova automaticamente.
+O comando `npm run audit:ratings` verifica inflação global, médias, limites
+individuais e um conjunto de classificações históricas obrigatórias. Entre as
+travas estão Rogério Ceni e Marcos como Lendas; Cássio e Leão como Épicos;
+Jairzinho, Rivellino, Sócrates, Zito, Djalma Santos e Bellini em suas
+prateleiras históricas corretas.
 
 A quantidade de atletas por raridade não controla a chance de aparição. O jogo
 primeiro sorteia a raridade pelos pesos fixos e depois sorteia um atleta daquela
-raridade. Assim, ampliar comuns e incomuns aumenta a variedade sem alterar a
-probabilidade aprovada.
+raridade. Não se rebaixa um ídolo para cumprir uma proporção artificial.

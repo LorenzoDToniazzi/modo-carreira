@@ -2,16 +2,16 @@ import { readFileSync } from "node:fs";
 
 const pools = [
   { position: "ATA", file: "../src/game/players.ts", minimum: 100 },
-  { position: "PON", file: "../src/game/data/wingers.ts", minimum: 50 },
-  { position: "MEI", file: "../src/game/data/midfielders.ts", minimum: 50 },
+  { position: "PON", file: "../src/game/data/wingers.ts", minimum: 60 },
+  { position: "MEI", file: "../src/game/data/midfielders.ts", minimum: 60 },
   {
     position: "VOL",
     file: "../src/game/data/defensive-midfielders.ts",
-    minimum: 50,
+    minimum: 60,
   },
-  { position: "LAT", file: "../src/game/data/fullbacks.ts", minimum: 50 },
-  { position: "ZAG", file: "../src/game/data/defenders.ts", minimum: 50 },
-  { position: "GOL", file: "../src/game/data/goalkeepers.ts", minimum: 50 },
+  { position: "LAT", file: "../src/game/data/fullbacks.ts", minimum: 60 },
+  { position: "ZAG", file: "../src/game/data/defenders.ts", minimum: 60 },
+  { position: "GOL", file: "../src/game/data/goalkeepers.ts", minimum: 70 },
 ];
 
 const rowPattern =
@@ -35,7 +35,7 @@ const rarityRules = {
     max85: 10,
     max90: 7,
     max94: 3,
-    max97: 0,
+    max97: 1,
   },
   rare: {
     meanRange: [72, 79],
@@ -43,7 +43,7 @@ const rarityRules = {
     max85: 5,
     max90: 4,
     max94: 3,
-    max97: 0,
+    max97: 1,
   },
   uncommon: {
     meanRange: [65, 73],
@@ -51,15 +51,15 @@ const rarityRules = {
     max85: 2,
     max90: 1,
     max94: 0,
-    max97: 0,
+    max97: 1,
   },
   common: {
     meanRange: [59, 69],
     maxPlayerAverage: 70,
     max85: 1,
-    max90: 0,
-    max94: 0,
-    max97: 0,
+    max90: 1,
+    max94: 1,
+    max97: 1,
   },
 };
 
@@ -73,9 +73,6 @@ for (const pool of pools) {
     position: pool.position,
   }));
   const brazilianCount = rows.filter((row) => row.country.includes("Brasil")).length;
-  const familiarRarities = rows.filter(
-    (row) => row.rarity === "common" || row.rarity === "uncommon",
-  ).length;
 
   if (rows.length < pool.minimum) {
     failures.push(
@@ -88,12 +85,6 @@ for (const pool of pools) {
   if (brazilianCount / rows.length < 0.2) {
     failures.push(`${pool.position} tem menos de 20% de jogadores brasileiros`);
   }
-  if (familiarRarities / rows.length < 0.5) {
-    failures.push(
-      `${pool.position} tem menos de 50% de comuns e incomuns no banco`,
-    );
-  }
-
   allRows.push(...rows);
   console.log(
     `${pool.position}: ${rows.length} jogadores · BR ${brazilianCount} (${(
@@ -119,7 +110,38 @@ const requiredBrazilianIcons = [
   "Paulo Nunes",
   "Mário Jardel",
   "Juninho Capixaba",
+  "Gilmar dos Santos Neves",
+  "Rogério Ceni",
+  "Marcos",
+  "Cássio",
+  "Emerson Leão",
+  "Jairzinho",
+  "Rivellino",
+  "Sócrates",
+  "Zito",
+  "Djalma Santos",
+  "Bellini",
 ];
+const requiredRarities = new Map([
+  ["GOL:Rogério Ceni", "legend"],
+  ["GOL:Marcos", "legend"],
+  ["GOL:Gilmar dos Santos Neves", "legend"],
+  ["GOL:Cássio", "epic"],
+  ["GOL:Emerson Leão", "epic"],
+  ["PON:Jairzinho", "legend"],
+  ["MEI:Rivellino", "legend"],
+  ["MEI:Sócrates", "legend"],
+  ["VOL:Zito", "legend"],
+  ["LAT:Djalma Santos", "legend"],
+  ["ZAG:Bellini", "legend"],
+]);
+const peleRules = {
+  maxPlayerAverage: 94,
+  max85: 12,
+  max90: 10,
+  max94: 8,
+  max97: 2,
+};
 const rateAtLeast = (minimum) =>
   values.filter((value) => value >= minimum).length / values.length;
 const countAtLeast = (minimum) =>
@@ -135,6 +157,44 @@ for (const name of requiredBrazilianIcons) {
   if (!uniqueNames.has(name)) {
     failures.push(`ícone brasileiro obrigatório ausente: ${name}`);
   }
+}
+for (const [identity, expectedRarity] of requiredRarities) {
+  const [position, name] = identity.split(":");
+  const row = allRows.find(
+    (candidate) => candidate.position === position && candidate.name === name,
+  );
+  if (!row) {
+    failures.push(`perfil obrigatório ausente: ${identity}`);
+  } else if (row.rarity !== expectedRarity) {
+    failures.push(
+      `${name} (${position}) deve ser ${expectedRarity}; atual: ${row.rarity}`,
+    );
+  }
+}
+
+const pele = allRows.find((row) => row.name === "Pelé" && row.position === "ATA");
+if (!pele) {
+  failures.push("Pelé não está disponível no pool de ATA");
+} else {
+  const average = (row) =>
+    row.values.reduce((total, value) => total + value, 0) / row.values.length;
+  const strongestOther = Math.max(
+    ...allRows.filter((row) => row !== pele).map(average),
+  );
+
+  if (average(pele) <= strongestOther) {
+    failures.push(
+      `Pelé não é o melhor perfil do banco: ${average(pele).toFixed(2)} contra ${strongestOther.toFixed(2)}`,
+    );
+  }
+}
+
+const attackerSource = readFileSync(
+  new URL("../src/game/players.ts", import.meta.url),
+  "utf8",
+);
+if (!/^\s*\["pele".*,\s*0\.15\],?$/m.test(attackerSource)) {
+  failures.push("Pelé não possui o peso individual de sorteio 0,15");
 }
 
 for (const [rarity, rules] of Object.entries(rarityRules)) {
@@ -152,6 +212,7 @@ for (const [rarity, rules] of Object.entries(rarityRules)) {
   }
 
   for (const row of rows) {
+    const playerRules = row.name === "Pelé" ? peleRules : rules;
     const playerAverage =
       row.values.reduce((total, value) => total + value, 0) / row.values.length;
     const counts = {
@@ -161,14 +222,14 @@ for (const [rarity, rules] of Object.entries(rarityRules)) {
       97: row.values.filter((value) => value >= 97).length,
     };
 
-    if (playerAverage > rules.maxPlayerAverage) {
+    if (playerAverage > playerRules.maxPlayerAverage) {
       failures.push(
         `${row.name} (${row.position}) tem média ${playerAverage.toFixed(2)}; ` +
-          `máximo de ${rarity}: ${rules.maxPlayerAverage}`,
+          `máximo individual: ${playerRules.maxPlayerAverage}`,
       );
     }
     for (const threshold of [85, 90, 94, 97]) {
-      const limit = rules[`max${threshold}`];
+      const limit = playerRules[`max${threshold}`];
       if (counts[threshold] > limit) {
         failures.push(
           `${row.name} (${row.position}) tem ${counts[threshold]} notas ${threshold}+; ` +
