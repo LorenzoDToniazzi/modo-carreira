@@ -1,9 +1,16 @@
-import type { AttributeKey, Nationality } from "./types";
+import type { AttributeKey, Nationality, Rarity } from "./types";
 
 export const STARTING_AGE = 16;
 export const STARTING_PERCENT = 0.7;
-export const POTENTIAL_BONUS = 10;
 export const REROLLS_PER_CREATION = 3;
+
+export const RARITY_WEIGHTS: Record<Rarity, number> = {
+  legend: 0.05,
+  epic: 0.1,
+  rare: 0.2,
+  uncommon: 0.3,
+  common: 0.35,
+};
 
 export const ATTRIBUTE_LABELS: Record<AttributeKey, string> = {
   speed: "Velocidade",
