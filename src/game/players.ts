@@ -1,0 +1,96 @@
+import type { AttributeMap, Rarity, SourcePlayer } from "./types";
+
+type RawPlayer = [
+  id: string,
+  name: string,
+  country: string,
+  peak: string,
+  rarity: Rarity,
+  values: number[],
+  note: string,
+];
+
+const rawPlayers: RawPlayer[] = [
+  ["pele", "Pelé", "Brasil", "1958–1970", "legend", [96, 92, 88, 98, 95, 98, 97, 94, 94, 97, 98, 98], "Completo, criativo e decisivo em diferentes zonas."],
+  ["messi", "Lionel Messi", "Argentina", "2009–2019", "legend", [94, 78, 72, 96, 98, 97, 99, 88, 65, 99, 99, 96], "Drible, controle, precisão e criação no nível máximo."],
+  ["cristiano", "Cristiano Ronaldo", "Portugal", "2007–2018", "legend", [96, 98, 94, 99, 88, 99, 96, 99, 99, 93, 94, 99], "Potência, impulsão, volume e posicionamento de elite."],
+  ["ronaldo", "Ronaldo Nazário", "Brasil", "1996–2002", "legend", [99, 93, 95, 98, 87, 98, 96, 96, 86, 98, 97, 98], "Explosão, condução e finalização em velocidade."],
+  ["romario", "Romário", "Brasil", "1989–1994", "legend", [92, 78, 75, 99, 84, 99, 99, 88, 83, 94, 96, 99], "Finalização curta, frieza e leitura incomparável da área."],
+  ["eusebio", "Eusébio", "Portugal", "1962–1968", "legend", [96, 96, 92, 98, 87, 97, 94, 99, 91, 94, 94, 97], "Arranque, potência e agressividade ofensiva."],
+  ["gerd-muller", "Gerd Müller", "Alemanha", "1969–1974", "legend", [82, 90, 86, 99, 76, 99, 96, 92, 93, 78, 86, 99], "Referência histórica de movimentação e conclusão na área."],
+  ["van-basten", "Marco van Basten", "Países Baixos", "1986–1992", "legend", [87, 90, 88, 98, 89, 97, 98, 95, 96, 92, 97, 98], "Técnica refinada, jogo aéreo e repertório de finalização."],
+  ["henry", "Thierry Henry", "França", "2002–2006", "legend", [98, 90, 86, 96, 91, 97, 96, 94, 87, 97, 96, 96], "Velocidade, condução e finalização partindo do espaço."],
+  ["suarez", "Luis Suárez", "Uruguai", "2013–2016", "legend", [89, 91, 87, 98, 91, 98, 97, 94, 85, 94, 96, 99], "Instinto, intensidade, improviso e finalização completa."],
+  ["lewandowski", "Robert Lewandowski", "Polônia", "2019–2022", "epic", [87, 94, 92, 98, 88, 98, 97, 95, 96, 90, 96, 99], "Centroavante técnico, constante e dominante na área."],
+  ["ibrahimovic", "Zlatan Ibrahimović", "Suécia", "2011–2016", "epic", [86, 92, 98, 96, 91, 94, 95, 99, 95, 92, 98, 96], "Força, domínio, criatividade e finalizações improváveis."],
+  ["benzema", "Karim Benzema", "França", "2020–2022", "epic", [88, 91, 89, 96, 95, 97, 97, 93, 91, 94, 98, 98], "Associação, controle e inteligência para decidir e criar."],
+  ["eto", "Samuel Eto'o", "Camarões", "2005–2011", "epic", [97, 91, 86, 97, 85, 98, 95, 96, 86, 91, 93, 98], "Ataque à última linha e conclusão em alta velocidade."],
+  ["drogba", "Didier Drogba", "Costa do Marfim", "2006–2010", "epic", [88, 98, 99, 96, 86, 96, 91, 99, 99, 85, 94, 97], "Referência física, aérea e de potência em grandes jogos."],
+  ["shevchenko", "Andriy Shevchenko", "Ucrânia", "1999–2004", "epic", [95, 92, 88, 97, 85, 97, 96, 95, 92, 91, 94, 97], "Arranque, diagonais e finalização limpa."],
+  ["batistuta", "Gabriel Batistuta", "Argentina", "1994–2000", "epic", [87, 95, 96, 98, 82, 96, 95, 99, 96, 84, 92, 98], "Potência extrema, presença de área e jogo aéreo."],
+  ["aguero", "Sergio Agüero", "Argentina", "2011–2018", "epic", [93, 84, 78, 97, 88, 98, 98, 92, 77, 95, 97, 99], "Arranque curto, controle e conclusão em espaço mínimo."],
+  ["haaland", "Erling Haaland", "Noruega", "2022–2026", "epic", [97, 96, 98, 98, 82, 98, 93, 99, 97, 86, 92, 99], "Ataque ao espaço, potência e produção de área."],
+  ["mbappe", "Kylian Mbappé", "França", "2018–2026", "epic", [99, 91, 86, 97, 88, 98, 96, 97, 83, 98, 96, 98], "Velocidade máxima, um contra um e conclusão em transição."],
+  ["kane", "Harry Kane", "Inglaterra", "2017–2026", "epic", [82, 91, 90, 98, 95, 97, 98, 96, 93, 88, 97, 99], "Finalização, passe e leitura como nove construtor."],
+  ["adriano", "Adriano", "Brasil", "2004–2006", "rare", [92, 91, 99, 94, 82, 91, 88, 99, 91, 88, 92, 92], "Força física e potência de chute fora do comum."],
+  ["cavani", "Edinson Cavani", "Uruguai", "2012–2018", "rare", [88, 97, 90, 94, 82, 99, 90, 93, 98, 83, 90, 99], "Movimentação incessante e excelência aérea."],
+  ["falcao", "Radamel Falcao", "Colômbia", "2011–2013", "rare", [85, 91, 87, 97, 82, 98, 97, 91, 99, 87, 94, 99], "Especialista de área, antecipação e cabeceio."],
+  ["klose", "Miroslav Klose", "Alemanha", "2005–2012", "rare", [83, 96, 89, 94, 79, 98, 89, 88, 99, 78, 87, 99], "Movimentação e jogo aéreo com enorme constância."],
+  ["torres", "Fernando Torres", "Espanha", "2007–2010", "rare", [96, 90, 86, 94, 81, 97, 93, 93, 91, 90, 92, 97], "Ataque à profundidade e definição em velocidade."],
+  ["villa", "David Villa", "Espanha", "2008–2011", "rare", [90, 86, 79, 96, 87, 97, 98, 92, 79, 91, 95, 98], "Finalização precisa e repertório com os dois pés."],
+  ["forlan", "Diego Forlán", "Uruguai", "2008–2011", "rare", [87, 91, 86, 96, 89, 94, 94, 99, 83, 88, 94, 95], "Chute de longa distância e potência bilateral."],
+  ["van-nistelrooy", "Ruud van Nistelrooy", "Países Baixos", "2001–2007", "rare", [82, 90, 87, 97, 79, 99, 97, 91, 94, 82, 94, 99], "Especialista em encontrar e converter espaço na área."],
+  ["inzaghi", "Filippo Inzaghi", "Itália", "1998–2007", "rare", [78, 84, 72, 94, 76, 99, 93, 80, 87, 74, 83, 99], "Posicionamento e antecipação compensando limitações técnicas."],
+  ["giroud", "Olivier Giroud", "França", "2015–2022", "uncommon", [72, 90, 98, 91, 86, 95, 90, 93, 98, 78, 93, 97], "Jogo de apoio, força e domínio pelo alto."],
+  ["vardy", "Jamie Vardy", "Inglaterra", "2015–2020", "uncommon", [96, 93, 80, 93, 78, 98, 91, 90, 78, 84, 88, 97], "Profundidade, pressão e finalização rápida."],
+  ["chicharito", "Javier Hernández", "México", "2010–2016", "uncommon", [88, 91, 73, 91, 75, 98, 91, 82, 87, 80, 86, 98], "Ataque ao rebote e movimentação curta na área."],
+  ["mario-gomez", "Mario Gómez", "Alemanha", "2009–2013", "uncommon", [78, 91, 94, 93, 76, 97, 91, 91, 97, 76, 88, 98], "Presença física e conclusão de primeira."],
+  ["crouch", "Peter Crouch", "Inglaterra", "2005–2010", "common", [67, 83, 84, 86, 78, 91, 82, 83, 99, 70, 87, 95], "Especialista aéreo com bom controle para sua função."],
+  ["obafemi-martins", "Obafemi Martins", "Nigéria", "2004–2010", "common", [98, 86, 79, 87, 73, 91, 84, 94, 76, 86, 84, 89], "Velocidade e potência para atacar espaço."],
+  ["podolski", "Lukas Podolski", "Alemanha", "2006–2014", "common", [88, 88, 87, 91, 84, 87, 86, 99, 78, 84, 88, 87], "Canhota extremamente potente e direta."],
+  ["llorente", "Fernando Llorente", "Espanha", "2010–2015", "common", [70, 90, 96, 88, 80, 93, 84, 90, 99, 72, 88, 96], "Referência de força e disputa aérea."],
+];
+
+function attributes(values: number[]): AttributeMap {
+  const [
+    speed,
+    physical,
+    strength,
+    shooting,
+    passing,
+    movement,
+    placedFinish,
+    shotPower,
+    aerial,
+    dribbling,
+    ballControl,
+    boxPositioning,
+  ] = values;
+  return {
+    speed,
+    physical,
+    strength,
+    shooting,
+    passing,
+    movement,
+    placedFinish,
+    shotPower,
+    aerial,
+    dribbling,
+    ballControl,
+    boxPositioning,
+  };
+}
+
+export const ATTACKERS: SourcePlayer[] = rawPlayers.map(
+  ([id, name, country, peak, rarity, values, note]) => ({
+    id,
+    name,
+    country,
+    peak,
+    positions: ["ATA"],
+    rarity,
+    attributes: attributes(values),
+    note,
+  }),
+);
