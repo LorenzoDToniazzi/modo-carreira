@@ -1,7 +1,7 @@
 import {
   ACADEMY_CLUBS,
   ATTRIBUTE_WEIGHTS,
-  POTENTIAL_BONUS,
+  RARITY_WEIGHTS,
   STARTING_PERCENT,
 } from "./constants";
 import { ATTACKERS } from "./players";
@@ -12,8 +12,17 @@ import {
   type DraftState,
   type Identity,
   type Nationality,
+  type Rarity,
   type SourcePlayer,
 } from "./types";
+
+const RARITIES: Rarity[] = [
+  "legend",
+  "epic",
+  "rare",
+  "uncommon",
+  "common",
+];
 
 export function randomItem<T>(items: T[]): T {
   return items[Math.floor(Math.random() * items.length)];
@@ -23,9 +32,37 @@ export function randomAcademy(nationality: Nationality): string {
   return randomItem(ACADEMY_CLUBS[nationality]);
 }
 
+function randomRarity(): Rarity {
+  const roll = Math.random();
+  let cumulative = 0;
+
+  for (const rarity of RARITIES) {
+    cumulative += RARITY_WEIGHTS[rarity];
+    if (roll < cumulative) return rarity;
+  }
+
+  return "common";
+}
+
 export function drawPlayer(excludedIds: string[] = []): SourcePlayer {
   const available = ATTACKERS.filter((player) => !excludedIds.includes(player.id));
-  return randomItem(available.length ? available : ATTACKERS);
+  const pool = available.length ? available : ATTACKERS;
+  const rarity = randomRarity();
+  const rarityPool = pool.filter((player) => player.rarity === rarity);
+  return randomItem(rarityPool.length ? rarityPool : pool);
+}
+
+export function calculatePotential(sourceValue: number): number {
+  let bonus: number;
+
+  if (sourceValue <= 69) bonus = 12;
+  else if (sourceValue <= 79) bonus = 10;
+  else if (sourceValue <= 87) bonus = 8;
+  else if (sourceValue <= 92) bonus = 5;
+  else if (sourceValue <= 95) bonus = 3;
+  else bonus = 2;
+
+  return Math.min(99, sourceValue + bonus);
 }
 
 export function acquireAttribute(
@@ -42,7 +79,7 @@ export function acquireAttribute(
     sourcePlayerName: player.name,
     sourceValue,
     currentValue: Math.round(sourceValue * STARTING_PERCENT),
-    potentialValue: Math.min(99, sourceValue + POTENTIAL_BONUS),
+    potentialValue: calculatePotential(sourceValue),
   };
 
   const nextAcquired = { ...state.acquired, [key]: acquired };
