@@ -39,7 +39,7 @@ function App() {
   const [draft, setDraft] = useState<DraftState | null>(null);
 
   useEffect(() => {
-    const saved = localStorage.getItem("modo-carreira-creator-v1");
+    const saved = localStorage.getItem("modo-carreira-creator-v2");
     if (!saved) return;
     try {
       const parsed = JSON.parse(saved) as { stage: Stage; draft: DraftState };
@@ -48,14 +48,14 @@ function App() {
         setStage(parsed.stage);
       }
     } catch {
-      localStorage.removeItem("modo-carreira-creator-v1");
+      localStorage.removeItem("modo-carreira-creator-v2");
     }
   }, []);
 
   useEffect(() => {
     if (!draft) return;
     localStorage.setItem(
-      "modo-carreira-creator-v1",
+      "modo-carreira-creator-v2",
       JSON.stringify({ stage, draft }),
     );
   }, [draft, stage]);
@@ -94,6 +94,7 @@ function App() {
 
   function resetCreation() {
     localStorage.removeItem("modo-carreira-creator-v1");
+    localStorage.removeItem("modo-carreira-creator-v2");
     setDraft(null);
     setIdentityForm(EMPTY_IDENTITY);
     setStage("identity");
@@ -105,7 +106,7 @@ function App() {
         <header className="brand">
           <span className="brand-mark">MC</span>
           <span>Modo Carreira</span>
-          <span className="prototype-label">Criador v0.1</span>
+          <span className="prototype-label">Criador v0.2</span>
         </header>
         <section className="identity-layout">
           <div className="hero-copy">
@@ -118,7 +119,7 @@ function App() {
             <div className="rule-strip">
               <span>12 atributos</span>
               <span>3 novos sorteios</span>
-              <span>1 carreira única</span>
+              <span>100 atacantes</span>
             </div>
           </div>
           <form className="identity-card" onSubmit={startCreation}>
@@ -362,7 +363,8 @@ function App() {
           <p className="eyebrow">Escolha uma herança</p>
           <h2>Qual atributo você quer?</h2>
           <p className="choice-intro">
-            Você começa com 70% da nota. O teto será a nota original +10.
+            Você começa com 70% da nota. O teto varia de +2 a +12:
+            quanto maior a fonte, menor o bônus.
           </p>
           <div className="choice-list">
             {ATTRIBUTES.map((key) => {
