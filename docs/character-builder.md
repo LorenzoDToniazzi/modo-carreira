@@ -19,26 +19,27 @@ O criador deve ser o primeiro contato com o jogo e o principal gerador de varied
 
 ## Progressão
 
-Na versão piloto, o atleta de 16 anos começa com 70% da herança:
+O atleta de 16 anos começa com uma assimilação entre 65% e 70% da herança:
 
 ```text
-valor_atual = arredondar(nota_fonte × 0,70)
+assimilação_inicial = sorteio entre 0,65 e 0,70
+valor_atual = arredondar(nota_fonte × assimilação_inicial)
 ```
 
-O teto cresce por faixas para impedir que uma fonte já excepcional receba o
-mesmo bônus de uma nota comum:
+Cada atributo possui três referências de evolução:
 
-| Nota-fonte | Bônus de teto |
-|---|---:|
-| até 69 | +12 |
-| 70–79 | +10 |
-| 80–87 | +8 |
-| 88–92 | +5 |
-| 93–95 | +3 |
-| 96–97 | +2 |
+```text
+teto_natural = nota_fonte
+teto_base = arredondar(nota_fonte × 1,10)
+teto_absoluto = arredondar(nota_fonte × 1,15), limitado a 99
+```
 
-Somente uma fonte 97 consegue gerar teto 99. O percentual inicial é uma
-constante de balanceamento, não uma propriedade do jogador-fonte.
+O teto natural é a qualidade herdada e deve ser relativamente mais rápida de
+alcançar. A carreira começa com o teto base de +10% acessível. Escolhas de treino,
+minutos, comissão, foco e desempenho podem liberar gradualmente até +15%.
+Ultrapassar a nota-fonte é muito mais lento e cada ponto próximo do teto
+absoluto exige mais desenvolvimento. Um teto 99 não significa que o jogador
+chegará a 99.
 
 ## Raridade
 
@@ -76,11 +77,11 @@ representando a mesma capacidade; os pesos do overall mudam conforme a função.
 |---|---|
 | GOL | reflexo, posicionamento, encaixe, área, reposição, um contra um e saídas |
 | ZAG | jogo aéreo, desarme, interceptação, tempo de bola, marcação e recuperação |
-| LAT | desarme, cruzamento, fôlego, recomposição, apoio e um contra um defensivo |
+| LAT | desarme, cruzamento, bola parada, fôlego, recomposição, apoio e um contra um defensivo |
 | VOL | desarme, interceptação, fôlego, visão, passe longo e saída sob pressão |
 | MEI | visão, passe longo, controle, drible, chute colocado e bola parada |
-| PON | aceleração, drible, cruzamento, agilidade, chute colocado e um contra um |
-| ATA | chute colocado, potência, jogo aéreo, drible, controle e posicionamento |
+| PON | aceleração, drible, cruzamento, bola parada, agilidade, chute colocado e um contra um |
+| ATA | chute colocado, potência, bola parada, jogo aéreo, drible, controle e posicionamento |
 
 ## Avaliação por função
 
@@ -92,6 +93,8 @@ Exemplos:
 - proteção de bola: força, físico e controle;
 - ataque à última linha: velocidade, movimentação e posicionamento;
 - finalização colocada: chute, finalização colocada, controle e pressão contextual;
+- falta direta: bola parada, chute colocado, força do chute e pé dominante;
+- escanteio e falta lateral: bola parada, cruzamento, passe e pé dominante;
 - pivô e associação: controle, força, passe e movimentação.
 
 Um eventual jogador atuando fora de posição deve receber outra avaliação, não perder artificialmente suas características.

@@ -611,8 +611,8 @@ select:focus {
 
 .overall-panel {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  min-width: 310px;
+  grid-template-columns: repeat(4, 1fr);
+  min-width: 520px;
   padding: 20px;
   border-radius: 20px;
   color: white;
@@ -632,7 +632,7 @@ select:focus {
 
 .overall-panel strong {
   font-family: "Archivo Narrow", sans-serif;
-  font-size: 64px;
+  font-size: 52px;
   line-height: 1;
 }
 

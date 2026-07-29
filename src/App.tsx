@@ -244,6 +244,16 @@ function App() {
       draft.acquired,
       "currentValue",
     );
+    const naturalOverall = calculateOverall(
+      draft.identity.position,
+      draft.acquired,
+      "naturalCeiling",
+    );
+    const basePotentialOverall = calculateOverall(
+      draft.identity.position,
+      draft.acquired,
+      "basePotentialValue",
+    );
     const potentialOverall = calculateOverall(
       draft.identity.position,
       draft.acquired,
@@ -277,7 +287,15 @@ function App() {
               <strong>{currentOverall}</strong>
             </div>
             <div>
-              <span>Projeção</span>
+              <span>Herança</span>
+              <strong>{naturalOverall}</strong>
+            </div>
+            <div>
+              <span>Teto base</span>
+              <strong>{basePotentialOverall}</strong>
+            </div>
+            <div>
+              <span>Teto máximo</span>
               <strong>{potentialOverall}</strong>
             </div>
             <p>{determineArchetype(draft.identity.position, draft.acquired)}</p>
@@ -295,7 +313,10 @@ function App() {
                 </div>
                 <div className="value-pair">
                   <strong>{value.currentValue}</strong>
-                  <span>máx. {value.potentialValue}</span>
+                  <span>
+                    herança {value.naturalCeiling} · base{" "}
+                    {value.basePotentialValue} · máx. {value.potentialValue}
+                  </span>
                 </div>
               </article>
             );
@@ -398,8 +419,8 @@ function App() {
           <p className="eyebrow">Escolha uma herança</p>
           <h2>Qual atributo você quer?</h2>
           <p className="choice-intro">
-            Você começa com 70% da nota. O teto varia de +2 a +12:
-            quanto maior a fonte, menor o bônus.
+            Você começa com 65–70% da nota. O teto absoluto fica entre 10–15%
+            acima da fonte, mas ultrapassar a herança depende da carreira.
           </p>
           <div className="choice-list">
             {attributes.map(({ key, label, shortLabel }) => {

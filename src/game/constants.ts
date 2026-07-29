@@ -8,7 +8,10 @@ import type {
 } from "./types";
 
 export const STARTING_AGE = 16;
-export const STARTING_PERCENT = 0.7;
+export const MIN_STARTING_PERCENT = 0.65;
+export const MAX_STARTING_PERCENT = 0.7;
+export const MIN_POTENTIAL_GROWTH_PERCENT = 0.1;
+export const MAX_POTENTIAL_GROWTH_PERCENT = 0.15;
 export const REROLLS_PER_CREATION = 3;
 
 export const RARITY_WEIGHTS: Record<Rarity, number> = {
@@ -32,12 +35,12 @@ export const POSITION_CONFIGS: Record<Position, PositionConfig> = {
     description: "Finalização, presença na área e repertório ofensivo.",
     attributes: [
       attribute("speed", "Velocidade", "VEL", 0.07),
-      attribute("physical", "Físico", "FÍS", 0.05),
+      attribute("setPieces", "Bola parada", "BPR", 0.06),
       attribute("strength", "Força", "FOR", 0.06),
       attribute("shooting", "Chute", "CHU", 0.11),
       attribute("passing", "Passe", "PAS", 0.05),
       attribute("movement", "Movimentação", "MOV", 0.12),
-      attribute("placedFinish", "Finalização colocada", "COL", 0.13),
+      attribute("placedFinish", "Finalização colocada", "COL", 0.12),
       attribute("shotPower", "Força do chute", "POT", 0.08),
       attribute("aerial", "Jogo aéreo", "AÉR", 0.07),
       attribute("dribbling", "Drible", "DRI", 0.07),
@@ -57,16 +60,16 @@ export const POSITION_CONFIGS: Record<Position, PositionConfig> = {
     attributes: [
       attribute("speed", "Velocidade", "VEL", 0.1),
       attribute("physical", "Físico", "FÍS", 0.04),
-      attribute("strength", "Força", "FOR", 0.03),
+      attribute("setPieces", "Bola parada", "BPR", 0.05),
       attribute("shooting", "Chute", "CHU", 0.07),
       attribute("passing", "Passe", "PAS", 0.06),
       attribute("movement", "Movimentação", "MOV", 0.09),
-      attribute("acceleration", "Aceleração", "ACE", 0.1),
+      attribute("acceleration", "Aceleração", "ACE", 0.09),
       attribute("dribbling", "Drible", "DRI", 0.12),
       attribute("crossing", "Cruzamento", "CRU", 0.09),
       attribute("agility", "Agilidade", "AGI", 0.09),
       attribute("placedFinish", "Finalização colocada", "COL", 0.09),
-      attribute("oneOnOne", "Um contra um", "1X1", 0.12),
+      attribute("oneOnOne", "Um contra um", "1X1", 0.11),
     ],
     archetypes: [
       { label: "Ponta driblador", keys: ["dribbling", "agility", "oneOnOne"] },
@@ -128,10 +131,10 @@ export const POSITION_CONFIGS: Record<Position, PositionConfig> = {
     description: "Corredor, apoio, cruzamento e recomposição.",
     attributes: [
       attribute("speed", "Velocidade", "VEL", 0.1),
-      attribute("physical", "Físico", "FÍS", 0.06),
-      attribute("strength", "Força", "FOR", 0.04),
+      attribute("physical", "Físico", "FÍS", 0.05),
+      attribute("setPieces", "Bola parada", "BPR", 0.06),
       attribute("passing", "Passe", "PAS", 0.06),
-      attribute("movement", "Movimentação", "MOV", 0.06),
+      attribute("movement", "Movimentação", "MOV", 0.05),
       attribute("tackling", "Desarme", "DES", 0.09),
       attribute("crossing", "Cruzamento", "CRU", 0.11),
       attribute("stamina", "Fôlego", "FÔL", 0.1),

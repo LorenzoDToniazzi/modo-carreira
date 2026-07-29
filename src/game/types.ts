@@ -91,7 +91,10 @@ export interface AcquiredAttribute {
   sourcePlayerId: string;
   sourcePlayerName: string;
   sourceValue: number;
+  naturalCeiling: number;
+  startingPercent: number;
   currentValue: number;
+  basePotentialValue: number;
   potentialValue: number;
 }
 

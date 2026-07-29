@@ -34,8 +34,8 @@ superestimados.
 |---|---:|---:|---|
 | Lenda | 82–89 | 90 | até 8 notas 90+, 5 notas 94+ e 2 notas 97 |
 | Épico | 78–85 | 89 | até 7 notas 90+, 3 notas 94+ e 1 nota 97 |
-| Raro | 72–79 | 82 | até 4 notas 90+, 3 notas 94+ e 1 nota 97 |
-| Incomum | 65–73 | 78 | até 2 notas 85+ e 1 nota 97 |
+| Raro | 72–79 | 83,5 | até 4 notas 90+, 3 notas 94+ e 1 nota 97 |
+| Incomum | 65–73 | 79,5 | até 2 notas 85+ e 1 nota 97 |
 | Comum | 59–69 | 70 | somente 1 especialidade de elite, que pode chegar a 97 |
 
 Esses limites não obrigam um jogador de determinada raridade a alcançar a
@@ -71,26 +71,40 @@ uma carta relevante também não penaliza ídolos nacionais.
 
 ## Valor inicial e teto
 
-O valor atual continua em 70% da fonte enquanto testamos o ritmo:
+O valor inicial varia entre 65% e 70% da fonte:
 
 ```text
-atual = arredondar(fonte × 0,70)
+atual = arredondar(fonte × sorteio(0,65; 0,70))
 ```
 
-O bônus de potencial deixa de ser +10 fixo e passa a diminuir no topo:
+A nota-fonte vira o teto natural. A carreira pode desenvolver mais 10% com uma
+trajetória normal bem-sucedida e liberar até 15% por meio das melhores escolhas:
 
-| Fonte | Bônus máximo |
-|---|---:|
-| até 69 | +12 |
-| 70–79 | +10 |
-| 80–87 | +8 |
-| 88–92 | +5 |
-| 93–95 | +3 |
-| 96 | +2 |
-| 97 | +2, podendo chegar a 99 |
+```text
+teto_natural = fonte
+teto_base = arredondar(fonte × 1,10)
+teto_absoluto = mínimo(99; arredondar(fonte × 1,15))
+```
 
-Somente uma nota-fonte 97 permite potencial 99. Os pontos 96–99 também exigirão
-treino, estrutura, fase e marcos de carreira excepcionais.
+Uma fonte 89, por exemplo, começa entre 58 e 62, possui teto natural 89, teto
+base 98 e teto absoluto 99. O 99 é um limite técnico, não uma projeção. A
+velocidade de evolução é maior até a nota-fonte; depois dela, o ganho diminui
+progressivamente e depende de treino, minutos, comissão, foco, desempenho e
+decisões de carreira.
+
+## Bola parada
+
+Bola parada possui peso alto para MEI e peso médio para ATA, PON e LAT. Para
+manter exatamente 12 escolhas, ela substitui redundâncias:
+
+- ATA deixa de sortear Físico, mantendo Força;
+- PON deixa de sortear Força, mantendo Físico;
+- LAT deixa de sortear Força, mantendo Físico;
+- MEI já possuía Bola parada.
+
+A nota considera faltas diretas, escanteios, faltas laterais e pênaltis conforme
+o repertório real do atleta. Potência de chute isolada não transforma alguém
+automaticamente em bom cobrador.
 
 ## Composição mínima
 
@@ -166,11 +180,11 @@ Resultado consolidado:
 
 | Raridade | Média após a revisão |
 |---|---:|
-| Lenda | 86,08 |
-| Épico | 83,50 |
-| Raro | 78,85 |
-| Incomum | 72,67 |
-| Comum | 62,76 |
+| Lenda | 86,29 |
+| Épico | 83,68 |
+| Raro | 78,95 |
+| Incomum | 72,54 |
+| Comum | 62,33 |
 
 O comando `npm run audit:ratings` verifica inflação global, médias, limites
 individuais, profundidade mínima de Épicos, Raros e Incomuns em cada posição e
@@ -189,15 +203,19 @@ Foram simuladas 5.000 criações por posição, totalizando 35.000 carreiras. Em
 cada rodada, o teste escolheu o melhor atributo ainda vazio da carta recebida,
 sem utilizar os três rerolls.
 
-| Posição | Potencial p10 | Potencial mediano | Potencial p90 |
-|---|---:|---:|---:|
-| ATA | 84 | 87 | 89 |
-| PON | 84 | 86 | 89 |
-| MEI | 83 | 86 | 88 |
-| VOL | 83 | 86 | 88 |
-| LAT | 83 | 86 | 89 |
-| ZAG | 83 | 86 | 88 |
-| GOL | 84 | 87 | 89 |
+| Posição | Inicial mediano | Herança natural mediana | Teto base mediano | Teto absoluto p10–med–p90 |
+|---|---:|---:|---:|---:|
+| ATA | 49 | 73 | 80 | 80–83–86 |
+| PON | 52 | 77 | 85 | 85–88–91 |
+| MEI | 52 | 77 | 84 | 84–87–91 |
+| VOL | 52 | 76 | 84 | 83–87–91 |
+| LAT | 52 | 78 | 85 | 84–88–92 |
+| ZAG | 52 | 76 | 84 | 84–87–91 |
+| GOL | 52 | 78 | 85 | 84–88–92 |
+
+O teto base representa um desenvolvimento bom e acessível. O teto absoluto
+depende de liberar os cinco pontos percentuais adicionais por decisões e
+desempenho na carreira; ele não é uma previsão do overall final.
 
 Com 12 sorteios, a chance de receber ao menos uma Lenda é aproximadamente
 21,5%. Épico ou Lenda aparece em aproximadamente 58,1% das criações. Em média,

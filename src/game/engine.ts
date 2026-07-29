@@ -1,8 +1,11 @@
 import {
   ACADEMY_CLUBS,
+  MAX_POTENTIAL_GROWTH_PERCENT,
+  MAX_STARTING_PERCENT,
+  MIN_POTENTIAL_GROWTH_PERCENT,
+  MIN_STARTING_PERCENT,
   POSITION_CONFIGS,
   RARITY_WEIGHTS,
-  STARTING_PERCENT,
 } from "./constants";
 import { PLAYER_POOLS } from "./players";
 import type {
@@ -71,17 +74,25 @@ export function drawPlayer(
   return weightedPlayer(rarityPool.length ? rarityPool : pool);
 }
 
-export function calculatePotential(sourceValue: number): number {
-  let bonus: number;
+function randomPercent(minimum: number, maximum: number): number {
+  return minimum + Math.random() * (maximum - minimum);
+}
 
-  if (sourceValue <= 69) bonus = 12;
-  else if (sourceValue <= 79) bonus = 10;
-  else if (sourceValue <= 87) bonus = 8;
-  else if (sourceValue <= 92) bonus = 5;
-  else if (sourceValue <= 95) bonus = 3;
-  else bonus = 2;
+export function calculateStartingValue(
+  sourceValue: number,
+  startingPercent = randomPercent(
+    MIN_STARTING_PERCENT,
+    MAX_STARTING_PERCENT,
+  ),
+): number {
+  return Math.round(sourceValue * startingPercent);
+}
 
-  return Math.min(99, sourceValue + bonus);
+export function calculatePotential(
+  sourceValue: number,
+  growthPercent = MAX_POTENTIAL_GROWTH_PERCENT,
+): number {
+  return Math.min(99, Math.round(sourceValue * (1 + growthPercent)));
 }
 
 export function acquireAttribute(
@@ -96,13 +107,26 @@ export function acquireAttribute(
     throw new Error(`${player.name} não possui o atributo ${key}.`);
   }
 
+  const startingPercent = randomPercent(
+    MIN_STARTING_PERCENT,
+    MAX_STARTING_PERCENT,
+  );
   const acquired: AcquiredAttribute = {
     key,
     sourcePlayerId: player.id,
     sourcePlayerName: player.name,
     sourceValue,
-    currentValue: Math.round(sourceValue * STARTING_PERCENT),
-    potentialValue: calculatePotential(sourceValue),
+    naturalCeiling: sourceValue,
+    startingPercent,
+    currentValue: calculateStartingValue(sourceValue, startingPercent),
+    basePotentialValue: calculatePotential(
+      sourceValue,
+      MIN_POTENTIAL_GROWTH_PERCENT,
+    ),
+    potentialValue: calculatePotential(
+      sourceValue,
+      MAX_POTENTIAL_GROWTH_PERCENT,
+    ),
   };
 
   const nextAcquired = { ...state.acquired, [key]: acquired };
@@ -137,7 +161,11 @@ export function reroll(state: DraftState): DraftState {
 export function calculateOverall(
   position: Position,
   acquired: DraftState["acquired"],
-  field: "currentValue" | "potentialValue",
+  field:
+    | "currentValue"
+    | "naturalCeiling"
+    | "basePotentialValue"
+    | "potentialValue",
 ): number {
   const total = POSITION_CONFIGS[position].attributes.reduce(
     (sum, attribute) =>

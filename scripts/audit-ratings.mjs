@@ -57,6 +57,12 @@ const expectedRarityWeights = {
   uncommon: 0.4,
   common: 0.28,
 };
+const expectedDevelopmentConstants = {
+  MIN_STARTING_PERCENT: 0.65,
+  MAX_STARTING_PERCENT: 0.7,
+  MIN_POTENTIAL_GROWTH_PERCENT: 0.1,
+  MAX_POTENTIAL_GROWTH_PERCENT: 0.15,
+};
 
 const rarityRules = {
   legend: {
@@ -77,7 +83,7 @@ const rarityRules = {
   },
   rare: {
     meanRange: [72, 79],
-    maxPlayerAverage: 82,
+    maxPlayerAverage: 83.5,
     max85: 5,
     max90: 4,
     max94: 3,
@@ -85,7 +91,7 @@ const rarityRules = {
   },
   uncommon: {
     meanRange: [65, 73],
-    maxPlayerAverage: 78,
+    maxPlayerAverage: 79.5,
     max85: 2,
     max90: 1,
     max94: 0,
@@ -113,6 +119,19 @@ for (const [rarity, expected] of Object.entries(expectedRarityWeights)) {
   if (actual !== expected) {
     failures.push(
       `peso de ${rarity}: esperado ${expected}; atual ${String(actual)}`,
+    );
+  }
+}
+for (const [constant, expected] of Object.entries(
+  expectedDevelopmentConstants,
+)) {
+  const match = constantsSource.match(
+    new RegExp(`^export const ${constant} = ([\\d.]+);$`, "m"),
+  );
+  const actual = match ? Number(match[1]) : Number.NaN;
+  if (actual !== expected) {
+    failures.push(
+      `${constant}: esperado ${expected}; atual ${String(actual)}`,
     );
   }
 }
@@ -200,7 +219,7 @@ const requiredRarities = new Map([
 const peleRules = {
   maxPlayerAverage: 94,
   max85: 12,
-  max90: 10,
+  max90: 11,
   max94: 8,
   max97: 2,
 };

@@ -18,6 +18,10 @@ posição possui 12 atributos, pesos, arquétipos e um banco de fontes próprios
 7. Permitir até três novos sorteios durante toda a criação.
 8. Iniciar a carreira com valores atuais reduzidos e limites de evolução derivados dos atributos copiados.
 
+Cada atributo começa entre 65% e 70% da nota-fonte. A própria fonte funciona
+como teto natural; uma boa carreira libera cerca de 10% adicionais, enquanto
+treino e decisões excepcionais podem abrir até 15%, com limite técnico em 99.
+
 ## Princípios do banco de jogadores
 
 - Notas próprias, sem copiar ratings de outros jogos.
@@ -34,6 +38,7 @@ posição possui 12 atributos, pesos, arquétipos e um banco de fontes próprios
 - O banco prioriza nomes reconhecíveis para o público brasileiro sem transformar
   popularidade em nota.
 - Jogadores do futebol brasileiro aparecem em todas as raridades e posições.
+- Bola parada possui peso alto para MEI e peso médio para ATA, PON e LAT.
 - Para atletas cujo auge aconteceu no Brasil, cartas de FIFA/EA FC não servem
   como régua principal. A avaliação prioriza registros do período, números,
   partidas, características reconhecidas e fontes oficiais de clubes e da CBF.
