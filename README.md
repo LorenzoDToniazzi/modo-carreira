@@ -48,17 +48,19 @@ treino e decisões excepcionais podem abrir até 15%, com limite técnico em 99.
 ## Banco v0.6
 
 - 671 perfis naturais
-- 249 variantes improvisadas
-- 920 cartas jogáveis considerando a função
+- 203 variantes improvisadas aprovadas por histórico e atributos
+- 874 cartas jogáveis considerando a função
 - 657 jogadores únicos
-- 178 opções para ATA, 140 para PON e 141 para MEI
-- 134 opções para VOL, 115 para LAT e 122 para ZAG
+- 175 opções para ATA, 126 para PON e 127 para MEI
+- 128 opções para VOL, 107 para LAT e 121 para ZAG
 - 90 goleiros, sem improvisação
-- 508 cartas brasileiras considerando as variantes
+- 472 cartas brasileiras considerando as variantes
 - pools reforçados de Épicos, Raros e Incomuns em todas as posições
-- sorteio por raridade: 3% Lenda, 5% Épico, 25% Raro, 40% Incomum e 27% Comum
+- sorteio por raridade: 4% Lenda, 5% Épico, 25% Raro, 40% Incomum e 26% Comum
 - origem da carta: 85% natural, 10% improvisação principal e 5% alternativa,
   quando houver atleta realmente compatível no tier sorteado
+- improvisações exigem tanto compatibilidade histórica quanto notas mínimas
+  nos atributos relevantes para a posição de destino
 - auditoria automática de inflação, profundidade por tier, representação por
   posição e raridades históricas obrigatórias
 

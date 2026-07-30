@@ -412,7 +412,209 @@ const ATTRIBUTE_OVERRIDES: Partial<
       boxPositioning: 89,
     },
   },
+  PON: {
+    "lat-maicon": {
+      shooting: 76,
+      placedFinish: 74,
+    },
+    "lat-marinho-chagas": {
+      shooting: 76,
+      placedFinish: 74,
+    },
+    "lat-hakimi": {
+      shooting: 75,
+      placedFinish: 73,
+    },
+    "lat-theo": {
+      shooting: 74,
+      placedFinish: 72,
+    },
+    "lat-frimpong": {
+      shooting: 74,
+      placedFinish: 72,
+    },
+    "lat-leo-moura": {
+      shooting: 72,
+      placedFinish: 70,
+    },
+    "lat-cicinho": {
+      shooting: 68,
+      placedFinish: 66,
+    },
+    "lat-pikachu": {
+      speed: 68,
+      acceleration: 66,
+      shooting: 72,
+      placedFinish: 70,
+    },
+  },
+  LAT: {
+    "zag-puyol": {
+      crossing: 70,
+      support: 76,
+    },
+    "zag-militao": {
+      crossing: 70,
+      support: 72,
+    },
+  },
 };
+
+const CRITERIA_FLOORS = {
+  legend: {
+    attackFinish: 82,
+    attackMovement: 80,
+    wingSpeed: 80,
+    wingFinish: 78,
+    midfieldCreative: 86,
+    midfieldMovement: 80,
+    holdingDefense: 75,
+    holdingMidfield: 80,
+    holdingVision: 88,
+    holdingPassing: 85,
+    flankSpeed: 78,
+    flankDefense: 78,
+    flankWork: 78,
+    centralDefense: 82,
+    centralBody: 78,
+  },
+  epic: {
+    attackFinish: 80,
+    attackMovement: 78,
+    wingSpeed: 76,
+    wingFinish: 76,
+    midfieldCreative: 82,
+    midfieldMovement: 78,
+    holdingDefense: 72,
+    holdingMidfield: 76,
+    holdingVision: 85,
+    holdingPassing: 82,
+    flankSpeed: 76,
+    flankDefense: 75,
+    flankWork: 75,
+    centralDefense: 80,
+    centralBody: 76,
+  },
+  rare: {
+    attackFinish: 76,
+    attackMovement: 74,
+    wingSpeed: 72,
+    wingFinish: 70,
+    midfieldCreative: 78,
+    midfieldMovement: 74,
+    holdingDefense: 68,
+    holdingMidfield: 72,
+    holdingVision: 82,
+    holdingPassing: 80,
+    flankSpeed: 72,
+    flankDefense: 72,
+    flankWork: 72,
+    centralDefense: 76,
+    centralBody: 72,
+  },
+  uncommon: {
+    attackFinish: 68,
+    attackMovement: 72,
+    wingSpeed: 68,
+    wingFinish: 64,
+    midfieldCreative: 70,
+    midfieldMovement: 70,
+    holdingDefense: 64,
+    holdingMidfield: 68,
+    holdingVision: 76,
+    holdingPassing: 74,
+    flankSpeed: 68,
+    flankDefense: 68,
+    flankWork: 68,
+    centralDefense: 70,
+    centralBody: 68,
+  },
+  common: {
+    attackFinish: 64,
+    attackMovement: 60,
+    wingSpeed: 65,
+    wingFinish: 58,
+    midfieldCreative: 64,
+    midfieldMovement: 62,
+    holdingDefense: 58,
+    holdingMidfield: 64,
+    holdingVision: 70,
+    holdingPassing: 66,
+    flankSpeed: 65,
+    flankDefense: 64,
+    flankWork: 64,
+    centralDefense: 66,
+    centralBody: 64,
+  },
+} as const;
+
+function attributeValue(player: SourcePlayer, key: AttributeKey): number {
+  return player.attributes[key] ?? 0;
+}
+
+function highest(player: SourcePlayer, keys: AttributeKey[]): number {
+  return Math.max(...keys.map((key) => attributeValue(player, key)));
+}
+
+function lowest(player: SourcePlayer, keys: AttributeKey[]): number {
+  return Math.min(...keys.map((key) => attributeValue(player, key)));
+}
+
+function meetsTargetCriteria(
+  player: SourcePlayer,
+  targetPosition: Position,
+): boolean {
+  const floor = CRITERIA_FLOORS[player.rarity];
+
+  switch (targetPosition) {
+    case "ATA":
+      return (
+        highest(player, ["shooting", "placedFinish"]) >= floor.attackFinish &&
+        highest(player, ["movement", "boxPositioning"]) >=
+          floor.attackMovement
+      );
+    case "PON":
+      return (
+        highest(player, ["speed", "acceleration"]) >= floor.wingSpeed &&
+        highest(player, ["shooting", "placedFinish"]) >= floor.wingFinish
+      );
+    case "MEI":
+      return (
+        highest(player, ["passing", "vision"]) >= floor.midfieldCreative &&
+        highest(player, ["movement", "ballControl"]) >= floor.midfieldMovement
+      );
+    case "VOL": {
+      const defensivePath =
+        highest(player, ["tackling", "interceptions"]) >=
+          floor.holdingDefense &&
+        highest(player, ["passing", "vision", "pressResistance"]) >=
+          floor.holdingMidfield;
+      const creativePath =
+        attributeValue(player, "vision") >= floor.holdingVision &&
+        attributeValue(player, "passing") >= floor.holdingPassing;
+      return defensivePath || creativePath;
+    }
+    case "LAT":
+      return (
+        attributeValue(player, "speed") >= floor.flankSpeed &&
+        highest(player, [
+          "recovery",
+          "defensiveOneOnOne",
+          "tackling",
+        ]) >= floor.flankDefense &&
+        highest(player, ["crossing", "support"]) >= floor.flankWork
+      );
+    case "ZAG":
+      return (
+        lowest(player, ["tackling", "interceptions"]) >=
+          floor.centralDefense &&
+        highest(player, ["physical", "strength", "marking"]) >=
+          floor.centralBody
+      );
+    case "GOL":
+      return false;
+  }
+}
 
 function average(
   player: SourcePlayer,
@@ -562,7 +764,14 @@ function createRolePool(
     }
     if (occupiedNames.has(player.name)) return [];
     occupiedNames.add(player.name);
-    return [adaptPlayer(player, targetPosition, group.sourcePosition, role)];
+    const adapted = adaptPlayer(
+      player,
+      targetPosition,
+      group.sourcePosition,
+      role,
+    );
+    if (!meetsTargetCriteria(adapted, targetPosition)) return [];
+    return [adapted];
   });
 }
 

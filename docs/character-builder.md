@@ -59,11 +59,11 @@ Probabilidades independentes por sorteio:
 
 | Raridade | Chance |
 |---|---:|
-| Lenda | 3% |
+| Lenda | 4% |
 | Épico | 5% |
 | Raro | 25% |
 | Incomum | 40% |
-| Comum | 27% |
+| Comum | 26% |
 
 Não existe proteção contra azar, lenda garantida ou baralho equilibrado. O
 único bloqueio é não repetir na mesma criação um jogador já utilizado.
@@ -91,6 +91,21 @@ válidos; ninguém é improvisado somente para fechar uma porcentagem.
 Cada elegibilidade é individual. A variante recebe os 12 atributos exigidos
 pela nova função e mostra a posição de origem na carta. Neymar, Ronaldinho e
 Jairzinho podem aparecer em ATA; Garrincha permanece exclusivamente em PON.
+
+A lista individual é apenas a primeira trava. A variante também precisa passar
+por requisitos relativos à sua raridade:
+
+- ATA exige finalização e movimentação de atacante;
+- PON exige velocidade e finalização;
+- MEI exige passe/visão e movimentação/controle;
+- VOL exige capacidade defensiva acompanhada de passe, visão ou resistência à
+  pressão;
+- LAT exige velocidade, capacidade de recomposição e participação pelo lado;
+- ZAG exige desarme, interceptação e imposição defensiva.
+
+Isso impede que um lateral vire ponta apenas por ocupar o mesmo corredor. Entre
+os laterais ofensivos elegíveis para PON ficam Roberto Carlos, Marcelo, Dani
+Alves, Maicon, Hakimi, Theo Hernández, Frimpong, Alex Telles e Yago Pikachu.
 
 ## Atributos por posição
 
@@ -171,9 +186,9 @@ decisão de design comparativa e deve ser revisada por posição.
 ## Limites da v0.6
 
 - As sete posições estão liberadas.
-- O banco contém 671 perfis naturais, 249 variantes funcionais e 657 atletas
+- O banco contém 671 perfis naturais, 203 variantes funcionais e 657 atletas
   únicos.
-- As opções jogáveis variam de 90 em GOL a 178 em ATA.
+- As opções jogáveis variam de 90 em GOL a 175 em ATA.
 - Épicos e Lendas aparecem menos, mas a progressão de potencial continua
   permitindo que uma criação sem cartas históricas alcance nível de craque.
 - Brasil, Argentina e Portugal possuem clubes formadores provisórios.

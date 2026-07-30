@@ -123,11 +123,11 @@ camada revisada mantém variedade mínima por posição:
 
 Probabilidade por sorteio:
 
-- 3% Lendas
+- 4% Lendas
 - 5% Épicos
 - 25% Raros
 - 40% Incomuns
-- 27% Comuns
+- 26% Comuns
 
 As chances são independentes e não existe proteção contra azar. O sistema
 primeiro sorteia a raridade e depois um jogador daquele grupo. Por isso, ter
@@ -160,12 +160,12 @@ Pesos individuais são exceções explícitas, como Pelé.
 
 | Posição | Naturais | Jogáveis | Brasileiros jogáveis |
 |---|---:|---:|---:|
-| ATA | 131 | 178 | 77 |
-| PON | 90 | 140 | 82 |
-| MEI | 90 | 141 | 76 |
-| VOL | 90 | 134 | 81 |
-| LAT | 90 | 115 | 70 |
-| ZAG | 90 | 122 | 71 |
+| ATA | 131 | 175 | 75 |
+| PON | 90 | 126 | 73 |
+| MEI | 90 | 127 | 64 |
+| VOL | 90 | 128 | 76 |
+| LAT | 90 | 107 | 63 |
+| ZAG | 90 | 121 | 70 |
 | GOL | 90 | 90 | 51 |
 
 Banco natural:
@@ -186,10 +186,10 @@ Banco natural:
 | Incomum | 72,54 |
 | Comum | 62,33 |
 
-As 249 variantes improvisadas adicionam 2.988 notas funcionais. Delas, 6,06%
-estão em 90 ou mais, 1,61% em 94 ou mais e cinco recebem 97. As médias das
-variantes continuam separadas por raridade: 84,15 para Lenda, 81,75 para Épico,
-77,50 para Raro, 71,23 para Incomum e 60,88 para Comum.
+As 203 variantes improvisadas adicionam 2.436 notas funcionais. Delas, 7,06%
+estão em 90 ou mais, 1,89% em 94 ou mais e cinco recebem 97. As médias das
+variantes continuam separadas por raridade: 84,34 para Lenda, 81,81 para Épico,
+78,05 para Raro, 72,97 para Incomum e 61,81 para Comum.
 
 O comando `npm run audit:ratings` verifica inflação global, médias, limites
 individuais, profundidade mínima de Épicos, Raros e Incomuns em cada posição e
@@ -210,42 +210,42 @@ sem utilizar os três rerolls.
 
 | Posição | Inicial mediano | Herança natural mediana | Teto base mediano | Teto absoluto p10–med–p90 |
 |---|---:|---:|---:|---:|
-| ATA | 50 | 74 | 82 | 81–85–90 |
-| PON | 52 | 77 | 85 | 85–88–92 |
+| ATA | 50 | 75 | 82 | 81–85–90 |
+| PON | 53 | 78 | 86 | 86–89–92 |
 | MEI | 52 | 77 | 85 | 84–88–91 |
 | VOL | 52 | 77 | 85 | 84–88–92 |
-| LAT | 53 | 78 | 86 | 85–89–92 |
-| ZAG | 52 | 77 | 84 | 84–88–91 |
-| GOL | 53 | 78 | 86 | 85–89–92 |
+| LAT | 53 | 78 | 86 | 85–89–93 |
+| ZAG | 52 | 77 | 85 | 84–88–91 |
+| GOL | 53 | 78 | 86 | 85–89–93 |
 
 O teto base representa um desenvolvimento bom e acessível. O teto absoluto
 depende de liberar os cinco pontos percentuais adicionais por decisões e
 desempenho na carreira; ele não é uma previsão do overall final.
 
 Com 12 sorteios, a chance de receber ao menos uma Lenda é aproximadamente
-30,6%. Épico ou Lenda aparece em aproximadamente 63,2% das criações. Em média,
-cada ficha recebe 3 cartas Raras, 4,8 Incomuns e 3,2 Comuns.
+38,73%. Épico ou Lenda aparece em aproximadamente 67,75% das criações. Em
+média, cada ficha recebe 3 cartas Raras, 4,8 Incomuns e 3,1 Comuns.
 
-Na simulação, a frequência observada de ao menos uma Lenda ficou entre 29,38%
-e 31,24% conforme a posição.
+Na simulação, a frequência observada de ao menos uma Lenda ficou entre 37,98%
+e 39,16% conforme a posição.
 
 | Posição | Natural | Improvisação principal | Alternativa | Save com alguma improvisação |
 |---|---:|---:|---:|---:|
-| ATA | 84,92% | 10,07% | 5,01% | 86,10% |
-| PON | 85,09% | 9,87% | 5,05% | 85,62% |
-| MEI | 84,89% | 10,07% | 5,03% | 85,70% |
-| VOL | 84,87% | 9,99% | 5,14% | 85,44% |
-| LAT | 85,34% | 9,84% | 4,82% | 85,72% |
-| ZAG | 86,53% | 9,88% | 3,60% | 82,52% |
+| ATA | 85,40% | 9,57% | 5,04% | 84,92% |
+| PON | 85,42% | 9,65% | 4,93% | 86,04% |
+| MEI | 87,87% | 7,33% | 4,80% | 79,76% |
+| VOL | 86,44% | 9,94% | 3,62% | 81,56% |
+| LAT | 87,06% | 9,37% | 3,57% | 81,92% |
+| ZAG | 86,34% | 9,90% | 3,76% | 83,68% |
 | GOL | 100% | 0% | 0% | 0% |
 
-ZAG não força os 5% alternativos porque o banco ainda não possui laterais
-compatíveis em todos os tiers. Num lote separado com três rerolls estratégicos,
-5 de 10 atacantes receberam Lenda. Nas 40 carreiras das sete posições, 16
-tiveram ao menos uma Lenda, somando 20 aparições; 64 das 480 escolhas vieram
-de variantes improvisadas.
+Os percentuais de improvisação diminuem quando um tier não possui candidatos
+que passem simultaneamente pela análise histórica e pelos atributos mínimos.
+Num lote separado com três rerolls estratégicos, 4 de 10 atacantes receberam
+Lenda. Nas 40 carreiras das sete posições, 16 tiveram ao menos uma Lenda,
+somando 23 aparições; 48 das 480 escolhas vieram de variantes improvisadas.
 
 Para medir repetição, também foram feitos 1.000 grupos de quatro saves por
 posição. Entre as 48 cartas vistas nesses quatro saves, apareceram em média de
-36,5 a 42,3 jogadores diferentes. As variantes reduziram a repetição nas seis
+36,6 a 42,1 jogadores diferentes. As variantes reduziram a repetição nas seis
 posições de linha sem alterar GOL.
