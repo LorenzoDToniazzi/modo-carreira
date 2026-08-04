@@ -1,4 +1,10 @@
-# Criador de atleta — especificação v0.4
+# Criador de atleta — especificação v0.6
+
+> **Documento histórico.** A estrutura de atributos, raridades e improvisações
+> desta versão foi substituída pela especificação v0.7 do
+> [README](../README.md) e pela
+> [metodologia de notas v0.7](ratings-methodology-v0.7.md). Não use as regras
+> abaixo para alterar o banco atual.
 
 ## Objetivo
 
@@ -19,26 +25,27 @@ O criador deve ser o primeiro contato com o jogo e o principal gerador de varied
 
 ## Progressão
 
-Na versão piloto, o atleta de 16 anos começa com 70% da herança:
+O atleta de 16 anos começa com uma assimilação entre 65% e 70% da herança:
 
 ```text
-valor_atual = arredondar(nota_fonte × 0,70)
+assimilação_inicial = sorteio entre 0,65 e 0,70
+valor_atual = arredondar(nota_fonte × assimilação_inicial)
 ```
 
-O teto cresce por faixas para impedir que uma fonte já excepcional receba o
-mesmo bônus de uma nota comum:
+Cada atributo possui três referências de evolução:
 
-| Nota-fonte | Bônus de teto |
-|---|---:|
-| até 69 | +12 |
-| 70–79 | +10 |
-| 80–87 | +8 |
-| 88–92 | +5 |
-| 93–95 | +3 |
-| 96–97 | +2 |
+```text
+teto_natural = nota_fonte
+teto_base = arredondar(nota_fonte × 1,10)
+teto_absoluto = arredondar(nota_fonte × 1,15), limitado a 99
+```
 
-Somente uma fonte 97 consegue gerar teto 99. O percentual inicial é uma
-constante de balanceamento, não uma propriedade do jogador-fonte.
+O teto natural é a qualidade herdada e deve ser relativamente mais rápida de
+alcançar. A carreira começa com o teto base de +10% acessível. Escolhas de treino,
+minutos, comissão, foco e desempenho podem liberar gradualmente até +15%.
+Ultrapassar a nota-fonte é muito mais lento e cada ponto próximo do teto
+absoluto exige mais desenvolvimento. Um teto 99 não significa que o jogador
+chegará a 99.
 
 ## Raridade
 
@@ -58,14 +65,53 @@ Probabilidades independentes por sorteio:
 
 | Raridade | Chance |
 |---|---:|
-| Lenda | 5% |
-| Épico | 10% |
-| Raro | 20% |
-| Incomum | 30% |
-| Comum | 35% |
+| Lenda | 4% |
+| Épico | 5% |
+| Raro | 25% |
+| Incomum | 40% |
+| Comum | 26% |
 
 Não existe proteção contra azar, lenda garantida ou baralho equilibrado. O
 único bloqueio é não repetir na mesma criação um jogador já utilizado.
+
+## Blocos e improvisações
+
+As sete posições continuam sendo escolhidas normalmente. Os blocos servem para
+definir fontes vizinhas que podem aparecer com frequência reduzida:
+
+| Posição criada | Fonte natural | Improvisação principal | Alternativa |
+|---|---|---|---|
+| ATA | centroavantes | pontas | meias-atacantes |
+| PON | pontas | laterais/alas | atacantes móveis |
+| MEI | meias-atacantes | volantes construtores | pontas criadores |
+| VOL | volantes | meias centrais | zagueiros técnicos |
+| LAT | laterais | pontas de recomposição | zagueiros de lado |
+| ZAG | zagueiros | volantes defensivos | laterais defensivos |
+| GOL | goleiros | — | — |
+
+O sorteio mantém a raridade global e, dentro daquele tier, tenta usar 85% de
+fontes naturais, 10% da improvisação principal e 5% da alternativa. Quando não
+existe jogador realmente compatível naquele tier, o peso volta para os grupos
+válidos; ninguém é improvisado somente para fechar uma porcentagem.
+
+Cada elegibilidade é individual. A variante recebe os 12 atributos exigidos
+pela nova função e mostra a posição de origem na carta. Neymar, Ronaldinho e
+Jairzinho podem aparecer em ATA; Garrincha permanece exclusivamente em PON.
+
+A lista individual é apenas a primeira trava. A variante também precisa passar
+por requisitos relativos à sua raridade:
+
+- ATA exige finalização e movimentação de atacante;
+- PON exige velocidade e finalização;
+- MEI exige passe/visão e movimentação/controle;
+- VOL exige capacidade defensiva acompanhada de passe, visão ou resistência à
+  pressão;
+- LAT exige velocidade, capacidade de recomposição e participação pelo lado;
+- ZAG exige desarme, interceptação e imposição defensiva.
+
+Isso impede que um lateral vire ponta apenas por ocupar o mesmo corredor. Entre
+os laterais ofensivos elegíveis para PON ficam Roberto Carlos, Marcelo, Dani
+Alves, Maicon, Hakimi, Theo Hernández, Frimpong, Alex Telles e Yago Pikachu.
 
 ## Atributos por posição
 
@@ -76,11 +122,11 @@ representando a mesma capacidade; os pesos do overall mudam conforme a função.
 |---|---|
 | GOL | reflexo, posicionamento, encaixe, área, reposição, um contra um e saídas |
 | ZAG | jogo aéreo, desarme, interceptação, tempo de bola, marcação e recuperação |
-| LAT | desarme, cruzamento, fôlego, recomposição, apoio e um contra um defensivo |
+| LAT | desarme, cruzamento, bola parada, fôlego, recomposição, apoio e um contra um defensivo |
 | VOL | desarme, interceptação, fôlego, visão, passe longo e saída sob pressão |
 | MEI | visão, passe longo, controle, drible, chute colocado e bola parada |
-| PON | aceleração, drible, cruzamento, agilidade, chute colocado e um contra um |
-| ATA | chute colocado, potência, jogo aéreo, drible, controle e posicionamento |
+| PON | aceleração, drible, cruzamento, bola parada, agilidade, chute colocado e um contra um |
+| ATA | chute colocado, potência, bola parada, jogo aéreo, drible, controle e posicionamento |
 
 ## Avaliação por função
 
@@ -92,6 +138,8 @@ Exemplos:
 - proteção de bola: força, físico e controle;
 - ataque à última linha: velocidade, movimentação e posicionamento;
 - finalização colocada: chute, finalização colocada, controle e pressão contextual;
+- falta direta: bola parada, chute colocado, força do chute e pé dominante;
+- escanteio e falta lateral: bola parada, cruzamento, passe e pé dominante;
 - pivô e associação: controle, força, passe e movimentação.
 
 Um eventual jogador atuando fora de posição deve receber outra avaliação, não perder artificialmente suas características.
@@ -141,11 +189,14 @@ como segunda opinião de scouting e ajuda a encontrar diferenças internas como
 aceleração, força de chute, cabeceio e drible. A nota final continua sendo uma
 decisão de design comparativa e deve ser revisada por posição.
 
-## Limites da v0.4
+## Limites da v0.6
 
 - As sete posições estão liberadas.
-- O banco contém 506 perfis de posição e 498 atletas únicos.
-- ATA possui 117 fontes; as demais posições possuem entre 60 e 70.
+- O banco contém 671 perfis naturais, 203 variantes funcionais e 657 atletas
+  únicos.
+- As opções jogáveis variam de 90 em GOL a 175 em ATA.
+- Épicos e Lendas aparecem menos, mas a progressão de potencial continua
+  permitindo que uma criação sem cartas históricas alcance nível de craque.
 - Brasil, Argentina e Portugal possuem clubes formadores provisórios.
 - A carreira ainda não começa depois da criação.
 - Fotos e escudos não são utilizados nesta fase.

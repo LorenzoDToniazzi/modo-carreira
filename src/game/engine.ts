@@ -1,10 +1,15 @@
 import {
   ACADEMY_CLUBS,
+  MAX_POTENTIAL_GROWTH_POINTS,
+  MAX_STARTING_PERCENT,
+  MIN_POTENTIAL_GROWTH_POINTS,
+  MIN_STARTING_PERCENT,
+  POTENTIAL_DISTANCE_FACTOR,
   POSITION_CONFIGS,
   RARITY_WEIGHTS,
-  STARTING_PERCENT,
 } from "./constants";
-import { PLAYER_POOLS } from "./players";
+import { SOURCE_ROLE_WEIGHTS } from "./improvised";
+import { PLAYER_DRAW_GROUPS } from "./players";
 import type {
   AcquiredAttribute,
   AttributeKey,
@@ -14,9 +19,11 @@ import type {
   Position,
   Rarity,
   SourcePlayer,
+  SourceRole,
 } from "./types";
 
 const RARITIES: Rarity[] = [
+  "king",
   "legend",
   "epic",
   "rare",
@@ -43,6 +50,26 @@ function weightedPlayer(items: SourcePlayer[]): SourcePlayer {
   return items[items.length - 1];
 }
 
+function weightedRole(
+  roles: {
+    role: SourceRole;
+    players: SourcePlayer[];
+  }[],
+): SourceRole {
+  const totalWeight = roles.reduce(
+    (total, { role }) => total + SOURCE_ROLE_WEIGHTS[role],
+    0,
+  );
+  let roll = Math.random() * totalWeight;
+
+  for (const { role } of roles) {
+    roll -= SOURCE_ROLE_WEIGHTS[role];
+    if (roll < 0) return role;
+  }
+
+  return roles[roles.length - 1].role;
+}
+
 export function randomAcademy(nationality: Nationality): string {
   return randomItem(ACADEMY_CLUBS[nationality]);
 }
@@ -63,25 +90,60 @@ export function drawPlayer(
   position: Position,
   excludedIds: string[] = [],
 ): SourcePlayer {
-  const players = PLAYER_POOLS[position];
-  const available = players.filter((player) => !excludedIds.includes(player.id));
-  const pool = available.length ? available : players;
   const rarity = randomRarity();
-  const rarityPool = pool.filter((player) => player.rarity === rarity);
-  return weightedPlayer(rarityPool.length ? rarityPool : pool);
+  const groups = PLAYER_DRAW_GROUPS[position];
+  const roles: SourceRole[] = ["natural", "primary", "alternative"];
+  const eligibleRoles = roles.flatMap((role) => {
+    const available = groups[role].filter(
+      (player) =>
+        player.rarity === rarity && !excludedIds.includes(player.id),
+    );
+    return available.length ? [{ role, players: available }] : [];
+  });
+
+  if (!eligibleRoles.length) {
+    const fallback = roles.flatMap((role) =>
+      groups[role].filter((player) => !excludedIds.includes(player.id)),
+    );
+    return weightedPlayer(fallback);
+  }
+
+  const role = weightedRole(eligibleRoles);
+  const rolePool = eligibleRoles.find((group) => group.role === role)!.players;
+  return weightedPlayer(rolePool);
+}
+
+function randomPercent(minimum: number, maximum: number): number {
+  return minimum + Math.random() * (maximum - minimum);
+}
+
+export function calculateStartingValue(
+  sourceValue: number,
+  startingPercent = randomPercent(
+    MIN_STARTING_PERCENT,
+    MAX_STARTING_PERCENT,
+  ),
+): number {
+  return Math.round(sourceValue * startingPercent);
+}
+
+export function calculatePotentialGrowth(sourceValue: number): number {
+  const distanceGrowth = Math.round(
+    (100 - sourceValue) * POTENTIAL_DISTANCE_FACTOR,
+  );
+  return Math.min(
+    MAX_POTENTIAL_GROWTH_POINTS,
+    Math.max(MIN_POTENTIAL_GROWTH_POINTS, distanceGrowth),
+  );
+}
+
+export function calculateBasePotential(sourceValue: number): number {
+  const growth = Math.ceil(calculatePotentialGrowth(sourceValue) / 2);
+  return Math.min(99, sourceValue + growth);
 }
 
 export function calculatePotential(sourceValue: number): number {
-  let bonus: number;
-
-  if (sourceValue <= 69) bonus = 12;
-  else if (sourceValue <= 79) bonus = 10;
-  else if (sourceValue <= 87) bonus = 8;
-  else if (sourceValue <= 92) bonus = 5;
-  else if (sourceValue <= 95) bonus = 3;
-  else bonus = 2;
-
-  return Math.min(99, sourceValue + bonus);
+  return Math.min(99, sourceValue + calculatePotentialGrowth(sourceValue));
 }
 
 export function acquireAttribute(
@@ -96,12 +158,21 @@ export function acquireAttribute(
     throw new Error(`${player.name} não possui o atributo ${key}.`);
   }
 
+  const startingPercent = randomPercent(
+    MIN_STARTING_PERCENT,
+    MAX_STARTING_PERCENT,
+  );
   const acquired: AcquiredAttribute = {
     key,
     sourcePlayerId: player.id,
     sourcePlayerName: player.name,
+    sourcePosition: player.sourcePosition,
+    sourceRole: player.sourceRole,
     sourceValue,
-    currentValue: Math.round(sourceValue * STARTING_PERCENT),
+    naturalCeiling: sourceValue,
+    startingPercent,
+    currentValue: calculateStartingValue(sourceValue, startingPercent),
+    basePotentialValue: calculateBasePotential(sourceValue),
     potentialValue: calculatePotential(sourceValue),
   };
 
@@ -137,7 +208,11 @@ export function reroll(state: DraftState): DraftState {
 export function calculateOverall(
   position: Position,
   acquired: DraftState["acquired"],
-  field: "currentValue" | "potentialValue",
+  field:
+    | "currentValue"
+    | "naturalCeiling"
+    | "basePotentialValue"
+    | "potentialValue",
 ): number {
   const total = POSITION_CONFIGS[position].attributes.reduce(
     (sum, attribute) =>

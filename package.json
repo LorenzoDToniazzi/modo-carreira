@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "audit:ratings": "node scripts/audit-ratings.mjs",
+    "simulate:saves": "node scripts/simulate-saves.mjs",
     "check": "npm run audit:ratings && npm run build",
     "preview": "vite preview",
     "lint": "eslint ."

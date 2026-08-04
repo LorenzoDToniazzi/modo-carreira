@@ -1,48 +1,47 @@
 export const POSITIONS = ["GOL", "ZAG", "LAT", "VOL", "MEI", "PON", "ATA"] as const;
 
 export type Position = (typeof POSITIONS)[number];
-export type Rarity = "legend" | "epic" | "rare" | "uncommon" | "common";
+export type Rarity =
+  | "king"
+  | "legend"
+  | "epic"
+  | "rare"
+  | "uncommon"
+  | "common";
+export type SourceRole = "natural" | "primary" | "alternative";
 export type Nationality = "BR" | "AR" | "PT";
 
 export type AttributeKey =
   | "speed"
-  | "physical"
-  | "strength"
   | "shooting"
   | "passing"
-  | "movement"
-  | "placedFinish"
-  | "shotPower"
-  | "aerial"
   | "dribbling"
-  | "ballControl"
+  | "defending"
+  | "physical"
+  | "offensiveAerial"
   | "boxPositioning"
-  | "acceleration"
+  | "feint"
+  | "ballControl"
   | "crossing"
-  | "agility"
-  | "oneOnOne"
+  | "stamina"
   | "vision"
-  | "longPassing"
+  | "movement"
   | "setPieces"
   | "tackling"
   | "interceptions"
-  | "stamina"
   | "pressResistance"
   | "recovery"
-  | "support"
-  | "defensiveOneOnOne"
+  | "aerial"
   | "timing"
   | "marking"
-  | "concentration"
   | "reflexes"
-  | "goalkeepingPositioning"
-  | "handling"
-  | "aerialControl"
-  | "distribution"
   | "footwork"
-  | "kickingPower"
+  | "jumping"
+  | "aerialControl"
   | "penaltySaving"
-  | "lowExit";
+  | "lowExit"
+  | "goalkeepingPositioning"
+  | "height";
 
 export type AttributeMap = Partial<Record<AttributeKey, number>>;
 
@@ -71,6 +70,8 @@ export interface SourcePlayer {
   country: string;
   peak: string;
   positions: Position[];
+  sourcePosition?: Position;
+  sourceRole?: SourceRole;
   rarity: Rarity;
   attributes: AttributeMap;
   note: string;
@@ -90,8 +91,13 @@ export interface AcquiredAttribute {
   key: AttributeKey;
   sourcePlayerId: string;
   sourcePlayerName: string;
+  sourcePosition?: Position;
+  sourceRole?: SourceRole;
   sourceValue: number;
+  naturalCeiling: number;
+  startingPercent: number;
   currentValue: number;
+  basePotentialValue: number;
   potentialValue: number;
 }
 
