@@ -1,9 +1,10 @@
 import {
   ACADEMY_CLUBS,
-  MAX_POTENTIAL_GROWTH_PERCENT,
+  MAX_POTENTIAL_GROWTH_POINTS,
   MAX_STARTING_PERCENT,
-  MIN_POTENTIAL_GROWTH_PERCENT,
+  MIN_POTENTIAL_GROWTH_POINTS,
   MIN_STARTING_PERCENT,
+  POTENTIAL_DISTANCE_FACTOR,
   POSITION_CONFIGS,
   RARITY_WEIGHTS,
 } from "./constants";
@@ -126,11 +127,23 @@ export function calculateStartingValue(
   return Math.round(sourceValue * startingPercent);
 }
 
-export function calculatePotential(
-  sourceValue: number,
-  growthPercent = MAX_POTENTIAL_GROWTH_PERCENT,
-): number {
-  return Math.min(99, Math.round(sourceValue * (1 + growthPercent)));
+export function calculatePotentialGrowth(sourceValue: number): number {
+  const distanceGrowth = Math.round(
+    (100 - sourceValue) * POTENTIAL_DISTANCE_FACTOR,
+  );
+  return Math.min(
+    MAX_POTENTIAL_GROWTH_POINTS,
+    Math.max(MIN_POTENTIAL_GROWTH_POINTS, distanceGrowth),
+  );
+}
+
+export function calculateBasePotential(sourceValue: number): number {
+  const growth = Math.ceil(calculatePotentialGrowth(sourceValue) / 2);
+  return Math.min(99, sourceValue + growth);
+}
+
+export function calculatePotential(sourceValue: number): number {
+  return Math.min(99, sourceValue + calculatePotentialGrowth(sourceValue));
 }
 
 export function acquireAttribute(
@@ -159,14 +172,8 @@ export function acquireAttribute(
     naturalCeiling: sourceValue,
     startingPercent,
     currentValue: calculateStartingValue(sourceValue, startingPercent),
-    basePotentialValue: calculatePotential(
-      sourceValue,
-      MIN_POTENTIAL_GROWTH_PERCENT,
-    ),
-    potentialValue: calculatePotential(
-      sourceValue,
-      MAX_POTENTIAL_GROWTH_PERCENT,
-    ),
+    basePotentialValue: calculateBasePotential(sourceValue),
+    potentialValue: calculatePotential(sourceValue),
   };
 
   const nextAcquired = { ...state.acquired, [key]: acquired };

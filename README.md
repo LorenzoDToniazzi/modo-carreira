@@ -20,8 +20,11 @@ goleiros possuem oito atributos inteiramente próprios.
 8. Iniciar a carreira com valores atuais reduzidos e limites de evolução derivados dos atributos copiados.
 
 Cada atributo começa entre 65% e 70% da nota-fonte. A própria fonte funciona
-como teto natural; uma boa carreira libera cerca de 10% adicionais, enquanto
-treino e decisões excepcionais podem abrir até 15%, com limite técnico em 99.
+como teto natural. Uma boa carreira pode superá-la parcialmente e um
+desenvolvimento excepcional libera no máximo 2–5 pontos adicionais, conforme a
+distância até 100, sempre respeitando o limite técnico de 99. Assim, somente uma
+herança que já era excepcional pode terminar acima de 90. Essa regra é universal:
+vale igualmente para todas as posições, raridades e variantes improvisadas.
 
 ## Princípios do banco de jogadores
 

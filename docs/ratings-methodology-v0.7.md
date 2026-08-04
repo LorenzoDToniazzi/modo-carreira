@@ -167,7 +167,21 @@ atleta e auge a divergirem em atributos compartilhados.
 
 ## Desenvolvimento do atleta criado
 
-O atributo começa entre 65% e 70% da nota copiada. A faixa de potencial inicial
-vai de 10% a 15% acima da fonte, limitada a 99. A carreira futura decidirá a
-velocidade do treino e a dificuldade de ultrapassar o limite natural; este
-documento não transforma potencial em evolução automática.
+O atributo começa entre 65% e 70% da nota copiada. A nota-fonte representa o
+auge real usado como herança e funciona como teto natural. O personagem criado
+pode superar esse auge por poucos pontos, nunca por um percentual aplicado em
+massa:
+
+```text
+bônus_máximo = limitar(arredondar((100 - fonte) × 0,15); mínimo 2; máximo 5)
+teto_base = mínimo(99; fonte + arredondar_para_cima(bônus_máximo ÷ 2))
+teto_máximo = mínimo(99; fonte + bônus_máximo)
+```
+
+Uma herança 60 possui teto máximo 65; uma herança 80 chega a 83; uma herança
+88 chega a 90; uma herança 90 chega a 92; uma herança 97 pode alcançar 99.
+Portanto, somente uma característica que já era excepcional no auge do
+jogador-fonte pode terminar acima de 90. A carreira futura decidirá a velocidade
+do treino e a dificuldade de ultrapassar o limite natural; potencial não é
+evolução automática. A fórmula é a base universal da herança e não varia por
+posição, raridade, popularidade ou origem natural/improvisada da carta.

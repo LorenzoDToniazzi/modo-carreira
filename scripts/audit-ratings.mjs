@@ -62,8 +62,9 @@ const expectedRarityWeights = {
 const expectedDevelopmentConstants = {
   MIN_STARTING_PERCENT: 0.65,
   MAX_STARTING_PERCENT: 0.7,
-  MIN_POTENTIAL_GROWTH_PERCENT: 0.1,
-  MAX_POTENTIAL_GROWTH_PERCENT: 0.15,
+  MIN_POTENTIAL_GROWTH_POINTS: 2,
+  MAX_POTENTIAL_GROWTH_POINTS: 5,
+  POTENTIAL_DISTANCE_FACTOR: 0.15,
 };
 
 const positionWeights = {
@@ -363,6 +364,46 @@ try {
   const { PLAYER_DRAW_GROUPS } = await server.ssrLoadModule(
     "/src/game/players.ts",
   );
+  const { calculateBasePotential, calculatePotential } =
+    await server.ssrLoadModule("/src/game/engine.ts");
+  const potentialCases = [
+    [60, 63, 65],
+    [70, 73, 75],
+    [80, 82, 83],
+    [88, 89, 90],
+    [89, 90, 91],
+    [90, 91, 92],
+    [97, 98, 99],
+  ];
+  for (const [source, expectedBase, expectedMaximum] of potentialCases) {
+    const actualBase = calculateBasePotential(source);
+    const actualMaximum = calculatePotential(source);
+    if (actualBase !== expectedBase || actualMaximum !== expectedMaximum) {
+      failures.push(
+        `progressão ${source}: esperado ${expectedBase}/${expectedMaximum}; atual ${actualBase}/${actualMaximum}`,
+      );
+    }
+  }
+  for (let source = 35; source <= 97; source += 1) {
+    const base = calculateBasePotential(source);
+    const maximum = calculatePotential(source);
+    const growth = maximum - source;
+    if (base <= source || base > maximum) {
+      failures.push(
+        `progressão universal ${source}: base ${base} deve ficar acima da fonte e até o máximo ${maximum}`,
+      );
+    }
+    if (growth < 2 || growth > 5) {
+      failures.push(
+        `progressão universal ${source}: crescimento máximo ${growth}; esperado entre 2 e 5`,
+      );
+    }
+    if (source < 89 && maximum > 90) {
+      failures.push(
+        `progressão universal ${source}: herança abaixo de 89 alcançou ${maximum}`,
+      );
+    }
+  }
   let variantCount = 0;
   for (const [position, groups] of Object.entries(PLAYER_DRAW_GROUPS)) {
     const variants = [...groups.primary, ...groups.alternative];

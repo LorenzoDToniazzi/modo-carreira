@@ -18,7 +18,8 @@ const server = await createServer({
 });
 
 try {
-  const { drawPlayer } = await server.ssrLoadModule("/src/game/engine.ts");
+  const { calculateBasePotential, calculatePotential, drawPlayer } =
+    await server.ssrLoadModule("/src/game/engine.ts");
   const { POSITION_CONFIGS } = await server.ssrLoadModule(
     "/src/game/constants.ts",
   );
@@ -65,7 +66,8 @@ try {
           role: player.sourceRole,
           source: chosen.value,
           current: Math.round(chosen.value * startingPercent),
-          potential: Math.min(99, Math.round(chosen.value * 1.15)),
+          basePotential: calculateBasePotential(chosen.value),
+          potential: calculatePotential(chosen.value),
         });
         remaining.delete(chosen.key);
         excludedIds.push(player.id);
@@ -81,6 +83,9 @@ try {
           picks.reduce((total, pick) => total + pick.source, 0) / picks.length,
         averageCurrent:
           picks.reduce((total, pick) => total + pick.current, 0) / picks.length,
+        averageBasePotential:
+          picks.reduce((total, pick) => total + pick.basePotential, 0) /
+          picks.length,
         averagePotential:
           picks.reduce((total, pick) => total + pick.potential, 0) / picks.length,
         picks,
@@ -130,7 +135,8 @@ try {
         .join("; ");
       console.log(
         `save ${String(save.save).padStart(2, "0")} · fonte ${save.averageSource.toFixed(1)} · ` +
-          `início ${save.averageCurrent.toFixed(1)} · potencial ${save.averagePotential.toFixed(1)} · ` +
+          `início ${save.averageCurrent.toFixed(1)} · base ${save.averageBasePotential.toFixed(1)} · ` +
+          `máx. ${save.averagePotential.toFixed(1)} · ` +
           `improvisados ${save.improvised} · ${notable || "sem Rei/Lenda/Épico"}`,
       );
     }

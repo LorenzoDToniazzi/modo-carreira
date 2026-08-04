@@ -10,8 +10,9 @@ import type {
 export const STARTING_AGE = 16;
 export const MIN_STARTING_PERCENT = 0.65;
 export const MAX_STARTING_PERCENT = 0.7;
-export const MIN_POTENTIAL_GROWTH_PERCENT = 0.1;
-export const MAX_POTENTIAL_GROWTH_PERCENT = 0.15;
+export const MIN_POTENTIAL_GROWTH_POINTS = 2;
+export const MAX_POTENTIAL_GROWTH_POINTS = 5;
+export const POTENTIAL_DISTANCE_FACTOR = 0.15;
 export const REROLLS_PER_CREATION = 3;
 
 export const RARITY_WEIGHTS: Record<Rarity, number> = {
