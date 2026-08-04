@@ -22,6 +22,7 @@ import type {
 } from "./types";
 
 const RARITIES: Rarity[] = [
+  "king",
   "legend",
   "epic",
   "rare",

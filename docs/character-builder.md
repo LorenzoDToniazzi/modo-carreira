@@ -1,5 +1,11 @@
 # Criador de atleta — especificação v0.6
 
+> **Documento histórico.** A estrutura de atributos, raridades e improvisações
+> desta versão foi substituída pela especificação v0.7 do
+> [README](../README.md) e pela
+> [metodologia de notas v0.7](ratings-methodology-v0.7.md). Não use as regras
+> abaixo para alterar o banco atual.
+
 ## Objetivo
 
 O criador deve ser o primeiro contato com o jogo e o principal gerador de variedade. A identidade é preenchida rapidamente; a parte estratégica é decidir qual atributo copiar de cada jogador sorteado sem conhecer os próximos nomes.

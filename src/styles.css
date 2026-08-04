@@ -415,6 +415,13 @@ select:focus {
   content: "";
 }
 
+.rarity-king {
+  border-color: #f7d774;
+  box-shadow:
+    0 0 0 1px rgb(255 236 164 / 65%),
+    0 18px 50px rgb(117 78 0 / 38%);
+}
+
 .rarity-legend {
   background:
     linear-gradient(160deg, rgba(255, 255, 255, 0.16), transparent 30%),

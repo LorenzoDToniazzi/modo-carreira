@@ -1,5 +1,10 @@
 # Régua de atributos v0.2
 
+> **Documento histórico.** Os controles por média de raridade desta versão não
+> são aplicados ao banco atual. A referência vigente é a
+> [metodologia de notas v0.7](ratings-methodology-v0.7.md), baseada em análise
+> individual do auge e do momento icônico de cada jogador.
+
 Régua aprovada inicialmente para ATA e mantida na revisão v0.6 para todas as
 posições.
 

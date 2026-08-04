@@ -4,8 +4,9 @@ Jogo de carreira de futebol focado em criar um atleta único a partir de jogador
 
 ## Estado do projeto
 
-O **Criador de Atleta v0.6** já permite criar jogadores nas sete posições. Cada
-posição possui 12 atributos, pesos, arquétipos e um banco de fontes próprios.
+O **Criador de Atleta v0.7** já permite criar jogadores nas sete posições.
+Jogadores de linha usam seis atributos globais e três específicos da posição;
+goleiros possuem oito atributos inteiramente próprios.
 
 ## Fluxo inicial
 
@@ -26,43 +27,51 @@ treino e decisões excepcionais podem abrir até 15%, com limite técnico em 99.
 
 - Notas próprias, sem copiar ratings de outros jogos.
 - Todo atleta é avaliado no auge.
-- Raridades: Lenda, Épico, Raro, Incomum e Comum.
+- Raridades: Rei, Lenda, Épico, Raro, Incomum e Comum.
 - A raridade representa relevância histórica, não excelência em todos os atributos.
 - Não existe cota de raridade por posição: a quantidade de nomes em cada grupo
   não altera os pesos do sorteio.
 - Jogadores comuns podem ser especialistas excepcionais.
-- Pelé é uma exceção deliberada: possui o melhor conjunto do banco e peso
-  individual menor no sorteio, aparecendo menos que as demais Lendas.
+- Pelé é uma exceção deliberada: é o único Rei, possui o melhor conjunto
+  ponderado do banco e uma chance de sorteio separada de apenas 0,1%.
 - Cada atributo deve afetar ações específicas da simulação.
 - A qualidade do atleta depende da posição, função e combinação de características, não apenas de um overall geral.
 - O banco prioriza nomes reconhecíveis para o público brasileiro sem transformar
   popularidade em nota.
 - Jogadores do futebol brasileiro aparecem em todas as raridades e posições.
-- Bola parada possui peso alto para MEI e peso médio para ATA, PON e LAT.
+- Bola parada é um atributo específico de MEI; chute e passe continuam
+  influenciando as cobranças dos demais jogadores na futura simulação.
 - Para atletas cujo auge aconteceu no Brasil, cartas de FIFA/EA FC não servem
   como régua principal. A avaliação prioriza registros do período, números,
   partidas, características reconhecidas e fontes oficiais de clubes e da CBF.
 - A ausência de uma boa carta internacional não reduz a nota nem a raridade de
   um ídolo brasileiro.
 
-## Banco v0.6
+## Banco v0.7
 
-- 671 perfis naturais
-- 203 variantes improvisadas aprovadas por histórico e atributos
-- 874 cartas jogáveis considerando a função
-- 657 jogadores únicos
-- 175 opções para ATA, 126 para PON e 127 para MEI
-- 128 opções para VOL, 107 para LAT e 121 para ZAG
-- 90 goleiros, sem improvisação
-- 472 cartas brasileiras considerando as variantes
+- 675 perfis naturais
+- 164 variantes improvisadas aprovadas individualmente por histórico e atributos
+- 839 cartas jogáveis considerando a função
+- 662 nomes distintos; homônimos e perfis posicionais não são confundidos com
+  uma contagem de atletas únicos
+- 178 opções para ATA, 106 para PON e 138 para MEI
+- 105 opções para VOL, 97 para LAT e 124 para ZAG
+- 91 goleiros, sem improvisação
+- 448 cartas brasileiras considerando as variantes
 - pools reforçados de Épicos, Raros e Incomuns em todas as posições
-- sorteio por raridade: 4% Lenda, 5% Épico, 25% Raro, 40% Incomum e 26% Comum
+- sorteio por raridade: 0,1% Rei, 5,3% Lenda, 4,5% Épico, 25% Raro,
+  40% Incomum e 25,1% Comum
 - origem da carta: 85% natural, 10% improvisação principal e 5% alternativa,
   quando houver atleta realmente compatível no tier sorteado
 - improvisações exigem tanto compatibilidade histórica quanto notas mínimas
   nos atributos relevantes para a posição de destino
+- os seis atributos globais são copiados sem alteração da ficha de origem; os
+  três específicos da nova função são avaliados e justificados nominalmente
+- não existe conversão automática de atributos e laterais não podem ser
+  improvisados como pontas
 - auditoria automática de inflação, profundidade por tier, representação por
   posição e raridades históricas obrigatórias
+- metodologia completa em [`docs/ratings-methodology-v0.7.md`](docs/ratings-methodology-v0.7.md)
 
 ## Próximo marco
 
